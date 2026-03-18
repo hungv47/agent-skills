@@ -6,56 +6,11 @@ Each skill writes structured artifacts to `.agents/`. Downstream skills read tho
 
 ## How It Works
 
-```mermaid
-flowchart TB
-  subgraph strategy ["Strategy"]
-    PA[problem-analysis] --> SD[solution-design]
-    SD --> FP[funnel-planner]
-    FP --> EX[experiment]
-  end
+<picture>
+  <img src="./assets/overview.svg" alt="Cross-stack skill DAG showing how artifacts flow between Strategy, Comms, Design, and Prod stacks" width="100%">
+</picture>
 
-  subgraph comms ["Comms"]
-    ICP[icp-research] --> IMC[imc-plan]
-    IMC --> CC[content-create]
-    CC --> AT[attribution]
-    LP[lp-optimization]
-    SEO[seo]
-    HU[humanize]
-  end
-
-  subgraph design ["Design"]
-    BS[brand-system] --> UF[user-flow]
-  end
-
-  subgraph prod ["Prod"]
-    PI[plan-interviewer] --> SA[system-architecture]
-    SA --> TB[task-breakdown]
-    CL[code-cleanup]
-    TW[technical-writer]
-  end
-
-  %% Cross-stack connections
-  ICP -- "product-context.md" --> SD
-  ICP -- "product-context.md" --> BS
-  ICP -- "product-context.md" --> SA
-  SD -- "solution-design.md" --> IMC
-  SD -- "solution-design.md" --> SA
-  FP -- "targets.md" --> AT
-  UF -- "user-flow.md" --> SA
-  UF -- "user-flow.md" --> TB
-
-  classDef strategyNode fill:#f4f1eb,stroke:#c4b99a,color:#5a5241
-  classDef commsNode fill:#ebf2f4,stroke:#9ab4c4,color:#3e5563
-  classDef designNode fill:#f4ebf1,stroke:#c49ab4,color:#5a4152
-  classDef prodNode fill:#ebf4ec,stroke:#9ac4a0,color:#3e5542
-
-  class PA,SD,FP,EX strategyNode
-  class ICP,IMC,CC,AT,LP,SEO,HU commsNode
-  class BS,UF designNode
-  class PI,SA,TB,CL,TW prodNode
-```
-
-## Install Everything
+## Install
 
 ```bash
 npx skills add hungv47/comms-skills
@@ -64,9 +19,25 @@ npx skills add hungv47/prod-skills
 npx skills add hungv47/strategy-skills
 ```
 
+Update all skills:
+
+```bash
+npx skills update
+```
+
+Remove a skill pack:
+
+```bash
+npx skills remove hungv47/comms-skills
+```
+
 ## Skill Stacks
 
 ### Strategy — diagnose, prioritize, measure, test
+
+<picture>
+  <img src="./assets/strategy.svg" alt="Strategy pipeline: problem-analysis → solution-design → funnel-planner → experiment" width="520">
+</picture>
 
 | Skill | What it does |
 |-------|-------------|
@@ -76,6 +47,10 @@ npx skills add hungv47/strategy-skills
 | `experiment` | Minimum viable tests with clear decision rules |
 
 ### Comms — research, plan, create, measure
+
+<picture>
+  <img src="./assets/comms.svg" alt="Comms pipeline: icp-research → imc-plan → content-create → attribution, plus standalone lp-optimization, seo, humanize" width="520">
+</picture>
 
 | Skill | What it does |
 |-------|-------------|
@@ -89,12 +64,20 @@ npx skills add hungv47/strategy-skills
 
 ### Design — brand, flows
 
+<picture>
+  <img src="./assets/design.svg" alt="Design pipeline: brand-system → user-flow" width="300">
+</picture>
+
 | Skill | What it does |
 |-------|-------------|
 | `brand-system` | Brand identity — strategy, personality, voice, visual identity, tokens |
 | `user-flow` | User flow diagrams and wireflows for digital products |
 
 ### Prod — plan, architect, build, document
+
+<picture>
+  <img src="./assets/prod.svg" alt="Prod pipeline: plan-interviewer → system-architecture → task-breakdown, plus standalone code-cleanup, technical-writer" width="520">
+</picture>
 
 | Skill | What it does |
 |-------|-------------|

@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 680" fill="none">
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; }
+    .label { font-size: 11px; fill: #8b8685; letter-spacing: 0.08em; }
+    .node-text { font-size: 13px; fill: #1a1a1a; font-weight: 500; }
+    .artifact { font-size: 10px; fill: #9a8c8a; font-style: italic; }
+    .stack-label { font-size: 11px; fill: #b0a8a6; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+  </style>
+
+  <!-- Background -->
+  <rect width="1080" height="680" rx="12" fill="#faf9f7"/>
+
+  <!-- Title -->
+  <text x="540" y="42" text-anchor="middle" font-size="18" font-weight="600" fill="#2a2524" letter-spacing="-0.01em">How Skills Chain Together</text>
+  <text x="540" y="62" text-anchor="middle" font-size="12" fill="#9a8c8a">Each skill writes artifacts that downstream skills read automatically</text>
+
+  <!-- ============ STRATEGY STACK ============ -->
+  <rect x="56" y="92" width="228" height="370" rx="10" fill="#f5f3ef" stroke="#e4dfd8" stroke-width="1"/>
+  <text x="170" y="114" text-anchor="middle" class="stack-label">Strategy</text>
+
+  <!-- problem-analysis -->
+  <rect x="88" y="132" width="164" height="42" rx="8" fill="#ffffff" stroke="#d6cfc6" stroke-width="1"/>
+  <text x="170" y="158" text-anchor="middle" class="node-text">problem-analysis</text>
+
+  <!-- solution-design -->
+  <rect x="88" y="202" width="164" height="42" rx="8" fill="#ffffff" stroke="#d6cfc6" stroke-width="1"/>
+  <text x="170" y="228" text-anchor="middle" class="node-text">solution-design</text>
+
+  <!-- funnel-planner -->
+  <rect x="88" y="272" width="164" height="42" rx="8" fill="#ffffff" stroke="#d6cfc6" stroke-width="1"/>
+  <text x="170" y="298" text-anchor="middle" class="node-text">funnel-planner</text>
+
+  <!-- experiment -->
+  <rect x="88" y="342" width="164" height="42" rx="8" fill="#ffffff" stroke="#d6cfc6" stroke-width="1"/>
+  <text x="170" y="368" text-anchor="middle" class="node-text">experiment</text>
+
+  <!-- Arrows within strategy -->
+  <line x1="170" y1="174" x2="170" y2="202" stroke="#c4bdb4" stroke-width="1.5" marker-end="url(#arrow-warm)"/>
+  <line x1="170" y1="244" x2="170" y2="272" stroke="#c4bdb4" stroke-width="1.5" marker-end="url(#arrow-warm)"/>
+  <line x1="170" y1="314" x2="170" y2="342" stroke="#c4bdb4" stroke-width="1.5" marker-end="url(#arrow-warm)"/>
+
+  <!-- Pipeline label -->
+  <text x="170" y="446" text-anchor="middle" font-size="10" fill="#b0a8a6">diagnose → prioritize → measure → test</text>
+
+  <!-- ============ COMMS STACK ============ -->
+  <rect x="326" y="92" width="228" height="500" rx="10" fill="#f0f4f6" stroke="#d4dee4" stroke-width="1"/>
+  <text x="440" y="114" text-anchor="middle" class="stack-label">Comms</text>
+
+  <!-- icp-research -->
+  <rect x="358" y="132" width="164" height="42" rx="8" fill="#ffffff" stroke="#b8ccd6" stroke-width="1"/>
+  <circle cx="374" cy="153" r="5" fill="#d4a574"/>
+  <text x="440" y="158" text-anchor="middle" class="node-text">icp-research</text>
+
+  <!-- imc-plan -->
+  <rect x="358" y="202" width="164" height="42" rx="8" fill="#ffffff" stroke="#b8ccd6" stroke-width="1"/>
+  <text x="440" y="228" text-anchor="middle" class="node-text">imc-plan</text>
+
+  <!-- content-create -->
+  <rect x="358" y="272" width="164" height="42" rx="8" fill="#ffffff" stroke="#b8ccd6" stroke-width="1"/>
+  <text x="440" y="298" text-anchor="middle" class="node-text">content-create</text>
+
+  <!-- attribution -->
+  <rect x="358" y="342" width="164" height="42" rx="8" fill="#ffffff" stroke="#b8ccd6" stroke-width="1"/>
+  <text x="440" y="368" text-anchor="middle" class="node-text">attribution</text>
+
+  <!-- Horizontal skills -->
+  <rect x="344" y="420" width="100" height="34" rx="7" fill="#ffffff" stroke="#b8ccd6" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="394" y="441" text-anchor="middle" font-size="11" fill="#5a7080">lp-optimization</text>
+
+  <rect x="454" y="420" width="68" height="34" rx="7" fill="#ffffff" stroke="#b8ccd6" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="488" y="441" text-anchor="middle" font-size="11" fill="#5a7080">seo</text>
+
+  <rect x="380" y="468" width="82" height="34" rx="7" fill="#ffffff" stroke="#b8ccd6" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="421" y="489" text-anchor="middle" font-size="11" fill="#5a7080">humanize</text>
+
+  <!-- Arrows within comms -->
+  <line x1="440" y1="174" x2="440" y2="202" stroke="#9ab4c4" stroke-width="1.5" marker-end="url(#arrow-cool)"/>
+  <line x1="440" y1="244" x2="440" y2="272" stroke="#9ab4c4" stroke-width="1.5" marker-end="url(#arrow-cool)"/>
+  <line x1="440" y1="314" x2="440" y2="342" stroke="#9ab4c4" stroke-width="1.5" marker-end="url(#arrow-cool)"/>
+
+  <text x="346" y="406" font-size="9" fill="#9ab4c4">standalone</text>
+
+  <!-- Pipeline label -->
+  <text x="440" y="576" text-anchor="middle" font-size="10" fill="#8ba8b8">research → plan → create → measure</text>
+
+  <!-- Start here badge -->
+  <rect x="372" y="105" width="70" height="18" rx="9" fill="#d4a574"/>
+  <text x="407" y="117" text-anchor="middle" font-size="9" fill="#ffffff" font-weight="600">START HERE</text>
+
+  <!-- ============ DESIGN STACK ============ -->
+  <rect x="596" y="92" width="228" height="280" rx="10" fill="#f6f0f4" stroke="#e0d0da" stroke-width="1"/>
+  <text x="710" y="114" text-anchor="middle" class="stack-label">Design</text>
+
+  <!-- brand-system -->
+  <rect x="628" y="132" width="164" height="42" rx="8" fill="#ffffff" stroke="#c9a8bb" stroke-width="1"/>
+  <text x="710" y="158" text-anchor="middle" class="node-text">brand-system</text>
+
+  <!-- user-flow -->
+  <rect x="628" y="202" width="164" height="42" rx="8" fill="#ffffff" stroke="#c9a8bb" stroke-width="1"/>
+  <text x="710" y="228" text-anchor="middle" class="node-text">user-flow</text>
+
+  <!-- Arrow within design -->
+  <line x1="710" y1="174" x2="710" y2="202" stroke="#c9a8bb" stroke-width="1.5" marker-end="url(#arrow-pink)"/>
+
+  <!-- Pipeline label -->
+  <text x="710" y="356" text-anchor="middle" font-size="10" fill="#b8a0ae">identity → flows</text>
+
+  <!-- ============ PROD STACK ============ -->
+  <rect x="596" y="400" width="440" height="200" rx="10" fill="#f0f5f1" stroke="#ccdece" stroke-width="1"/>
+  <text x="816" y="422" text-anchor="middle" class="stack-label">Prod</text>
+
+  <!-- plan-interviewer -->
+  <rect x="618" y="440" width="148" height="42" rx="8" fill="#ffffff" stroke="#a4c4a8" stroke-width="1"/>
+  <text x="692" y="466" text-anchor="middle" class="node-text">plan-interviewer</text>
+
+  <!-- system-architecture -->
+  <rect x="618" y="510" width="148" height="42" rx="8" fill="#ffffff" stroke="#a4c4a8" stroke-width="1"/>
+  <text x="692" y="536" text-anchor="middle" class="node-text">system-architecture</text>
+
+  <!-- task-breakdown -->
+  <rect x="790" y="510" width="128" height="42" rx="8" fill="#ffffff" stroke="#a4c4a8" stroke-width="1"/>
+  <text x="854" y="536" text-anchor="middle" class="node-text">task-breakdown</text>
+
+  <!-- code-cleanup -->
+  <rect x="790" y="440" width="108" height="42" rx="8" fill="#ffffff" stroke="#a4c4a8" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="844" y="466" text-anchor="middle" font-size="11" fill="#5a8060">code-cleanup</text>
+
+  <!-- technical-writer -->
+  <rect x="910" y="440" width="112" height="42" rx="8" fill="#ffffff" stroke="#a4c4a8" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="966" y="466" text-anchor="middle" font-size="11" fill="#5a8060">technical-writer</text>
+
+  <!-- Arrows within prod -->
+  <line x1="692" y1="482" x2="692" y2="510" stroke="#9ac4a0" stroke-width="1.5" marker-end="url(#arrow-green)"/>
+  <line x1="766" y1="531" x2="790" y2="531" stroke="#9ac4a0" stroke-width="1.5" marker-end="url(#arrow-green)"/>
+
+  <text x="900" y="584" font-size="9" fill="#9ac4a0">standalone ↑</text>
+
+  <!-- ============ CROSS-STACK CONNECTIONS ============ -->
+
+  <!-- icp-research → solution-design (product-context.md) -->
+  <path d="M 358 153 L 252 153 L 252 223 " stroke="#d4a574" stroke-width="1.2" stroke-dasharray="6 3" fill="none" marker-end="url(#arrow-gold)"/>
+  <text x="268" y="188" class="artifact">product-context.md</text>
+
+  <!-- icp-research → brand-system (product-context.md) -->
+  <path d="M 522 153 L 628 153" stroke="#d4a574" stroke-width="1.2" stroke-dasharray="6 3" fill="none" marker-end="url(#arrow-gold)"/>
+  <text x="560" y="145" class="artifact">product-context.md</text>
+
+  <!-- icp-research → system-architecture (product-context.md) -->
+  <path d="M 522 160 L 570 160 L 570 531 L 618 531" stroke="#d4a574" stroke-width="1.2" stroke-dasharray="6 3" fill="none" marker-end="url(#arrow-gold)"/>
+  <text x="576" y="420" class="artifact" transform="rotate(-90, 576, 420)">product-context.md</text>
+
+  <!-- solution-design → imc-plan -->
+  <path d="M 252 223 L 310 223 L 358 223" stroke="#c4bdb4" stroke-width="1.2" stroke-dasharray="6 3" fill="none" marker-end="url(#arrow-cool)"/>
+  <text x="296" y="215" class="artifact">solution-design.md</text>
+
+  <!-- solution-design → system-architecture -->
+  <path d="M 252 230 L 252 531 L 618 531" stroke="#c4bdb4" stroke-width="1.2" stroke-dasharray="6 3" fill="none" marker-end="url(#arrow-green)"/>
+  <text x="258" y="480" class="artifact">solution-design.md</text>
+
+  <!-- funnel-planner → attribution (targets.md) -->
+  <path d="M 252 298 L 310 298 L 310 363 L 358 363" stroke="#c4bdb4" stroke-width="1.2" stroke-dasharray="6 3" fill="none" marker-end="url(#arrow-cool)"/>
+  <text x="300" y="340" class="artifact">targets.md</text>
+
+  <!-- user-flow → system-architecture -->
+  <path d="M 710 244 L 710 510 L 692 510" stroke="#c9a8bb" stroke-width="1.2" stroke-dasharray="6 3" fill="none" marker-end="url(#arrow-green)"/>
+  <text x="716" y="390" class="artifact">user-flow.md</text>
+
+  <!-- user-flow → task-breakdown -->
+  <path d="M 740 244 L 740 400 L 854 400 L 854 510" stroke="#c9a8bb" stroke-width="1.2" stroke-dasharray="6 3" fill="none" marker-end="url(#arrow-green)"/>
+  <text x="802" y="393" class="artifact">user-flow.md</text>
+
+  <!-- ============ ARROW MARKERS ============ -->
+  <defs>
+    <marker id="arrow-warm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#c4bdb4" stroke-width="1.5"/>
+    </marker>
+    <marker id="arrow-cool" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#9ab4c4" stroke-width="1.5"/>
+    </marker>
+    <marker id="arrow-pink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#c9a8bb" stroke-width="1.5"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#9ac4a0" stroke-width="1.5"/>
+    </marker>
+    <marker id="arrow-gold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#d4a574" stroke-width="1.5"/>
+    </marker>
+  </defs>
+</svg>
