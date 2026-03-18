@@ -1,190 +1,232 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 680" fill="none">
   <style>
     text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; }
-    .label { font-size: 11px; fill: #8b8685; letter-spacing: 0.08em; }
-    .node-text { font-size: 13px; fill: #1a1a1a; font-weight: 500; }
-    .artifact { font-size: 10px; fill: #9a8c8a; font-style: italic; }
-    .stack-label { font-size: 11px; fill: #b0a8a6; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+    .node-text { font-size: 13px; fill: #1a1a1a; font-weight: 600; }
+    .artifact { font-size: 10px; fill: #a09080; font-weight: 500; letter-spacing: 0.02em; }
+    .stack-label { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+    .sub { font-size: 10px; font-weight: 400; }
+
+    @keyframes dash-flow {
+      to { stroke-dashoffset: -18; }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    .flow-line {
+      stroke-dasharray: 6 4;
+      animation: dash-flow 1.2s linear infinite;
+    }
+    .badge {
+      animation: pulse 2s ease-in-out infinite;
+    }
   </style>
 
+  <defs>
+    <!-- Shadows -->
+    <filter id="shadow" x="-4%" y="-4%" width="108%" height="116%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.06"/>
+    </filter>
+    <filter id="shadow-sm" x="-4%" y="-4%" width="108%" height="116%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000" flood-opacity="0.05"/>
+    </filter>
+
+    <!-- Stack gradients -->
+    <linearGradient id="g-strategy" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f7f4ee"/>
+      <stop offset="100%" stop-color="#efe9dc"/>
+    </linearGradient>
+    <linearGradient id="g-comms" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#edf3f7"/>
+      <stop offset="100%" stop-color="#dbe8f0"/>
+    </linearGradient>
+    <linearGradient id="g-design" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f8f0f5"/>
+      <stop offset="100%" stop-color="#f0dfe9"/>
+    </linearGradient>
+    <linearGradient id="g-prod" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#eef6f0"/>
+      <stop offset="100%" stop-color="#dceede"/>
+    </linearGradient>
+
+    <!-- Node gradients -->
+    <linearGradient id="n-strategy" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#faf6f0"/>
+    </linearGradient>
+    <linearGradient id="n-comms" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f2f7fa"/>
+    </linearGradient>
+    <linearGradient id="n-design" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#faf2f6"/>
+    </linearGradient>
+    <linearGradient id="n-prod" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f2f8f3"/>
+    </linearGradient>
+
+    <!-- Badge gradient -->
+    <linearGradient id="g-badge" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8a654"/>
+      <stop offset="100%" stop-color="#c4843a"/>
+    </linearGradient>
+
+    <!-- Arrow markers -->
+    <marker id="arrow-warm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 2 L 8 5 L 0 8" fill="none" stroke="#c4b8a4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-cool" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 2 L 8 5 L 0 8" fill="none" stroke="#7da8c0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-pink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 2 L 8 5 L 0 8" fill="none" stroke="#b890a6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 2 L 8 5 L 0 8" fill="none" stroke="#7db886" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrow-gold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 2 L 8 5 L 0 8" fill="none" stroke="#d4a050" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
   <!-- Background -->
-  <rect width="1080" height="680" rx="12" fill="#faf9f7"/>
+  <rect width="1080" height="680" rx="12" fill="#fcfbf9"/>
 
   <!-- Title -->
-  <text x="540" y="42" text-anchor="middle" font-size="18" font-weight="600" fill="#2a2524" letter-spacing="-0.01em">How Skills Chain Together</text>
-  <text x="540" y="62" text-anchor="middle" font-size="12" fill="#9a8c8a">Each skill writes artifacts that downstream skills read automatically</text>
+  <text x="540" y="42" text-anchor="middle" font-size="20" font-weight="700" fill="#1a1816" letter-spacing="-0.02em">How Skills Chain Together</text>
+  <text x="540" y="62" text-anchor="middle" font-size="12" fill="#9a8c8a" font-weight="400">Each skill writes artifacts that downstream skills read automatically</text>
 
-  <!-- ============ STRATEGY STACK ============ -->
-  <rect x="56" y="92" width="228" height="370" rx="10" fill="#f5f3ef" stroke="#e4dfd8" stroke-width="1"/>
-  <text x="170" y="114" text-anchor="middle" class="stack-label">Strategy</text>
+  <!-- ============ STRATEGY ============ -->
+  <rect x="56" y="92" width="228" height="370" rx="12" fill="url(#g-strategy)" stroke="#ddd6c8" stroke-width="1" filter="url(#shadow)"/>
+  <text x="170" y="116" text-anchor="middle" class="stack-label" fill="#8a7e6a">Strategy</text>
 
-  <!-- problem-analysis -->
-  <rect x="88" y="132" width="164" height="42" rx="8" fill="#ffffff" stroke="#d6cfc6" stroke-width="1"/>
-  <text x="170" y="158" text-anchor="middle" class="node-text">problem-analysis</text>
+  <rect x="88" y="136" width="164" height="44" rx="10" fill="url(#n-strategy)" stroke="#d0c7b6" stroke-width="1" filter="url(#shadow-sm)"/>
+  <text x="170" y="163" text-anchor="middle" class="node-text">problem-analysis</text>
 
-  <!-- solution-design -->
-  <rect x="88" y="202" width="164" height="42" rx="8" fill="#ffffff" stroke="#d6cfc6" stroke-width="1"/>
-  <text x="170" y="228" text-anchor="middle" class="node-text">solution-design</text>
+  <rect x="88" y="208" width="164" height="44" rx="10" fill="url(#n-strategy)" stroke="#d0c7b6" stroke-width="1" filter="url(#shadow-sm)"/>
+  <text x="170" y="235" text-anchor="middle" class="node-text">solution-design</text>
 
-  <!-- funnel-planner -->
-  <rect x="88" y="272" width="164" height="42" rx="8" fill="#ffffff" stroke="#d6cfc6" stroke-width="1"/>
-  <text x="170" y="298" text-anchor="middle" class="node-text">funnel-planner</text>
+  <rect x="88" y="280" width="164" height="44" rx="10" fill="url(#n-strategy)" stroke="#d0c7b6" stroke-width="1" filter="url(#shadow-sm)"/>
+  <text x="170" y="307" text-anchor="middle" class="node-text">funnel-planner</text>
 
-  <!-- experiment -->
-  <rect x="88" y="342" width="164" height="42" rx="8" fill="#ffffff" stroke="#d6cfc6" stroke-width="1"/>
-  <text x="170" y="368" text-anchor="middle" class="node-text">experiment</text>
+  <rect x="88" y="350" width="164" height="44" rx="10" fill="url(#n-strategy)" stroke="#d0c7b6" stroke-width="1" filter="url(#shadow-sm)"/>
+  <text x="170" y="377" text-anchor="middle" class="node-text">experiment</text>
 
-  <!-- Arrows within strategy -->
-  <line x1="170" y1="174" x2="170" y2="202" stroke="#c4bdb4" stroke-width="1.5" marker-end="url(#arrow-warm)"/>
-  <line x1="170" y1="244" x2="170" y2="272" stroke="#c4bdb4" stroke-width="1.5" marker-end="url(#arrow-warm)"/>
-  <line x1="170" y1="314" x2="170" y2="342" stroke="#c4bdb4" stroke-width="1.5" marker-end="url(#arrow-warm)"/>
+  <line x1="170" y1="180" x2="170" y2="208" stroke="#c4b8a4" stroke-width="1.8" stroke-linecap="round" marker-end="url(#arrow-warm)"/>
+  <line x1="170" y1="252" x2="170" y2="280" stroke="#c4b8a4" stroke-width="1.8" stroke-linecap="round" marker-end="url(#arrow-warm)"/>
+  <line x1="170" y1="324" x2="170" y2="350" stroke="#c4b8a4" stroke-width="1.8" stroke-linecap="round" marker-end="url(#arrow-warm)"/>
 
-  <!-- Pipeline label -->
-  <text x="170" y="446" text-anchor="middle" font-size="10" fill="#b0a8a6">diagnose → prioritize → measure → test</text>
+  <text x="170" y="446" text-anchor="middle" class="sub" fill="#b0a694">diagnose · prioritize · measure · test</text>
 
-  <!-- ============ COMMS STACK ============ -->
-  <rect x="326" y="92" width="228" height="500" rx="10" fill="#f0f4f6" stroke="#d4dee4" stroke-width="1"/>
-  <text x="440" y="114" text-anchor="middle" class="stack-label">Comms</text>
+  <!-- ============ COMMS ============ -->
+  <rect x="326" y="92" width="228" height="504" rx="12" fill="url(#g-comms)" stroke="#c4d4e0" stroke-width="1" filter="url(#shadow)"/>
+  <text x="440" y="116" text-anchor="middle" class="stack-label" fill="#5a7e96">Comms</text>
 
-  <!-- icp-research -->
-  <rect x="358" y="132" width="164" height="42" rx="8" fill="#ffffff" stroke="#b8ccd6" stroke-width="1"/>
-  <circle cx="374" cy="153" r="5" fill="#d4a574"/>
-  <text x="440" y="158" text-anchor="middle" class="node-text">icp-research</text>
+  <!-- START HERE badge -->
+  <rect x="370" y="100" width="76" height="20" rx="10" fill="url(#g-badge)" class="badge" filter="url(#shadow-sm)"/>
+  <text x="408" y="114" text-anchor="middle" font-size="9" fill="#ffffff" font-weight="700" letter-spacing="0.06em">START HERE</text>
 
-  <!-- imc-plan -->
-  <rect x="358" y="202" width="164" height="42" rx="8" fill="#ffffff" stroke="#b8ccd6" stroke-width="1"/>
-  <text x="440" y="228" text-anchor="middle" class="node-text">imc-plan</text>
+  <rect x="358" y="136" width="164" height="44" rx="10" fill="url(#n-comms)" stroke="#a8c0d0" stroke-width="1" filter="url(#shadow-sm)"/>
+  <circle cx="376" cy="158" r="5" fill="#d4a050" opacity="0.9"/>
+  <text x="446" y="163" text-anchor="middle" class="node-text">icp-research</text>
 
-  <!-- content-create -->
-  <rect x="358" y="272" width="164" height="42" rx="8" fill="#ffffff" stroke="#b8ccd6" stroke-width="1"/>
-  <text x="440" y="298" text-anchor="middle" class="node-text">content-create</text>
+  <rect x="358" y="208" width="164" height="44" rx="10" fill="url(#n-comms)" stroke="#a8c0d0" stroke-width="1" filter="url(#shadow-sm)"/>
+  <text x="440" y="235" text-anchor="middle" class="node-text">imc-plan</text>
 
-  <!-- attribution -->
-  <rect x="358" y="342" width="164" height="42" rx="8" fill="#ffffff" stroke="#b8ccd6" stroke-width="1"/>
-  <text x="440" y="368" text-anchor="middle" class="node-text">attribution</text>
+  <rect x="358" y="280" width="164" height="44" rx="10" fill="url(#n-comms)" stroke="#a8c0d0" stroke-width="1" filter="url(#shadow-sm)"/>
+  <text x="440" y="307" text-anchor="middle" class="node-text">content-create</text>
 
-  <!-- Horizontal skills -->
-  <rect x="344" y="420" width="100" height="34" rx="7" fill="#ffffff" stroke="#b8ccd6" stroke-width="1" stroke-dasharray="4 3"/>
-  <text x="394" y="441" text-anchor="middle" font-size="11" fill="#5a7080">lp-optimization</text>
+  <rect x="358" y="350" width="164" height="44" rx="10" fill="url(#n-comms)" stroke="#a8c0d0" stroke-width="1" filter="url(#shadow-sm)"/>
+  <text x="440" y="377" text-anchor="middle" class="node-text">attribution</text>
 
-  <rect x="454" y="420" width="68" height="34" rx="7" fill="#ffffff" stroke="#b8ccd6" stroke-width="1" stroke-dasharray="4 3"/>
-  <text x="488" y="441" text-anchor="middle" font-size="11" fill="#5a7080">seo</text>
+  <line x1="440" y1="180" x2="440" y2="208" stroke="#7da8c0" stroke-width="1.8" stroke-linecap="round" marker-end="url(#arrow-cool)"/>
+  <line x1="440" y1="252" x2="440" y2="280" stroke="#7da8c0" stroke-width="1.8" stroke-linecap="round" marker-end="url(#arrow-cool)"/>
+  <line x1="440" y1="324" x2="440" y2="350" stroke="#7da8c0" stroke-width="1.8" stroke-linecap="round" marker-end="url(#arrow-cool)"/>
 
-  <rect x="380" y="468" width="82" height="34" rx="7" fill="#ffffff" stroke="#b8ccd6" stroke-width="1" stroke-dasharray="4 3"/>
-  <text x="421" y="489" text-anchor="middle" font-size="11" fill="#5a7080">humanize</text>
+  <text x="346" y="414" font-size="9" fill="#7da8c0" font-weight="500">standalone</text>
 
-  <!-- Arrows within comms -->
-  <line x1="440" y1="174" x2="440" y2="202" stroke="#9ab4c4" stroke-width="1.5" marker-end="url(#arrow-cool)"/>
-  <line x1="440" y1="244" x2="440" y2="272" stroke="#9ab4c4" stroke-width="1.5" marker-end="url(#arrow-cool)"/>
-  <line x1="440" y1="314" x2="440" y2="342" stroke="#9ab4c4" stroke-width="1.5" marker-end="url(#arrow-cool)"/>
+  <rect x="344" y="426" width="104" height="36" rx="9" fill="url(#n-comms)" stroke="#a8c0d0" stroke-width="1" stroke-dasharray="5 3" opacity="0.85"/>
+  <text x="396" y="449" text-anchor="middle" font-size="11" fill="#4a6878" font-weight="500">lp-optimization</text>
 
-  <text x="346" y="406" font-size="9" fill="#9ab4c4">standalone</text>
+  <rect x="458" y="426" width="64" height="36" rx="9" fill="url(#n-comms)" stroke="#a8c0d0" stroke-width="1" stroke-dasharray="5 3" opacity="0.85"/>
+  <text x="490" y="449" text-anchor="middle" font-size="11" fill="#4a6878" font-weight="500">seo</text>
 
-  <!-- Pipeline label -->
-  <text x="440" y="576" text-anchor="middle" font-size="10" fill="#8ba8b8">research → plan → create → measure</text>
+  <rect x="380" y="474" width="86" height="36" rx="9" fill="url(#n-comms)" stroke="#a8c0d0" stroke-width="1" stroke-dasharray="5 3" opacity="0.85"/>
+  <text x="423" y="497" text-anchor="middle" font-size="11" fill="#4a6878" font-weight="500">humanize</text>
 
-  <!-- Start here badge -->
-  <rect x="372" y="105" width="70" height="18" rx="9" fill="#d4a574"/>
-  <text x="407" y="117" text-anchor="middle" font-size="9" fill="#ffffff" font-weight="600">START HERE</text>
+  <text x="440" y="580" text-anchor="middle" class="sub" fill="#7da8c0">research · plan · create · measure</text>
 
-  <!-- ============ DESIGN STACK ============ -->
-  <rect x="596" y="92" width="228" height="280" rx="10" fill="#f6f0f4" stroke="#e0d0da" stroke-width="1"/>
-  <text x="710" y="114" text-anchor="middle" class="stack-label">Design</text>
+  <!-- ============ DESIGN ============ -->
+  <rect x="596" y="92" width="228" height="280" rx="12" fill="url(#g-design)" stroke="#d8c0d0" stroke-width="1" filter="url(#shadow)"/>
+  <text x="710" y="116" text-anchor="middle" class="stack-label" fill="#966e84">Design</text>
 
-  <!-- brand-system -->
-  <rect x="628" y="132" width="164" height="42" rx="8" fill="#ffffff" stroke="#c9a8bb" stroke-width="1"/>
-  <text x="710" y="158" text-anchor="middle" class="node-text">brand-system</text>
+  <rect x="628" y="136" width="164" height="44" rx="10" fill="url(#n-design)" stroke="#c8a0b6" stroke-width="1" filter="url(#shadow-sm)"/>
+  <text x="710" y="163" text-anchor="middle" class="node-text">brand-system</text>
 
-  <!-- user-flow -->
-  <rect x="628" y="202" width="164" height="42" rx="8" fill="#ffffff" stroke="#c9a8bb" stroke-width="1"/>
-  <text x="710" y="228" text-anchor="middle" class="node-text">user-flow</text>
+  <rect x="628" y="208" width="164" height="44" rx="10" fill="url(#n-design)" stroke="#c8a0b6" stroke-width="1" filter="url(#shadow-sm)"/>
+  <text x="710" y="235" text-anchor="middle" class="node-text">user-flow</text>
 
-  <!-- Arrow within design -->
-  <line x1="710" y1="174" x2="710" y2="202" stroke="#c9a8bb" stroke-width="1.5" marker-end="url(#arrow-pink)"/>
+  <line x1="710" y1="180" x2="710" y2="208" stroke="#b890a6" stroke-width="1.8" stroke-linecap="round" marker-end="url(#arrow-pink)"/>
 
-  <!-- Pipeline label -->
-  <text x="710" y="356" text-anchor="middle" font-size="10" fill="#b8a0ae">identity → flows</text>
+  <text x="710" y="356" text-anchor="middle" class="sub" fill="#b890a6">identity · flows</text>
 
-  <!-- ============ PROD STACK ============ -->
-  <rect x="596" y="400" width="440" height="200" rx="10" fill="#f0f5f1" stroke="#ccdece" stroke-width="1"/>
-  <text x="816" y="422" text-anchor="middle" class="stack-label">Prod</text>
+  <!-- ============ PROD ============ -->
+  <rect x="596" y="400" width="440" height="204" rx="12" fill="url(#g-prod)" stroke="#b8d4bc" stroke-width="1" filter="url(#shadow)"/>
+  <text x="816" y="424" text-anchor="middle" class="stack-label" fill="#4a7e52">Prod</text>
 
-  <!-- plan-interviewer -->
-  <rect x="618" y="440" width="148" height="42" rx="8" fill="#ffffff" stroke="#a4c4a8" stroke-width="1"/>
-  <text x="692" y="466" text-anchor="middle" class="node-text">plan-interviewer</text>
+  <rect x="618" y="444" width="150" height="44" rx="10" fill="url(#n-prod)" stroke="#94c49a" stroke-width="1" filter="url(#shadow-sm)"/>
+  <text x="693" y="471" text-anchor="middle" class="node-text">plan-interviewer</text>
 
-  <!-- system-architecture -->
-  <rect x="618" y="510" width="148" height="42" rx="8" fill="#ffffff" stroke="#a4c4a8" stroke-width="1"/>
-  <text x="692" y="536" text-anchor="middle" class="node-text">system-architecture</text>
+  <rect x="618" y="516" width="150" height="44" rx="10" fill="url(#n-prod)" stroke="#94c49a" stroke-width="1" filter="url(#shadow-sm)"/>
+  <text x="693" y="543" text-anchor="middle" class="node-text">system-architecture</text>
 
-  <!-- task-breakdown -->
-  <rect x="790" y="510" width="128" height="42" rx="8" fill="#ffffff" stroke="#a4c4a8" stroke-width="1"/>
-  <text x="854" y="536" text-anchor="middle" class="node-text">task-breakdown</text>
+  <rect x="792" y="516" width="130" height="44" rx="10" fill="url(#n-prod)" stroke="#94c49a" stroke-width="1" filter="url(#shadow-sm)"/>
+  <text x="857" y="543" text-anchor="middle" class="node-text">task-breakdown</text>
 
-  <!-- code-cleanup -->
-  <rect x="790" y="440" width="108" height="42" rx="8" fill="#ffffff" stroke="#a4c4a8" stroke-width="1" stroke-dasharray="4 3"/>
-  <text x="844" y="466" text-anchor="middle" font-size="11" fill="#5a8060">code-cleanup</text>
+  <rect x="792" y="444" width="112" height="44" rx="10" fill="url(#n-prod)" stroke="#94c49a" stroke-width="1" stroke-dasharray="5 3" opacity="0.85"/>
+  <text x="848" y="471" text-anchor="middle" font-size="11" fill="#3a6840" font-weight="500">code-cleanup</text>
 
-  <!-- technical-writer -->
-  <rect x="910" y="440" width="112" height="42" rx="8" fill="#ffffff" stroke="#a4c4a8" stroke-width="1" stroke-dasharray="4 3"/>
-  <text x="966" y="466" text-anchor="middle" font-size="11" fill="#5a8060">technical-writer</text>
+  <rect x="916" y="444" width="108" height="44" rx="10" fill="url(#n-prod)" stroke="#94c49a" stroke-width="1" stroke-dasharray="5 3" opacity="0.85"/>
+  <text x="970" y="471" text-anchor="middle" font-size="11" fill="#3a6840" font-weight="500">technical-writer</text>
 
-  <!-- Arrows within prod -->
-  <line x1="692" y1="482" x2="692" y2="510" stroke="#9ac4a0" stroke-width="1.5" marker-end="url(#arrow-green)"/>
-  <line x1="766" y1="531" x2="790" y2="531" stroke="#9ac4a0" stroke-width="1.5" marker-end="url(#arrow-green)"/>
+  <line x1="693" y1="488" x2="693" y2="516" stroke="#7db886" stroke-width="1.8" stroke-linecap="round" marker-end="url(#arrow-green)"/>
+  <line x1="768" y1="538" x2="792" y2="538" stroke="#7db886" stroke-width="1.8" stroke-linecap="round" marker-end="url(#arrow-green)"/>
 
-  <text x="900" y="584" font-size="9" fill="#9ac4a0">standalone ↑</text>
+  <text x="960" y="590" text-anchor="end" font-size="9" fill="#7db886" font-weight="500">standalone ↑</text>
 
-  <!-- ============ CROSS-STACK CONNECTIONS ============ -->
+  <!-- ============ CROSS-STACK FLOWS ============ -->
 
-  <!-- icp-research → solution-design (product-context.md) -->
-  <path d="M 358 153 L 252 153 L 252 223 " stroke="#d4a574" stroke-width="1.2" stroke-dasharray="6 3" fill="none" marker-end="url(#arrow-gold)"/>
-  <text x="268" y="188" class="artifact">product-context.md</text>
+  <!-- icp-research → solution-design -->
+  <path d="M 358 158 L 252 158 L 252 230" stroke="#d4a050" stroke-width="1.4" fill="none" class="flow-line" marker-end="url(#arrow-gold)"/>
+  <text x="270" y="194" class="artifact">product-context.md</text>
 
-  <!-- icp-research → brand-system (product-context.md) -->
-  <path d="M 522 153 L 628 153" stroke="#d4a574" stroke-width="1.2" stroke-dasharray="6 3" fill="none" marker-end="url(#arrow-gold)"/>
-  <text x="560" y="145" class="artifact">product-context.md</text>
+  <!-- icp-research → brand-system -->
+  <path d="M 522 158 L 628 158" stroke="#d4a050" stroke-width="1.4" fill="none" class="flow-line" marker-end="url(#arrow-gold)"/>
+  <text x="556" y="150" class="artifact">product-context.md</text>
 
-  <!-- icp-research → system-architecture (product-context.md) -->
-  <path d="M 522 160 L 570 160 L 570 531 L 618 531" stroke="#d4a574" stroke-width="1.2" stroke-dasharray="6 3" fill="none" marker-end="url(#arrow-gold)"/>
+  <!-- icp-research → system-architecture -->
+  <path d="M 522 165 L 570 165 L 570 538 L 618 538" stroke="#d4a050" stroke-width="1.4" fill="none" class="flow-line" marker-end="url(#arrow-gold)"/>
   <text x="576" y="420" class="artifact" transform="rotate(-90, 576, 420)">product-context.md</text>
 
   <!-- solution-design → imc-plan -->
-  <path d="M 252 223 L 310 223 L 358 223" stroke="#c4bdb4" stroke-width="1.2" stroke-dasharray="6 3" fill="none" marker-end="url(#arrow-cool)"/>
-  <text x="296" y="215" class="artifact">solution-design.md</text>
+  <path d="M 252 235 L 310 235 L 358 235" stroke="#c4b8a4" stroke-width="1.4" fill="none" class="flow-line" marker-end="url(#arrow-cool)"/>
+  <text x="290" y="226" class="artifact">solution-design.md</text>
 
   <!-- solution-design → system-architecture -->
-  <path d="M 252 230 L 252 531 L 618 531" stroke="#c4bdb4" stroke-width="1.2" stroke-dasharray="6 3" fill="none" marker-end="url(#arrow-green)"/>
-  <text x="258" y="480" class="artifact">solution-design.md</text>
+  <path d="M 252 242 L 252 538 L 618 538" stroke="#c4b8a4" stroke-width="1.4" fill="none" class="flow-line" marker-end="url(#arrow-green)"/>
+  <text x="260" y="488" class="artifact">solution-design.md</text>
 
-  <!-- funnel-planner → attribution (targets.md) -->
-  <path d="M 252 298 L 310 298 L 310 363 L 358 363" stroke="#c4bdb4" stroke-width="1.2" stroke-dasharray="6 3" fill="none" marker-end="url(#arrow-cool)"/>
-  <text x="300" y="340" class="artifact">targets.md</text>
+  <!-- funnel-planner → attribution -->
+  <path d="M 252 307 L 310 307 L 310 372 L 358 372" stroke="#c4b8a4" stroke-width="1.4" fill="none" class="flow-line" marker-end="url(#arrow-cool)"/>
+  <text x="298" y="346" class="artifact">targets.md</text>
 
   <!-- user-flow → system-architecture -->
-  <path d="M 710 244 L 710 510 L 692 510" stroke="#c9a8bb" stroke-width="1.2" stroke-dasharray="6 3" fill="none" marker-end="url(#arrow-green)"/>
-  <text x="716" y="390" class="artifact">user-flow.md</text>
+  <path d="M 710 252 L 710 516 L 693 516" stroke="#b890a6" stroke-width="1.4" fill="none" class="flow-line" marker-end="url(#arrow-green)"/>
+  <text x="718" y="396" class="artifact">user-flow.md</text>
 
   <!-- user-flow → task-breakdown -->
-  <path d="M 740 244 L 740 400 L 854 400 L 854 510" stroke="#c9a8bb" stroke-width="1.2" stroke-dasharray="6 3" fill="none" marker-end="url(#arrow-green)"/>
-  <text x="802" y="393" class="artifact">user-flow.md</text>
-
-  <!-- ============ ARROW MARKERS ============ -->
-  <defs>
-    <marker id="arrow-warm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#c4bdb4" stroke-width="1.5"/>
-    </marker>
-    <marker id="arrow-cool" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#9ab4c4" stroke-width="1.5"/>
-    </marker>
-    <marker id="arrow-pink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#c9a8bb" stroke-width="1.5"/>
-    </marker>
-    <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#9ac4a0" stroke-width="1.5"/>
-    </marker>
-    <marker id="arrow-gold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#d4a574" stroke-width="1.5"/>
-    </marker>
-  </defs>
+  <path d="M 740 252 L 740 400 L 857 400 L 857 516" stroke="#b890a6" stroke-width="1.4" fill="none" class="flow-line" marker-end="url(#arrow-green)"/>
+  <text x="805" y="393" class="artifact">user-flow.md</text>
 </svg>

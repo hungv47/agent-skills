@@ -1,22 +1,33 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 120" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 310 130" fill="none">
   <style>
     text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; }
+    @keyframes dash-flow { to { stroke-dashoffset: -18; } }
+    .flow { stroke-dasharray: 6 4; animation: dash-flow 1.2s linear infinite; }
   </style>
-  <rect width="300" height="120" rx="10" fill="#f6f0f4" stroke="#e0d0da" stroke-width="1"/>
-  <text x="150" y="24" text-anchor="middle" font-size="11" fill="#b8a0ae" font-weight="600" letter-spacing="0.12em">DESIGN</text>
-  <text x="150" y="40" text-anchor="middle" font-size="10" fill="#c9a8bb">identity → flows</text>
-
-  <rect x="24" y="56" width="116" height="42" rx="8" fill="#ffffff" stroke="#c9a8bb" stroke-width="1"/>
-  <text x="82" y="81" text-anchor="middle" font-size="12" fill="#1a1a1a" font-weight="500">brand-system</text>
-
-  <rect x="168" y="56" width="108" height="42" rx="8" fill="#ffffff" stroke="#c9a8bb" stroke-width="1"/>
-  <text x="222" y="81" text-anchor="middle" font-size="12" fill="#1a1a1a" font-weight="500">user-flow</text>
-
-  <line x1="140" y1="77" x2="168" y2="77" stroke="#c9a8bb" stroke-width="1.5" marker-end="url(#a3)"/>
-
   <defs>
-    <marker id="a3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#c9a8bb" stroke-width="1.5"/>
+    <linearGradient id="dg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f8f0f5"/><stop offset="100%" stop-color="#f0dfe9"/>
+    </linearGradient>
+    <linearGradient id="dn" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#faf2f6"/>
+    </linearGradient>
+    <filter id="ds" x="-4%" y="-8%" width="108%" height="120%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="2" flood-color="#000" flood-opacity="0.06"/>
+    </filter>
+    <marker id="da" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 2 L 8 5 L 0 8" fill="none" stroke="#b890a6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
     </marker>
   </defs>
+
+  <rect width="310" height="130" rx="12" fill="url(#dg)" stroke="#d8c0d0" stroke-width="1" filter="url(#ds)"/>
+  <text x="155" y="26" text-anchor="middle" font-size="12" fill="#966e84" font-weight="700" letter-spacing="0.14em">DESIGN</text>
+  <text x="155" y="42" text-anchor="middle" font-size="10" fill="#b890a6">identity · flows</text>
+
+  <rect x="24" y="60" width="120" height="46" rx="10" fill="url(#dn)" stroke="#c8a0b6" stroke-width="1" filter="url(#ds)"/>
+  <text x="84" y="88" text-anchor="middle" font-size="12" fill="#1a1a1a" font-weight="600">brand-system</text>
+
+  <rect x="172" y="60" width="114" height="46" rx="10" fill="url(#dn)" stroke="#c8a0b6" stroke-width="1" filter="url(#ds)"/>
+  <text x="229" y="88" text-anchor="middle" font-size="12" fill="#1a1a1a" font-weight="600">user-flow</text>
+
+  <line x1="144" y1="83" x2="172" y2="83" stroke="#b890a6" stroke-width="1.8" class="flow" marker-end="url(#da)"/>
 </svg>

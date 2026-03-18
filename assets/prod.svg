@@ -1,35 +1,46 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 180" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 194" fill="none">
   <style>
     text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; }
+    @keyframes dash-flow { to { stroke-dashoffset: -18; } }
+    .flow { stroke-dasharray: 6 4; animation: dash-flow 1.2s linear infinite; }
   </style>
-  <rect width="520" height="180" rx="10" fill="#f0f5f1" stroke="#ccdece" stroke-width="1"/>
-  <text x="260" y="24" text-anchor="middle" font-size="11" fill="#7da882" font-weight="600" letter-spacing="0.12em">PROD</text>
-  <text x="260" y="40" text-anchor="middle" font-size="10" fill="#9ac4a0">plan → architect → build → document</text>
-
-  <!-- Main pipeline -->
-  <rect x="16" y="56" width="126" height="42" rx="8" fill="#ffffff" stroke="#a4c4a8" stroke-width="1"/>
-  <text x="79" y="81" text-anchor="middle" font-size="12" fill="#1a1a1a" font-weight="500">plan-interviewer</text>
-
-  <rect x="168" y="56" width="144" height="42" rx="8" fill="#ffffff" stroke="#a4c4a8" stroke-width="1"/>
-  <text x="240" y="81" text-anchor="middle" font-size="12" fill="#1a1a1a" font-weight="500">system-architecture</text>
-
-  <rect x="338" y="56" width="120" height="42" rx="8" fill="#ffffff" stroke="#a4c4a8" stroke-width="1"/>
-  <text x="398" y="81" text-anchor="middle" font-size="12" fill="#1a1a1a" font-weight="500">task-breakdown</text>
-
-  <line x1="142" y1="77" x2="168" y2="77" stroke="#9ac4a0" stroke-width="1.5" marker-end="url(#a4)"/>
-  <line x1="312" y1="77" x2="338" y2="77" stroke="#9ac4a0" stroke-width="1.5" marker-end="url(#a4)"/>
-
-  <!-- Standalone -->
-  <text x="28" y="124" font-size="9" fill="#9ac4a0">standalone</text>
-  <rect x="16" y="132" width="104" height="34" rx="7" fill="#ffffff" stroke="#a4c4a8" stroke-width="1" stroke-dasharray="4 3"/>
-  <text x="68" y="153" text-anchor="middle" font-size="11" fill="#5a8060">code-cleanup</text>
-
-  <rect x="132" y="132" width="116" height="34" rx="7" fill="#ffffff" stroke="#a4c4a8" stroke-width="1" stroke-dasharray="4 3"/>
-  <text x="190" y="153" text-anchor="middle" font-size="11" fill="#5a8060">technical-writer</text>
-
   <defs>
-    <marker id="a4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#9ac4a0" stroke-width="1.5"/>
+    <linearGradient id="pg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#eef6f0"/><stop offset="100%" stop-color="#dceede"/>
+    </linearGradient>
+    <linearGradient id="pn" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/><stop offset="100%" stop-color="#f2f8f3"/>
+    </linearGradient>
+    <filter id="ps" x="-4%" y="-8%" width="108%" height="120%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="2" flood-color="#000" flood-opacity="0.06"/>
+    </filter>
+    <marker id="pa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 2 L 8 5 L 0 8" fill="none" stroke="#7db886" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
     </marker>
   </defs>
+
+  <rect width="540" height="194" rx="12" fill="url(#pg)" stroke="#b8d4bc" stroke-width="1" filter="url(#ps)"/>
+  <text x="270" y="26" text-anchor="middle" font-size="12" fill="#4a7e52" font-weight="700" letter-spacing="0.14em">PROD</text>
+  <text x="270" y="42" text-anchor="middle" font-size="10" fill="#7db886">plan · architect · build · document</text>
+
+  <!-- Pipeline -->
+  <rect x="18" y="60" width="132" height="46" rx="10" fill="url(#pn)" stroke="#94c49a" stroke-width="1" filter="url(#ps)"/>
+  <text x="84" y="88" text-anchor="middle" font-size="12" fill="#1a1a1a" font-weight="600">plan-interviewer</text>
+
+  <rect x="178" y="60" width="150" height="46" rx="10" fill="url(#pn)" stroke="#94c49a" stroke-width="1" filter="url(#ps)"/>
+  <text x="253" y="88" text-anchor="middle" font-size="12" fill="#1a1a1a" font-weight="600">system-architecture</text>
+
+  <rect x="356" y="60" width="126" height="46" rx="10" fill="url(#pn)" stroke="#94c49a" stroke-width="1" filter="url(#ps)"/>
+  <text x="419" y="88" text-anchor="middle" font-size="12" fill="#1a1a1a" font-weight="600">task-breakdown</text>
+
+  <line x1="150" y1="83" x2="178" y2="83" stroke="#7db886" stroke-width="1.8" class="flow" marker-end="url(#pa)"/>
+  <line x1="328" y1="83" x2="356" y2="83" stroke="#7db886" stroke-width="1.8" class="flow" marker-end="url(#pa)"/>
+
+  <!-- Standalone -->
+  <text x="28" y="130" font-size="9" fill="#7db886" font-weight="500">standalone</text>
+  <rect x="18" y="138" width="108" height="30" rx="8" fill="url(#pn)" stroke="#94c49a" stroke-width="1" stroke-dasharray="5 3" opacity="0.85"/>
+  <text x="72" y="157" text-anchor="middle" font-size="11" fill="#3a6840" font-weight="500">code-cleanup</text>
+
+  <rect x="138" y="138" width="120" height="30" rx="8" fill="url(#pn)" stroke="#94c49a" stroke-width="1" stroke-dasharray="5 3" opacity="0.85"/>
+  <text x="198" y="157" text-anchor="middle" font-size="11" fill="#3a6840" font-weight="500">technical-writer</text>
 </svg>
