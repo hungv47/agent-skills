@@ -1,6 +1,6 @@
 # Agent Skills
 
-18 skills for [Claude Code](https://docs.anthropic.com/en/docs/claude-code) that chain together — from problem diagnosis to shipped code.
+19 skills for [AI agents](https://agentskills.io/home) that chain together — from problem diagnosis to shipped code.
 
 Each skill writes structured artifacts to `.agents/`. Downstream skills read those artifacts automatically, so output compounds as you move through the stack.
 
@@ -29,6 +29,9 @@ Remove a skill pack:
 
 ```bash
 npx skills remove hungv47/comms-skills
+npx skills remove hungv47/design-skills
+npx skills remove hungv47/prod-skills
+npx skills remove hungv47/strategy-skills
 ```
 
 ## Skill Stacks
@@ -49,15 +52,16 @@ npx skills remove hungv47/comms-skills
 ### Comms — research, plan, create, measure
 
 <picture>
-  <img src="./assets/comms.svg" alt="Comms pipeline: icp-research → imc-plan → content-create → attribution, plus standalone lp-optimization, seo, humanize" width="520">
+  <img src="./assets/comms.svg" alt="Comms pipeline: icp-research → imc-plan → content-create → attribution, plus standalone lp-optimization, seo, humanize, copywriting" width="520">
 </picture>
 
 | Skill | What it does |
 |-------|-------------|
 | `icp-research` | Deep audience research and Ideal Customer Profile development |
 | `imc-plan` | Integrated Marketing Communication planning |
-| `content-create` | Production-ready platform-native content with A/B variants |
+| `content-create` | Production-ready platform-native content assets with A/B variants |
 | `attribution` | KPI-initiative-content mapping and coverage audit |
+| `copywriting` | Craft-quality copy — headlines, hooks, CTAs, full-page copy with annotations |
 | `lp-optimization` | High-conversion landing page optimization |
 | `seo` | Technical audit, AI/GEO optimization, programmatic SEO |
 | `humanize` | Strip AI patterns, inject voice, compress for density |
