@@ -26,7 +26,7 @@
 
   <rect width="540" height="194" rx="12" fill="url(#cg)" stroke="#c4d4e0" stroke-width="1" filter="url(#cs)"/>
   <text x="270" y="26" text-anchor="middle" font-size="12" fill="#5a7e96" font-weight="700" letter-spacing="0.14em">COMMS</text>
-  <text x="270" y="42" text-anchor="middle" font-size="10" fill="#7da8c0">research · plan · create · measure</text>
+  <text x="270" y="42" text-anchor="middle" font-size="10" fill="#7da8c0">research · plan · create · optimize · measure</text>
 
   <!-- Badge -->
   <rect x="24" y="52" width="72" height="18" rx="9" fill="url(#cb)" class="badge" filter="url(#cs)"/>

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 130" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 190" fill="none">
   <style>
     text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; }
     @keyframes dash-flow { to { stroke-dashoffset: -18; } }
@@ -19,23 +19,32 @@
     </marker>
   </defs>
 
-  <rect width="540" height="130" rx="12" fill="url(#sg)" stroke="#ddd6c8" stroke-width="1" filter="url(#ss)"/>
+  <rect width="540" height="190" rx="12" fill="url(#sg)" stroke="#ddd6c8" stroke-width="1" filter="url(#ss)"/>
   <text x="270" y="26" text-anchor="middle" font-size="12" fill="#8a7e6a" font-weight="700" letter-spacing="0.14em">STRATEGY</text>
-  <text x="270" y="42" text-anchor="middle" font-size="10" fill="#b0a694">diagnose · prioritize · measure · test</text>
+  <text x="270" y="42" text-anchor="middle" font-size="10" fill="#b0a694">research · diagnose · prioritize · measure · test</text>
 
-  <rect x="18" y="60" width="116" height="46" rx="10" fill="url(#sn)" stroke="#d0c7b6" stroke-width="1" filter="url(#ss)"/>
-  <text x="76" y="88" text-anchor="middle" font-size="12" fill="#1a1a1a" font-weight="600">problem-analysis</text>
+  <!-- Row 1: parallel inputs -->
+  <rect x="18" y="56" width="130" height="46" rx="10" fill="url(#sn)" stroke="#d0c7b6" stroke-width="1" filter="url(#ss)"/>
+  <text x="83" y="84" text-anchor="middle" font-size="12" fill="#1a1a1a" font-weight="600">market-research</text>
 
-  <rect x="158" y="60" width="116" height="46" rx="10" fill="url(#sn)" stroke="#d0c7b6" stroke-width="1" filter="url(#ss)"/>
-  <text x="216" y="88" text-anchor="middle" font-size="12" fill="#1a1a1a" font-weight="600">solution-design</text>
+  <rect x="168" y="56" width="130" height="46" rx="10" fill="url(#sn)" stroke="#d0c7b6" stroke-width="1" filter="url(#ss)"/>
+  <text x="233" y="84" text-anchor="middle" font-size="12" fill="#1a1a1a" font-weight="600">problem-analysis</text>
 
-  <rect x="298" y="60" width="116" height="46" rx="10" fill="url(#sn)" stroke="#d0c7b6" stroke-width="1" filter="url(#ss)"/>
-  <text x="356" y="88" text-anchor="middle" font-size="12" fill="#1a1a1a" font-weight="600">funnel-planner</text>
+  <!-- Row 2: pipeline -->
+  <rect x="108" y="126" width="126" height="46" rx="10" fill="url(#sn)" stroke="#d0c7b6" stroke-width="1" filter="url(#ss)"/>
+  <text x="171" y="154" text-anchor="middle" font-size="12" fill="#1a1a1a" font-weight="600">solution-design</text>
 
-  <rect x="438" y="60" width="84" height="46" rx="10" fill="url(#sn)" stroke="#d0c7b6" stroke-width="1" filter="url(#ss)"/>
-  <text x="480" y="88" text-anchor="middle" font-size="12" fill="#1a1a1a" font-weight="600">experiment</text>
+  <rect x="260" y="126" width="116" height="46" rx="10" fill="url(#sn)" stroke="#d0c7b6" stroke-width="1" filter="url(#ss)"/>
+  <text x="318" y="154" text-anchor="middle" font-size="12" fill="#1a1a1a" font-weight="600">funnel-planner</text>
 
-  <line x1="134" y1="83" x2="158" y2="83" stroke="#c4b8a4" stroke-width="1.8" class="flow" marker-end="url(#sa)"/>
-  <line x1="274" y1="83" x2="298" y2="83" stroke="#c4b8a4" stroke-width="1.8" class="flow" marker-end="url(#sa)"/>
-  <line x1="414" y1="83" x2="438" y2="83" stroke="#c4b8a4" stroke-width="1.8" class="flow" marker-end="url(#sa)"/>
+  <rect x="402" y="126" width="110" height="46" rx="10" fill="url(#sn)" stroke="#d0c7b6" stroke-width="1" filter="url(#ss)"/>
+  <text x="457" y="154" text-anchor="middle" font-size="12" fill="#1a1a1a" font-weight="600">experiment</text>
+
+  <!-- Arrows: row 1 → solution-design -->
+  <path d="M 108 102 L 108 118 L 140 126" stroke="#c4b8a4" stroke-width="1.8" fill="none" class="flow" marker-end="url(#sa)"/>
+  <path d="M 208 102 L 208 118 L 192 126" stroke="#c4b8a4" stroke-width="1.8" fill="none" class="flow" marker-end="url(#sa)"/>
+
+  <!-- Arrows: pipeline -->
+  <line x1="234" y1="149" x2="260" y2="149" stroke="#c4b8a4" stroke-width="1.8" class="flow" marker-end="url(#sa)"/>
+  <line x1="376" y1="149" x2="402" y2="149" stroke="#c4b8a4" stroke-width="1.8" class="flow" marker-end="url(#sa)"/>
 </svg>
