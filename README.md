@@ -1,6 +1,6 @@
 # Agent Skills
 
-19 skills for [Claude Code](https://docs.anthropic.com/en/docs/claude-code) that chain together — from problem diagnosis to shipped code.
+19 skills for AI agents that chain together — from problem diagnosis to shipped code.
 
 Each skill writes structured artifacts to `.agents/`. Downstream skills read those artifacts automatically, so output compounds as you move through the stack.
 
@@ -29,6 +29,9 @@ Remove a skill pack:
 
 ```bash
 npx skills remove hungv47/comms-skills
+npx skills remove hungv47/design-skills
+npx skills remove hungv47/prod-skills
+npx skills remove hungv47/strategy-skills
 ```
 
 ## Skill Stacks
