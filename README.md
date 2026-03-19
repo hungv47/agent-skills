@@ -1,6 +1,6 @@
 # Agent Skills
 
-19 skills for AI agents that chain together — from problem diagnosis to shipped code.
+19 skills for [AI agents](https://agentskills.io/home) that chain together — from problem diagnosis to shipped code.
 
 Each skill writes structured artifacts to `.agents/`. Downstream skills read those artifacts automatically, so output compounds as you move through the stack.
 
