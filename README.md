@@ -64,11 +64,11 @@ npx skills remove hungv47/strategy-skills
 |-------|-------------|
 | `icp-research` | Deep audience research and Ideal Customer Profile development |
 | `imc-plan` | Channel strategy, positioning, content calendar, budget allocation, GTM timelines |
-| `content-create` | Production-ready platform-native content assets with A/B variants |
+| `content-create` | Draft social posts, ads, emails, blogs, case studies, video scripts in platform-native formats |
 | `copywriting` | Craft-quality copy — headlines, hooks, CTAs, full-page copy with annotations |
 | `attribution` | Map marketing activities to business outcomes, evaluate channel ROI |
 | `lp-optimization` | Conversion audit — hero, CTA, social proof, objection handling, scored recommendations |
-| `seo` | Technical audit, AI/GEO optimization, programmatic SEO |
+| `seo` | Keyword research, on-page optimization, technical SEO, AI search, competitor pages |
 | `humanize` | Strip AI patterns, inject voice, compress for density |
 
 ### Design — brand, flows
@@ -82,7 +82,7 @@ npx skills remove hungv47/strategy-skills
 | Skill | What it does |
 |-------|-------------|
 | `brand-system` | Brand identity — strategy, personality, voice, visual identity, tokens |
-| `user-flow` | User flow diagrams and wireflows for digital products |
+| `user-flow` | Map screens, decisions, transitions, edge cases, and error states |
 
 ### Prod — plan, architect, build, document
 
@@ -95,7 +95,7 @@ npx skills remove hungv47/strategy-skills
 | Skill | What it does |
 |-------|-------------|
 | `plan-interviewer` | Multi-round interviews to surface requirements |
-| `system-architecture` | Product docs → comprehensive technical blueprints |
+| `system-architecture` | Tech stack, database schema, API design, file structure, deployment plan |
 | `task-breakdown` | Break implementation into granular, testable tasks |
 | `code-cleanup` | Structural cleanup, AI slop removal, refactoring |
 | `technical-writer` | Generate documentation and user guides from codebases |
