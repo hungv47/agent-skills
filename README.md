@@ -125,7 +125,34 @@ Each step reads artifacts from previous steps — no copy-pasting between tools.
 
 ## Shared Artifacts
 
-Skills communicate through markdown files in `.agents/`:
+Skills communicate through markdown files in `.agents/`.
+
+**Exception:** `technical-writer` writes directly to the project (README.md, docs/) rather than `.agents/` because its output is the project's documentation, not an intermediate artifact.
+
+### Artifact Frontmatter
+
+Every artifact uses this frontmatter:
+
+```yaml
+---
+skill: [skill-name]
+version: [N]           # increments on re-run
+date: [YYYY-MM-DD]
+status: draft | final
+---
+```
+
+Some skills add extra fields (e.g., `compression` in humanize, `mode` in seo). These are optional extensions. The four fields above are the shared contract.
+
+### Framework Conventions
+
+**Step announcements:** When entering each numbered step in a skill, announce it with a one-line summary of what you found or decided. This gives the user visibility into progress and builds trust.
+
+**Source citation:** When stating facts, statistics, or case study results in an artifact, cite the source. If from a web search, include the URL. If a fact cannot be attributed, flag it as `[UNVERIFIED]`. Strategy and research skills (market-research, problem-analysis, icp-research) should treat this as mandatory.
+
+**Context loaded:** When producing an artifact, include which upstream artifacts were read and their versions/dates in the artifact body. This creates an audit trail for downstream skills.
+
+### Artifact Table
 
 | Artifact | Created by | Used by |
 |----------|-----------|---------|
@@ -133,11 +160,14 @@ Skills communicate through markdown files in `.agents/`:
 | `market-research.md` | `market-research` | `solution-design` |
 | `problem-analysis.md` | `problem-analysis` | `solution-design` |
 | `solution-design.md` | `solution-design` | `imc-plan`, `system-architecture`, `funnel-planner` |
-| `targets.md` | `funnel-planner` | `attribution`, `imc-plan`, `experiment` |
+| `targets.md` | `funnel-planner` | `attribution`, `experiment` |
 | `mkt/imc-plan.md` | `imc-plan` | `content-create`, `copywriting`, `seo`, `attribution` |
 | `mkt/content/*.md` | `content-create`, `copywriting` | `humanize`, `attribution` |
-| `design/brand-system.md` | `brand-system` | `content-create`, `lp-optimization` |
+| `design/brand-system.md` | `brand-system` | Informs visual decisions in content and landing pages |
 | `design/user-flow.md` | `user-flow` | `system-architecture`, `task-breakdown` |
+| `system-architecture.md` | `system-architecture` | `task-breakdown` |
+| `tasks.md` | `task-breakdown` | Task execution (Phase 2) |
+| `experiment-[name].md` | `experiment` | `attribution` (confidence adjustments) |
 
 ## License
 
