@@ -48,7 +48,7 @@ npx skills remove hungv47/strategy-skills
 |-------|-------------|
 | `market-research` | Competitive landscape, TAM/SAM/SOM sizing, whitespace opportunities |
 | `problem-analysis` | Structured diagnosis, hypothesis development, root cause analysis |
-| `solution-design` | Brainstorm solutions, rank with evidence-backed ICE scoring |
+| `solution-design` | Strategic options with evidence-backed ICE scoring and trade-off analysis |
 | `funnel-planner` | Backward funnel modeling from revenue goals to traffic, conversions, unit economics |
 | `experiment` | Minimum viable tests with clear decision rules |
 
@@ -68,7 +68,7 @@ npx skills remove hungv47/strategy-skills
 | `copywriting` | Craft-quality copy — headlines, hooks, CTAs, full-page copy with annotations |
 | `attribution` | Map marketing activities to business outcomes, evaluate channel ROI |
 | `lp-optimization` | Conversion audit — hero, CTA, social proof, objection handling, scored recommendations |
-| `seo` | Keyword research, on-page optimization, technical SEO, AI search, competitor pages |
+| `seo` | Keyword research, on-page optimization, technical SEO, link building, AI search |
 | `humanize` | Strip AI patterns, inject voice, compress for density |
 
 ### Design — brand, flows
