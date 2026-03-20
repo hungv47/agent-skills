@@ -46,10 +46,10 @@ npx skills remove hungv47/strategy-skills
 
 | Skill | What it does |
 |-------|-------------|
-| `market-research` | Map competitive landscape, identify gaps and market opportunities |
+| `market-research` | Competitive landscape, TAM/SAM/SOM sizing, whitespace opportunities |
 | `problem-analysis` | Structured diagnosis, hypothesis development, root cause analysis |
 | `solution-design` | Brainstorm solutions, rank with evidence-backed ICE scoring |
-| `funnel-planner` | Measurable targets with benchmarks and unit economics |
+| `funnel-planner` | Backward funnel modeling from revenue goals to traffic, conversions, unit economics |
 | `experiment` | Minimum viable tests with clear decision rules |
 
 ### Comms — research, plan, create, optimize, measure
@@ -63,11 +63,11 @@ npx skills remove hungv47/strategy-skills
 | Skill | What it does |
 |-------|-------------|
 | `icp-research` | Deep audience research and Ideal Customer Profile development |
-| `imc-plan` | Integrated Marketing Communication planning |
+| `imc-plan` | Channel strategy, positioning, content calendar, budget allocation, GTM timelines |
 | `content-create` | Production-ready platform-native content assets with A/B variants |
 | `copywriting` | Craft-quality copy — headlines, hooks, CTAs, full-page copy with annotations |
-| `attribution` | KPI-initiative-content mapping and coverage audit |
-| `lp-optimization` | High-conversion landing page optimization |
+| `attribution` | Map marketing activities to business outcomes, evaluate channel ROI |
+| `lp-optimization` | Conversion audit — hero, CTA, social proof, objection handling, scored recommendations |
 | `seo` | Technical audit, AI/GEO optimization, programmatic SEO |
 | `humanize` | Strip AI patterns, inject voice, compress for density |
 
