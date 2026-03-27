@@ -169,6 +169,34 @@ Some skills add extra fields (e.g., `compression` in humanize, `mode` in seo). T
 | `tasks.md` | `task-breakdown` | Task execution (Phase 2) |
 | `experiment-[name].md` | `experiment` | `attribution` (confidence adjustments) |
 
+## Multi-Agent Architecture
+
+Every skill uses a **two-layer multi-agent orchestration** pattern optimized for parallel execution and quality control:
+
+```
+SKILL.md (Orchestrator)
+  │
+  ├─ Layer 1: Parallel specialists ──── run concurrently
+  │     (research, audit, draft independent sections)
+  │
+  ├─ Merge Step ──────────────────────── assemble outputs
+  │
+  ├─ Layer 2: Sequential refiners ───── run in order
+  │     (each refines the full document through one lens)
+  │
+  └─ Critic Agent ────────────────────── PASS / FAIL
+        (max 2 rewrite cycles)
+```
+
+**How it works:**
+- `SKILL.md` is the **orchestrator** — it routes tasks, dispatches agents, merges outputs, and enforces quality gates
+- `agents/*.md` are **specialist instruction files** — each has a role, input/output contract, domain knowledge, and self-check
+- `references/*.md` are **shared data catalogs** — formula lists, templates, and lookup tables read by multiple agents
+- Every skill ends with a **critic agent** that scores output and returns PASS or FAIL with specific rewrite instructions
+- Every orchestrator includes a **single-agent fallback** for non-multi-agent runtimes
+
+**~135 specialized agents** across 20 skills. Each skill's CLAUDE.md documents its agent inventory and layer structure.
+
 ## License
 
 MIT
