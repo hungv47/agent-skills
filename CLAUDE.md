@@ -19,3 +19,8 @@ cd prod-skills && git add ... && git commit ...
 ```
 
 Never `git add` a skill directory from the root — they are gitignored intentionally.
+
+## Skill Discovery
+
+When unsure which skill to use, run `/skill-router "your goal"` to get a recommended skill team with phased execution.
+For artifact state only, run `/skill-router status` or `/artifact-status`.

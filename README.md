@@ -100,8 +100,11 @@ npx skills remove hungv47/strategy-skills
 | `code-cleanup` | Structural cleanup, AI slop removal, refactoring |
 | `technical-writer` | Generate documentation and user guides from codebases |
 | `artifact-status` | Scan `.agents/` — report what exists, what's stale, what to run next |
+| `skill-router` | Analyze a goal → suggest the right skill team → orchestrate multi-phase workflows |
 
 ## Example: Idea → Shipped Product
+
+**Don't know where to start?** Run `/skill-router "your goal"` to get a recommended skill team with phased execution, parallel tracks, and checkpoints.
 
 A typical end-to-end workflow:
 
