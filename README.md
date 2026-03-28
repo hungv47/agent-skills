@@ -1,6 +1,6 @@
 # Agent Skills
 
-20 skills for [AI agents](https://agentskills.io/home) that chain together — from problem diagnosis to shipped code.
+21 skills for [AI agents](https://agentskills.io/home) that chain together — from problem diagnosis to shipped code.
 
 Each skill writes structured artifacts to `.agents/`. Downstream skills read those artifacts automatically, so output compounds as you move through the stack.
 
@@ -99,6 +99,7 @@ npx skills remove hungv47/strategy-skills
 | `task-breakdown` | Break implementation into granular, testable tasks |
 | `code-cleanup` | Structural cleanup, AI slop removal, refactoring |
 | `technical-writer` | Generate documentation and user guides from codebases |
+| `artifact-status` | Scan `.agents/` — report what exists, what's stale, what to run next |
 
 ## Example: Idea → Shipped Product
 
