@@ -207,7 +207,7 @@ SKILL.md (Orchestrator)
 - Every skill ends with a **critic agent** that scores output and returns PASS or FAIL with specific rewrite instructions
 - Every orchestrator includes a **single-agent fallback** for non-multi-agent runtimes
 
-**~138 specialized agents** across 21 skills. Each skill's CLAUDE.md documents its agent inventory and layer structure.
+**~138 specialized agents** across 22 skills (21 with multi-agent architectures, 1 utility). Each skill's CLAUDE.md documents its agent inventory and layer structure.
 
 ## License
 
