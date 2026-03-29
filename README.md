@@ -1,6 +1,6 @@
 # Agent Skills
 
-21 skills for [AI agents](https://agentskills.io/home) that chain together — from problem diagnosis to shipped code.
+22 skills for [AI agents](https://agentskills.io/home) that chain together — from problem diagnosis to shipped code.
 
 Each skill writes structured artifacts to `.agents/`. Downstream skills read those artifacts automatically, so output compounds as you move through the stack.
 
@@ -68,7 +68,7 @@ npx skills remove hungv47/strategy-skills
 | `copywriting` | Craft-quality copy — headlines, hooks, CTAs, full-page copy with annotations |
 | `attribution` | Map marketing activities to business outcomes, evaluate channel ROI |
 | `lp-optimization` | Conversion audit — hero, CTA, social proof, objection handling, scored recommendations |
-| `seo` | Keyword research, on-page optimization, technical SEO, link building, AI search |
+| `seo` | Technical audit, AI/GEO optimization, programmatic SEO, competitor pages |
 | `humanize` | Strip AI patterns, inject voice, compress for density |
 
 ### Design — brand, flows
@@ -94,9 +94,9 @@ npx skills remove hungv47/strategy-skills
 
 | Skill | What it does |
 |-------|-------------|
-| `plan-interviewer` | Multi-round interviews to surface requirements |
-| `system-architecture` | Tech stack, database schema, API design, file structure, deployment plan |
-| `task-breakdown` | Break implementation into granular, testable tasks |
+| `plan-interviewer` | Multi-round interviews to surface requirements before implementation |
+| `system-architecture` | Technical blueprints — tech stack, database schema, API design, file structure, deployment plan |
+| `task-breakdown` | Break implementation into granular, testable tasks with acceptance criteria |
 | `code-cleanup` | Structural cleanup, AI slop removal, refactoring |
 | `technical-writer` | Generate documentation and user guides from codebases |
 | `artifact-status` | Scan `.agents/` — report what exists, what's stale, what to run next |
@@ -161,17 +161,25 @@ Some skills add extra fields (e.g., `compression` in humanize, `mode` in seo). T
 | Artifact | Created by | Used by |
 |----------|-----------|---------|
 | `product-context.md` | `icp-research` | 12+ skills across all stacks |
+| `mkt/icp-research.md` | `icp-research` | `imc-plan`, `brand-system`, `lp-optimization` |
 | `market-research.md` | `market-research` | `solution-design` |
 | `problem-analysis.md` | `problem-analysis` | `solution-design` |
 | `solution-design.md` | `solution-design` | `imc-plan`, `system-architecture`, `funnel-planner` |
 | `targets.md` | `funnel-planner` | `attribution`, `experiment` |
 | `mkt/imc-plan.md` | `imc-plan` | `content-create`, `copywriting`, `seo`, `attribution` |
-| `mkt/content/*.md` | `content-create`, `copywriting` | `humanize`, `attribution` |
+| `mkt/content/[slug].md` | `content-create` | `humanize`, `attribution` |
+| `mkt/content/[slug].copy.md` | `copywriting` | `humanize`, `attribution` |
+| `mkt/content/[slug].humanized.md` | `humanize` | Final content output |
+| `mkt/attribution.md` | `attribution` | Re-run tracking (monthly cadence) |
+| `mkt/seo-[mode].md` | `seo` | Implementation tracking |
 | `design/brand-system.md` | `brand-system` | Informs visual decisions in content and landing pages |
 | `design/user-flow.md` | `user-flow` | `system-architecture`, `task-breakdown` |
+| `spec.md` | `plan-interviewer` | `system-architecture`, `task-breakdown` |
 | `system-architecture.md` | `system-architecture` | `task-breakdown` |
 | `tasks.md` | `task-breakdown` | Task execution (Phase 2) |
+| `cleanup-report.md` | `code-cleanup` | Reference for follow-up cleanup |
 | `experiment-[name].md` | `experiment` | `attribution` (confidence adjustments) |
+| `workflow-plan.md` | `skill-router` | Multi-phase workflow orchestration |
 
 ## Multi-Agent Architecture
 
@@ -199,7 +207,7 @@ SKILL.md (Orchestrator)
 - Every skill ends with a **critic agent** that scores output and returns PASS or FAIL with specific rewrite instructions
 - Every orchestrator includes a **single-agent fallback** for non-multi-agent runtimes
 
-**~135 specialized agents** across 20 skills. Each skill's CLAUDE.md documents its agent inventory and layer structure.
+**~138 specialized agents** across 22 skills (21 with multi-agent architectures, 1 utility). Each skill's CLAUDE.md documents its agent inventory and layer structure.
 
 ## License
 
