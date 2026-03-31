@@ -4,8 +4,7 @@ This root repo holds the README and shared docs. The skill repos live as sibling
 
 - `comms-skills/` — marketing communication skills
 - `design-skills/` — brand and UX design skills
-- `meta-skills/` — process-layer skills (scope, analyze, verify)
-- `prod-skills/` — engineering productivity skills
+- `prod-skills/` — engineering productivity + process quality skills
 - `strategy-skills/` — business strategy skills
 
 ## Git Operations
@@ -24,4 +23,4 @@ Never `git add` a skill directory from the root — they are gitignored intentio
 ## Skill Discovery
 
 When unsure which skill to use, run `/skill-router "your goal"` to get a recommended skill team with phased execution.
-For artifact state only, run `/skill-router status` or `/artifact-status`.
+For artifact state only, run `/skill-router status`.

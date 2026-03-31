@@ -1,6 +1,6 @@
 # Agent Skills
 
-25 skills for [AI agents](https://agentskills.io/home) that chain together — from problem diagnosis to shipped code.
+23 skills for [AI agents](https://agentskills.io/home) that chain together — from problem diagnosis to shipped code.
 
 Each skill writes structured artifacts to `.agents/`. Downstream skills read those artifacts automatically, so output compounds as you move through the stack.
 
@@ -15,7 +15,6 @@ Each skill writes structured artifacts to `.agents/`. Downstream skills read tho
 ```bash
 npx skills add hungv47/comms-skills
 npx skills add hungv47/design-skills
-npx skills add hungv47/meta-skills
 npx skills add hungv47/prod-skills
 npx skills add hungv47/strategy-skills
 ```
@@ -31,7 +30,6 @@ Remove a skill pack:
 ```bash
 npx skills remove hungv47/comms-skills
 npx skills remove hungv47/design-skills
-npx skills remove hungv47/meta-skills
 npx skills remove hungv47/prod-skills
 npx skills remove hungv47/strategy-skills
 ```
@@ -86,19 +84,7 @@ npx skills remove hungv47/strategy-skills
 | `brand-system` | Brand identity — strategy, personality, voice, visual identity, tokens |
 | `user-flow` | Map screens, decisions, transitions, edge cases, and error states |
 
-### Meta — scope, analyze, verify
-
-> [`hungv47/meta-skills`](https://github.com/hungv47/meta-skills)
-
-| Skill | What it does |
-|-------|-------------|
-| `preflight` | Surface assumptions and define a 4-part success contract (GOAL/CONSTRAINTS/FORMAT/FAILURE) before building |
-| `multi-lens` | Multi-agent debate (agents argue in rounds) or consensus polling (agents analyze independently) for decisions |
-| `review-chain` | Fresh-eyes review chain — implement → review → resolve, max 2 rounds |
-
-Meta-skills are domain-agnostic process wrappers. They compose with any skill: `preflight` before a build, `multi-lens` for decisions, `review-chain` after implementation.
-
-### Prod — plan, architect, build, document
+### Prod — plan, architect, build, verify, document
 
 > [`hungv47/prod-skills`](https://github.com/hungv47/prod-skills)
 
@@ -113,8 +99,11 @@ Meta-skills are domain-agnostic process wrappers. They compose with any skill: `
 | `task-breakdown` | Break implementation into granular, testable tasks with acceptance criteria |
 | `code-cleanup` | Structural cleanup, AI slop removal, refactoring |
 | `technical-writer` | Generate documentation and user guides from codebases |
-| `artifact-status` | Scan `.agents/` — report what exists, what's stale, what to run next |
-| `skill-router` | Analyze a goal → suggest the right skill team → orchestrate multi-phase workflows |
+| `skill-router` | Analyze a goal → suggest the right skill team → orchestrate multi-phase workflows (includes artifact scanning via `status` mode) |
+| `multi-lens` | Multi-agent debate (agents argue in rounds) or consensus polling (agents analyze independently) for decisions |
+| `review-chain` | Fresh-eyes review chain — implement → review → resolve, max 2 rounds |
+
+multi-lens and review-chain are domain-agnostic process wrappers — they compose with any skill in any stack. Scope-locking (formerly `preflight`) is now `/plan-interviewer scope` (Route C).
 
 ## Example: Idea → Shipped Product
 
@@ -223,9 +212,9 @@ SKILL.md (Orchestrator)
 - Every skill ends with a **critic agent** that scores output and returns PASS or FAIL with specific rewrite instructions
 - Every orchestrator includes a **single-agent fallback** for non-multi-agent runtimes
 
-**~138 specialized agents** across 22 domain skills (21 with multi-agent architectures, 1 utility). Each skill's CLAUDE.md documents its agent inventory and layer structure.
+**~138 specialized agents** across 21 domain skills (20 with multi-agent architectures, 1 utility). Each skill's CLAUDE.md documents its agent inventory and layer structure.
 
-Additionally, 3 meta-skills use a **dynamic agent spawning** pattern where agent count, roles, and instructions are defined at runtime. These do not have static agent rosters — see `meta-skills/CLAUDE.md`.
+Additionally, 2 process-quality skills (`multi-lens`, `review-chain` in prod-skills) use a **dynamic agent spawning** pattern where agent count, roles, and instructions are defined at runtime. These do not have static agent rosters — see `prod-skills/CLAUDE.md`.
 
 ## License
 
