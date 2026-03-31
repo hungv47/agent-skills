@@ -4,6 +4,7 @@ This root repo holds the README and shared docs. The skill repos live as sibling
 
 - `comms-skills/` — marketing communication skills
 - `design-skills/` — brand and UX design skills
+- `meta-skills/` — process-layer skills (scope, analyze, verify)
 - `prod-skills/` — engineering productivity skills
 - `strategy-skills/` — business strategy skills
 
