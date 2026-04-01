@@ -6,7 +6,6 @@ This root repo holds the README and shared docs. The skill repos live as sibling
 - `marketing-skills/` — brand, content creation, optimization, and measurement skills
 - `product-skills/` — UX design, architecture, cleanup, and documentation skills
 - `meta-skills/` — process-layer skills (scope, plan, analyze, verify, navigate)
-- `design-skills/` — dissolved (brand-system → marketing, user-flow → product). Stub kept for git history.
 
 ## Git Operations
 
