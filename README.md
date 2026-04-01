@@ -212,7 +212,7 @@ SKILL.md (Orchestrator)
 - Every skill ends with a **critic agent** that scores output and returns PASS or FAIL with specific rewrite instructions
 - Every orchestrator includes a **single-agent fallback** for non-multi-agent runtimes
 
-**~138 specialized agents** across 21 domain skills (20 with multi-agent architectures, 1 utility). Each skill's CLAUDE.md documents its agent inventory and layer structure.
+**~139 specialized agents** across 21 domain skills (20 with multi-agent architectures, 1 utility). Each skill's CLAUDE.md documents its agent inventory and layer structure.
 
 Additionally, 2 process-quality skills (`multi-lens`, `review-chain` in prod-skills) use a **dynamic agent spawning** pattern where agent count, roles, and instructions are defined at runtime. These do not have static agent rosters — see `prod-skills/CLAUDE.md`.
 
