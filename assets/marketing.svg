@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 280" font-family="Arial, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 7" refX="10" refY="3.5" markerWidth="8" markerHeight="6" orient="auto-start-auto"><path d="M 0 0 L 10 3.5 L 0 7 z" fill="#C4B5FD"/></marker>
+  </defs>
+
+  <rect x="0" y="0" width="740" height="280" rx="12" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="1"/>
+
+  <!-- Pipeline track -->
+  <text x="60" y="28" text-anchor="middle" font-size="9" font-weight="600" fill="#5B21B6">IDENTITY</text>
+  <rect x="20" y="38" width="120" height="36" rx="6" fill="#EDE9FE" stroke="#7C3AED" stroke-width="1.5"/>
+  <text x="80" y="60" text-anchor="middle" font-size="12" font-weight="600" fill="#3B1F6E">brand-system</text>
+
+  <text x="250" y="28" text-anchor="middle" font-size="9" font-weight="600" fill="#5B21B6">PLANNING</text>
+  <rect x="170" y="38" width="120" height="36" rx="6" fill="#EDE9FE" stroke="#7C3AED" stroke-width="1"/>
+  <text x="230" y="60" text-anchor="middle" font-size="11" fill="#3B1F6E">imc-plan</text>
+
+  <path d="M 290 56 L 330 56" stroke="#C4B5FD" stroke-width="1.2" fill="none" marker-end="url(#arr)"/>
+
+  <text x="420" y="28" text-anchor="middle" font-size="9" font-weight="600" fill="#5B21B6">CREATION</text>
+  <rect x="330" y="38" width="140" height="36" rx="6" fill="#EDE9FE" stroke="#7C3AED" stroke-width="1"/>
+  <text x="400" y="60" text-anchor="middle" font-size="11" fill="#3B1F6E">content-create</text>
+
+  <path d="M 470 56 L 530 56" stroke="#C4B5FD" stroke-width="1.2" fill="none" marker-end="url(#arr)"/>
+
+  <text x="600" y="28" text-anchor="middle" font-size="9" font-weight="600" fill="#5B21B6">MEASUREMENT</text>
+  <rect x="530" y="38" width="120" height="36" rx="6" fill="#EDE9FE" stroke="#7C3AED" stroke-width="1"/>
+  <text x="590" y="60" text-anchor="middle" font-size="11" fill="#3B1F6E">attribution</text>
+
+  <!-- Horizontal skills -->
+  <text x="370" y="110" text-anchor="middle" font-size="9" font-weight="600" fill="#5B21B6">HORIZONTAL — use at any point</text>
+
+  <rect x="20" y="126" width="160" height="56" rx="6" fill="#F5F3FF" stroke="#C4B5FD" stroke-width="1" stroke-dasharray="4 2"/>
+  <text x="100" y="148" text-anchor="middle" font-size="12" fill="#5B21B6">copywriting</text>
+  <text x="100" y="164" text-anchor="middle" font-size="8" fill="#7C3AED">headlines, hooks, CTAs</text>
+
+  <rect x="200" y="126" width="160" height="56" rx="6" fill="#F5F3FF" stroke="#C4B5FD" stroke-width="1" stroke-dasharray="4 2"/>
+  <text x="280" y="148" text-anchor="middle" font-size="12" fill="#5B21B6">lp-optimization</text>
+  <text x="280" y="164" text-anchor="middle" font-size="8" fill="#7C3AED">conversion audit + fixes</text>
+
+  <rect x="380" y="126" width="160" height="56" rx="6" fill="#F5F3FF" stroke="#C4B5FD" stroke-width="1" stroke-dasharray="4 2"/>
+  <text x="460" y="148" text-anchor="middle" font-size="12" fill="#5B21B6">seo</text>
+  <text x="460" y="164" text-anchor="middle" font-size="8" fill="#7C3AED">search + AI/GEO + ASO</text>
+
+  <rect x="560" y="126" width="160" height="56" rx="6" fill="#F5F3FF" stroke="#C4B5FD" stroke-width="1" stroke-dasharray="4 2"/>
+  <text x="640" y="148" text-anchor="middle" font-size="12" fill="#5B21B6">humanize</text>
+  <text x="640" y="164" text-anchor="middle" font-size="8" fill="#7C3AED">strip AI → inject voice</text>
+
+  <!-- Cross-stack inputs -->
+  <text x="370" y="215" text-anchor="middle" font-size="9" font-weight="600" fill="#6B7280">CROSS-STACK INPUTS</text>
+  <text x="140" y="240" text-anchor="middle" font-size="9" fill="#6B7280">product-context.md → brand-system, imc-plan, content-create, copywriting, lp-opt, seo</text>
+  <text x="140" y="258" text-anchor="middle" font-size="9" fill="#6B7280">solution-design.md → imc-plan, attribution</text>
+  <text x="470" y="240" text-anchor="middle" font-size="9" fill="#6B7280">targets.md → attribution</text>
+</svg>
