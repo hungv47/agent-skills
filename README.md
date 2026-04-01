@@ -1,6 +1,6 @@
 # Agent Skills
 
-25 skills for [AI agents](https://agentskills.io/home) that chain together — from problem diagnosis to shipped code.
+27 skills for [AI agents](https://agentskills.io/home) that chain together — from problem diagnosis to shipped code.
 
 Each skill writes structured artifacts to `.agents/`. Downstream skills read those artifacts automatically, so output compounds as you move through the stack.
 
@@ -59,7 +59,7 @@ npx skills add hungv47/meta-skills
 
 ### Product — design and build software
 
-> [`hungv47/product-skills`](https://github.com/hungv47/product-skills) &middot; 4 skills
+> [`hungv47/product-skills`](https://github.com/hungv47/product-skills) &middot; 6 skills
 
 <picture>
   <img src="./assets/product.svg" alt="Product pipeline: user-flow → system-architecture, plus horizontal code-cleanup and technical-writer" width="100%">
@@ -68,9 +68,11 @@ npx skills add hungv47/meta-skills
 | Skill | What it does | Use when... |
 |-------|-------------|-------------|
 | `user-flow` | Maps screens, decisions, transitions, edge cases, and error states | You're designing a feature and need to think through every screen and path |
-| `system-architecture` | Technical blueprints — tech stack, database schema, API design, file structure, deployment | You know what to build and need to decide *how* — the technical design |
-| `code-cleanup` | Structural audit, AI slop removal, dead code, refactoring | Your codebase has accumulated cruft and needs a quality pass |
-| `technical-writer` | READMEs, API references, setup guides, runbooks from existing code | You have a codebase and need documentation generated from it |
+| `system-architecture` | Technical blueprints — tech stack, database schema, API design, file structure, deployment, security review (STRIDE + OWASP + LLM security) | You know what to build and need to decide *how* — the technical design |
+| `code-cleanup` | Structural audit, AI slop removal (code-level + frontend/visual), dead code, refactoring | Your codebase has accumulated cruft and needs a quality pass |
+| `technical-writer` | READMEs, API references, setup guides, runbooks from existing code. Sync mode for post-change doc updates | You have a codebase and need documentation generated or updated after changes |
+| `ship` | Automated pre-merge pipeline — runs tests, checks review gate, organizes commits, creates PR | You've built and reviewed something and need to ship it cleanly |
+| `deploy-verify` | Post-deploy health check — page load, console errors, critical paths, response times | You just deployed and want to verify production is healthy |
 
 ### Meta — prepare, plan, analyze, verify any workflow
 
@@ -116,6 +118,9 @@ Not sure which skill to run? Find your situation:
 | "Design the technical system" | `/system-architecture` |
 | "This codebase needs cleanup" | `/code-cleanup` |
 | "Generate docs from the code" | `/technical-writer` |
+| "Update docs after this change" | `/technical-writer --sync` |
+| "Ship this branch as a PR" | `/ship` |
+| "Is production healthy after deploy?" | `/deploy-verify` |
 | "Scope this before building" | `/preflight` |
 | "Help me think through this idea" | `/plan-interviewer` |
 | "Break this into tasks" | `/task-breakdown` |
@@ -140,10 +145,14 @@ Run `/skill-router "your goal"` to get a recommended skill team, or follow this 
  9. /plan-interviewer     → sharpen the spec
 10. /system-architecture  → design the technical blueprint
 11. /task-breakdown       → create buildable tasks
-12. /copywriting          → write headlines, hooks, CTAs
-13. /content-create       → write launch content
-14. /lp-optimization      → optimize the landing page
-15. /experiment           → design the validation test
+12. (execute)             → build the tasks
+13. /review-chain         → independent quality check
+14. /ship                 → run tests, create PR
+15. /deploy-verify        → verify production health
+16. /copywriting          → write headlines, hooks, CTAs
+17. /content-create       → write launch content
+18. /lp-optimization      → optimize the landing page
+19. /experiment           → design the validation test
 ```
 
 Each step reads artifacts from previous steps — no copy-pasting between tools.
@@ -165,7 +174,10 @@ Skills pass data through markdown files in `.agents/`:
 | `design/user-flow.md` | `user-flow` | `system-architecture`, `task-breakdown` |
 | `spec.md` | `plan-interviewer` | `system-architecture`, `task-breakdown` |
 | `system-architecture.md` | `system-architecture` | `task-breakdown` |
-| `tasks.md` | `task-breakdown` | Task execution |
+| `tasks.md` | `task-breakdown` | Task execution, `ship` |
+| `meta/review-chain-report.md` | `review-chain` | `ship` (review gate) |
+| `ship-report.md` | `ship` | `deploy-verify` |
+| `deploy-verify-report.md` | `deploy-verify` | — (terminal) |
 
 Every artifact includes frontmatter with `skill`, `version`, `date`, and `status` fields for traceability.
 
@@ -181,7 +193,7 @@ SKILL.md (Orchestrator)
   └─ Critic Agent ────────────────────── PASS / FAIL (max 2 cycles)
 ```
 
-**~139 specialized agents** across domain skills. Meta-skills use two additional patterns: **dynamic agent spawning** (`multi-lens`, `review-chain`) and **methodology** (`preflight`, `artifact-status`).
+**~143 specialized agents** across domain skills. Meta-skills use two additional patterns: **dynamic agent spawning** (`multi-lens`, `review-chain`) and **methodology** (`preflight`, `artifact-status`, `deploy-verify`).
 
 ## License
 
