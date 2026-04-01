@@ -2,10 +2,10 @@
 
 This root repo holds the README and shared docs. The skill repos live as sibling directories but are gitignored — each has its own independent git repo and remote:
 
-- `comms-skills/` — marketing communication skills
-- `design-skills/` — brand and UX design skills
-- `prod-skills/` — engineering productivity + process quality skills
-- `strategy-skills/` — business strategy skills
+- `research-skills/` — market research, audience, strategy, and experimentation skills
+- `marketing-skills/` — brand, content creation, optimization, and measurement skills
+- `product-skills/` — UX design, architecture, cleanup, and documentation skills
+- `meta-skills/` — process-layer skills (scope, plan, analyze, verify, navigate)
 
 ## Git Operations
 
@@ -15,7 +15,7 @@ This root repo holds the README and shared docs. The skill repos live as sibling
 When changing skill code, operate inside the specific skill repo:
 
 ```bash
-cd prod-skills && git add ... && git commit ...
+cd product-skills && git add ... && git commit ...
 ```
 
 Never `git add` a skill directory from the root — they are gitignored intentionally.
@@ -23,4 +23,4 @@ Never `git add` a skill directory from the root — they are gitignored intentio
 ## Skill Discovery
 
 When unsure which skill to use, run `/skill-router "your goal"` to get a recommended skill team with phased execution.
-For artifact state only, run `/skill-router status`.
+For artifact state only, run `/skill-router status` or `/artifact-status`.
