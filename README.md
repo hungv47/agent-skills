@@ -1,22 +1,22 @@
 # Agent Skills
 
-23 skills for [AI agents](https://agentskills.io/home) that chain together — from problem diagnosis to shipped code.
+25 skills for [AI agents](https://agentskills.io/home) that chain together — from problem diagnosis to shipped code.
 
 Each skill writes structured artifacts to `.agents/`. Downstream skills read those artifacts automatically, so output compounds as you move through the stack.
 
 ## How It Works
 
 <picture>
-  <img src="./assets/overview.svg" alt="Cross-stack skill DAG showing how artifacts flow between Strategy, Comms, Design, and Prod stacks" width="100%">
+  <img src="./assets/overview.svg" alt="Cross-stack skill DAG showing how artifacts flow between Research, Marketing, Product, and Meta stacks" width="100%">
 </picture>
 
 ## Install
 
 ```bash
-npx skills add hungv47/comms-skills
-npx skills add hungv47/design-skills
-npx skills add hungv47/prod-skills
-npx skills add hungv47/strategy-skills
+npx skills add hungv47/research-skills
+npx skills add hungv47/marketing-skills
+npx skills add hungv47/product-skills
+npx skills add hungv47/meta-skills
 ```
 
 Update all skills:
@@ -28,82 +28,68 @@ npx skills update
 Remove a skill pack:
 
 ```bash
-npx skills remove hungv47/comms-skills
-npx skills remove hungv47/design-skills
-npx skills remove hungv47/prod-skills
-npx skills remove hungv47/strategy-skills
+npx skills remove hungv47/research-skills
+npx skills remove hungv47/marketing-skills
+npx skills remove hungv47/product-skills
+npx skills remove hungv47/meta-skills
 ```
 
 ## Skill Stacks
 
-### Strategy — research, diagnose, prioritize, measure, test
+### Research — understand your market and decide what to do
 
-> [`hungv47/strategy-skills`](https://github.com/hungv47/strategy-skills)
-
-<picture>
-  <img src="./assets/strategy.svg" alt="Strategy pipeline: market-research + problem-analysis → solution-design → funnel-planner → experiment" width="520">
-</picture>
+> [`hungv47/research-skills`](https://github.com/hungv47/research-skills)
 
 | Skill | What it does |
 |-------|-------------|
+| `icp-research` | Deep audience research and Ideal Customer Profile development |
 | `market-research` | Competitive landscape, TAM/SAM/SOM sizing, whitespace opportunities |
 | `problem-analysis` | Structured diagnosis, hypothesis development, root cause analysis |
 | `solution-design` | Strategic options with evidence-backed ICE scoring and trade-off analysis |
 | `funnel-planner` | Backward funnel modeling from revenue goals to traffic, conversions, unit economics |
 | `experiment` | Minimum viable tests with clear decision rules |
 
-### Comms — research, plan, create, optimize, measure
+### Marketing — create, optimize, and measure marketing
 
-> [`hungv47/comms-skills`](https://github.com/hungv47/comms-skills)
-
-<picture>
-  <img src="./assets/comms.svg" alt="Comms pipeline: icp-research → imc-plan → content-create → attribution, plus standalone copywriting, lp-optimization, seo, humanize" width="520">
-</picture>
-
-| Skill | What it does |
-|-------|-------------|
-| `icp-research` | Deep audience research and Ideal Customer Profile development |
-| `imc-plan` | Channel strategy, positioning, content calendar, budget allocation, GTM timelines |
-| `content-create` | Draft social posts, ads, emails, blogs, case studies, video scripts in platform-native formats |
-| `copywriting` | Craft-quality copy — headlines, hooks, CTAs, full-page copy with annotations |
-| `attribution` | Map marketing activities to business outcomes, evaluate channel ROI |
-| `lp-optimization` | Conversion audit — hero, CTA, social proof, objection handling, scored recommendations |
-| `seo` | Technical audit, AI/GEO optimization, programmatic SEO, competitor pages |
-| `humanize` | Strip AI patterns, inject voice, compress for density |
-
-### Design — brand, flows
-
-> [`hungv47/design-skills`](https://github.com/hungv47/design-skills)
-
-<picture>
-  <img src="./assets/design.svg" alt="Design pipeline: brand-system → user-flow" width="300">
-</picture>
+> [`hungv47/marketing-skills`](https://github.com/hungv47/marketing-skills)
 
 | Skill | What it does |
 |-------|-------------|
 | `brand-system` | Brand identity — strategy, personality, voice, visual identity, tokens |
-| `user-flow` | Map screens, decisions, transitions, edge cases, and error states |
+| `imc-plan` | Channel strategy, positioning, content calendar, budget allocation, GTM timelines |
+| `content-create` | Draft social posts, ads, emails, blogs, case studies, video scripts in platform-native formats |
+| `copywriting` | Craft-quality copy — headlines, hooks, CTAs, full-page copy with annotations |
+| `lp-optimization` | Conversion audit — hero, CTA, social proof, objection handling, scored recommendations |
+| `seo` | Technical audit, AI/GEO optimization, programmatic SEO, competitor pages |
+| `attribution` | Map marketing activities to business outcomes, evaluate channel ROI |
+| `humanize` | Strip AI patterns, inject voice, compress for density |
 
-### Prod — plan, architect, build, verify, document
+### Product — design and build software
 
-> [`hungv47/prod-skills`](https://github.com/hungv47/prod-skills)
-
-<picture>
-  <img src="./assets/prod.svg" alt="Prod pipeline: plan-interviewer → system-architecture → task-breakdown, plus standalone code-cleanup, technical-writer" width="520">
-</picture>
+> [`hungv47/product-skills`](https://github.com/hungv47/product-skills)
 
 | Skill | What it does |
 |-------|-------------|
-| `plan-interviewer` | Multi-round interviews to surface requirements before implementation |
+| `user-flow` | Map screens, decisions, transitions, edge cases, and error states |
 | `system-architecture` | Technical blueprints — tech stack, database schema, API design, file structure, deployment plan |
-| `task-breakdown` | Break implementation into granular, testable tasks with acceptance criteria |
 | `code-cleanup` | Structural cleanup, AI slop removal, refactoring |
 | `technical-writer` | Generate documentation and user guides from codebases |
-| `skill-router` | Analyze a goal → suggest the right skill team → orchestrate multi-phase workflows (includes artifact scanning via `status` mode) |
+
+### Meta — prepare, plan, analyze, verify any workflow
+
+> [`hungv47/meta-skills`](https://github.com/hungv47/meta-skills)
+
+| Skill | What it does |
+|-------|-------------|
+| `preflight` | Surface assumptions and define a 4-part success contract (GOAL/CONSTRAINTS/FORMAT/FAILURE) before building |
+| `plan-interviewer` | Multi-round interviews to surface requirements before implementation |
+| `task-breakdown` | Break implementation into granular, testable tasks with acceptance criteria |
 | `multi-lens` | Multi-agent debate (agents argue in rounds) or consensus polling (agents analyze independently) for decisions |
 | `review-chain` | Fresh-eyes review chain — implement → review → resolve, max 2 rounds |
+| `artifact-status` | Scan `.agents/` — report what exists, what's stale, what to run next |
+| `skill-router` | Analyze a goal → suggest the right skill team → orchestrate multi-phase workflows |
 
-multi-lens and review-chain are domain-agnostic process wrappers — they compose with any skill in any stack. Scope-locking (formerly `preflight`) is now `/plan-interviewer scope` (Route C).
+Meta-skills are domain-agnostic process wrappers. They compose with any skill: `preflight` before a build, `multi-lens` for decisions, `review-chain` after implementation.
 
 ## Example: Idea → Shipped Product
 
@@ -119,13 +105,14 @@ A typical end-to-end workflow:
 5.  /funnel-planner       → set targets
 6.  /brand-system         → define visual identity
 7.  /user-flow            → map the screens
-8.  /plan-interviewer     → sharpen the spec
-9.  /system-architecture  → design the technical blueprint
-10. /task-breakdown       → create buildable tasks
-11. /copywriting          → write headlines, hooks, CTAs
-12. /content-create       → write launch content
-13. /lp-optimization      → optimize the landing page
-14. /experiment           → design the validation test
+8.  /preflight            → surface assumptions, define contract
+9.  /plan-interviewer     → sharpen the spec
+10. /system-architecture  → design the technical blueprint
+11. /task-breakdown       → create buildable tasks
+12. /copywriting          → write headlines, hooks, CTAs
+13. /content-create       → write launch content
+14. /lp-optimization      → optimize the landing page
+15. /experiment           → design the validation test
 ```
 
 Each step reads artifacts from previous steps — no copy-pasting between tools.
@@ -155,7 +142,7 @@ Some skills add extra fields (e.g., `compression` in humanize, `mode` in seo). T
 
 **Step announcements:** When entering each numbered step in a skill, announce it with a one-line summary of what you found or decided. This gives the user visibility into progress and builds trust.
 
-**Source citation:** When stating facts, statistics, or case study results in an artifact, cite the source. If from a web search, include the URL. If a fact cannot be attributed, flag it as `[UNVERIFIED]`. Strategy and research skills (market-research, problem-analysis, icp-research) should treat this as mandatory.
+**Source citation:** When stating facts, statistics, or case study results in an artifact, cite the source. If from a web search, include the URL. If a fact cannot be attributed, flag it as `[UNVERIFIED]`. Research skills (market-research, problem-analysis, icp-research) should treat this as mandatory.
 
 **Context loaded:** When producing an artifact, include which upstream artifacts were read and their versions/dates in the artifact body. This creates an audit trail for downstream skills.
 
@@ -185,10 +172,11 @@ Some skills add extra fields (e.g., `compression` in humanize, `mode` in seo). T
 | `workflow-plan.md` | `skill-router` | Multi-phase workflow orchestration |
 | `meta/multi-lens-report.md` | `multi-lens` | Ephemeral — debate/poll synthesis |
 | `meta/review-chain-report.md` | `review-chain` | Ephemeral — verification results |
+| `meta/learned-rules.md` | All meta-skills | Cross-cutting — persistent corrections |
 
 ## Multi-Agent Architecture
 
-Every skill uses a **two-layer multi-agent orchestration** pattern optimized for parallel execution and quality control:
+Most skills use a **two-layer multi-agent orchestration** pattern optimized for parallel execution and quality control:
 
 ```
 SKILL.md (Orchestrator)
@@ -212,9 +200,9 @@ SKILL.md (Orchestrator)
 - Every skill ends with a **critic agent** that scores output and returns PASS or FAIL with specific rewrite instructions
 - Every orchestrator includes a **single-agent fallback** for non-multi-agent runtimes
 
-**~139 specialized agents** across 21 domain skills (20 with multi-agent architectures, 1 utility). Each skill's CLAUDE.md documents its agent inventory and layer structure.
+**~139 specialized agents** across domain skills. Each skill's CLAUDE.md documents its agent inventory and layer structure.
 
-Additionally, 2 process-quality skills (`multi-lens`, `review-chain` in prod-skills) use a **dynamic agent spawning** pattern where agent count, roles, and instructions are defined at runtime. These do not have static agent rosters — see `prod-skills/CLAUDE.md`.
+Additionally, meta-skills use two alternative patterns: **dynamic agent spawning** (`multi-lens`, `review-chain`) where agent count and roles are defined at runtime, and **methodology** (`preflight`, `artifact-status`) which are single-pass with no subagents. See `meta-skills/CLAUDE.md`.
 
 ## License
 
