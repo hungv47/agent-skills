@@ -1,8 +1,8 @@
 # Agent Skills
 
-27 skills for [AI agents](https://agentskills.io/home) that chain together — from problem diagnosis to shipped code.
+25 skills for [AI agents](https://agentskills.io/home) that chain together — from problem diagnosis to shipped code.
 
-Each skill writes structured artifacts to `.agents/`. Downstream skills read those artifacts automatically, so output compounds as you move through the stack.
+Skills pass context through conversation and optional artifacts in `.agents/`. Downstream skills read conversation context or artifacts automatically, so output compounds as you move through the stack.
 
 ## How It Works
 
@@ -74,23 +74,17 @@ npx skills add hungv47/meta-skills
 | `ship` | Automated pre-merge pipeline — runs tests, checks review gate, organizes commits, creates PR | You've built and reviewed something and need to ship it cleanly |
 | `deploy-verify` | Post-deploy health check — page load, console errors, critical paths, response times | You just deployed and want to verify production is healthy |
 
-### Meta — prepare, plan, analyze, verify any workflow
+### Meta — discover, debate, decompose, verify, navigate
 
-> [`hungv47/meta-skills`](https://github.com/hungv47/meta-skills) &middot; 7 skills
-
-<picture>
-  <img src="./assets/meta.svg" alt="Meta composition: preflight → plan-interviewer → task-breakdown → execute → review-chain, plus multi-lens for decisions and navigation skills" width="100%">
-</picture>
+> [`hungv47/meta-skills`](https://github.com/hungv47/meta-skills) &middot; 5 skills
 
 | Skill | What it does | Use when... |
 |-------|-------------|-------------|
-| `preflight` | Surfaces assumptions and defines a 4-part success contract (GOAL/CONSTRAINTS/FORMAT/FAILURE) | You're about to build something and want to catch blind spots first |
-| `plan-interviewer` | Multi-round interview to turn a vague idea into a structured spec | You have a fuzzy idea and need an AI to grill you into a concrete spec |
-| `task-breakdown` | Decomposes a spec into granular, testable tasks with acceptance criteria | You have an architecture or spec and need a buildable task list |
-| `multi-lens` | Multi-agent debate (argue in rounds) or consensus polling (independent analysis) | You're facing a decision and want multiple perspectives before committing |
+| `discover` | Conversational discovery — adapts from quick scoping (3-5 questions) to deep interviews | You have a vague idea or clear task and want alignment before building |
+| `agent-room` | Multi-agent discussion rooms — debate (argue in rounds) or consensus polling | You're facing a complex decision and want multiple perspectives |
+| `task-breakdown` | Decomposes work into granular, testable tasks with acceptance criteria | Work is too big to just start — needs decomposition first |
 | `review-chain` | Fresh-eyes review — implement, review, resolve. Max 2 rounds | You've built something and want an independent quality check |
-| `artifact-status` | Scans `.agents/` — reports what exists, what's stale, what to run next | You're mid-project and need to know where you are and what to do next |
-| `skill-router` | Analyzes a goal, suggests the right skill team, orchestrates multi-phase workflows | You have a goal but don't know which skills to run or in what order |
+| `navigate` | Scans artifacts, recommends next skill, composes multi-phase workflows | You need to orient — what exists, what to do next, or orchestrate a goal |
 
 Meta-skills are domain-agnostic process wrappers. They compose with any skill in any stack.
 
@@ -121,17 +115,17 @@ Not sure which skill to run? Find your situation:
 | "Update docs after this change" | `/technical-writer --sync` |
 | "Ship this branch as a PR" | `/ship` |
 | "Is production healthy after deploy?" | `/deploy-verify` |
-| "Scope this before building" | `/preflight` |
-| "Help me think through this idea" | `/plan-interviewer` |
+| "Scope this before building" | `/discover` |
+| "Help me think through this idea" | `/discover` |
 | "Break this into tasks" | `/task-breakdown` |
-| "Debate this decision" | `/multi-lens` |
+| "Debate this decision" | `/agent-room` |
 | "Verify this output" | `/review-chain` |
-| "What artifacts do I have?" | `/artifact-status` |
-| "I have a goal, what do I run?" | `/skill-router "your goal"` |
+| "What artifacts do I have?" | `/navigate status` |
+| "I have a goal, what do I run?" | `/navigate "your goal"` |
 
 ## Example: Idea to Shipped Product
 
-Run `/skill-router "your goal"` to get a recommended skill team, or follow this end-to-end workflow:
+Run `/navigate "your goal"` to get a recommended skill team, or follow this end-to-end workflow:
 
 ```
  1. /icp-research        → understand your audience
@@ -141,18 +135,17 @@ Run `/skill-router "your goal"` to get a recommended skill team, or follow this 
  5. /funnel-planner       → set numeric targets
  6. /brand-system         → define visual identity
  7. /user-flow            → map the screens
- 8. /preflight            → surface assumptions, define contract
- 9. /plan-interviewer     → sharpen the spec
-10. /system-architecture  → design the technical blueprint
-11. /task-breakdown       → create buildable tasks
-12. (execute)             → build the tasks
-13. /review-chain         → independent quality check
-14. /ship                 → run tests, create PR
-15. /deploy-verify        → verify production health
-16. /copywriting          → write headlines, hooks, CTAs
-17. /content-create       → write launch content
-18. /lp-optimization      → optimize the landing page
-19. /experiment           → design the validation test
+ 8. /discover             → conversational alignment (saves spec if needed)
+ 9. /system-architecture  → design the technical blueprint
+10. /task-breakdown       → create buildable tasks
+11. (execute)             → build the tasks
+12. /review-chain         → independent quality check
+13. /ship                 → run tests, create PR
+14. /deploy-verify        → verify production health
+15. /copywriting          → write headlines, hooks, CTAs
+16. /content-create       → write launch content
+17. /lp-optimization      → optimize the landing page
+18. /experiment           → design the validation test
 ```
 
 Each step reads artifacts from previous steps — no copy-pasting between tools.
@@ -172,7 +165,7 @@ Skills pass data through markdown files in `.agents/`:
 | `mkt/imc-plan.md` | `imc-plan` | `content-create`, `copywriting`, `seo`, `attribution` |
 | `mkt/content/[slug].md` | `content-create` | `humanize`, `attribution` |
 | `design/user-flow.md` | `user-flow` | `system-architecture`, `task-breakdown` |
-| `spec.md` | `plan-interviewer` | `system-architecture`, `task-breakdown` |
+| `spec.md` | `discover` (optional) | `system-architecture`, `task-breakdown` |
 | `system-architecture.md` | `system-architecture` | `task-breakdown` |
 | `tasks.md` | `task-breakdown` | Task execution, `ship` |
 | `meta/review-chain-report.md` | `review-chain` | `ship` (review gate) |
@@ -193,7 +186,7 @@ SKILL.md (Orchestrator)
   └─ Critic Agent ────────────────────── PASS / FAIL (max 2 cycles)
 ```
 
-**~143 specialized agents** across domain skills. Meta-skills use two additional patterns: **dynamic agent spawning** (`multi-lens`, `review-chain`) and **methodology** (`preflight`, `artifact-status`, `deploy-verify`).
+**~143 specialized agents** across domain skills. Meta-skills use additional patterns: **dynamic agent spawning** (`agent-room`, `review-chain`), **conversation-first discovery** (`discover`), and **utility** (`navigate`, `deploy-verify`).
 
 ## License
 
