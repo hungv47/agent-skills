@@ -142,7 +142,7 @@ Run `/navigate "your goal"` to get a recommended skill team, or follow this end-
 18. /experiment           → design the validation test
 ```
 
-Each step reads artifacts from previous steps — no copy-pasting between tools.
+Each step builds on context from previous steps — through conversation or saved artifacts.
 
 ## How Skills Communicate
 
