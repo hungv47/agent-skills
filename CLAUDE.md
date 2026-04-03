@@ -22,8 +22,8 @@ Never `git add` a skill directory from the root — they are gitignored intentio
 
 ## Skill Discovery
 
-When unsure which skill to use, run `/skill-router "your goal"` to get a recommended skill team with phased execution.
-For artifact state only, run `/skill-router status` or `/artifact-status`.
+When unsure which skill to use, run `/navigate "your goal"` to get a recommended skill team with phased execution.
+For artifact state only, run `/navigate status`.
 
 ## Design Philosophy
 
@@ -58,4 +58,4 @@ Three mechanisms persist knowledge across sessions — each serves a different p
 |--------|----------|---------|
 | Auto-memory | `MEMORY.md` | Cross-session user/project memory (preferences, context, references) |
 | Learned rules | `.agents/meta/learned-rules.md` | Agent behavior corrections from user feedback |
-| Experience docs | `.agents/experience/{domain}.md` | Domain-specific Q&A from preflight runs — reduces repeat questions |
+| Experience docs | `.agents/experience/{domain}.md` | Domain-specific Q&A from discover sessions — reduces repeat questions |
