@@ -4,12 +4,6 @@
 
 Skills pass context through conversation and optional artifacts in `.agents/`. Downstream skills read conversation context or artifacts automatically, so output compounds as you move through the stack.
 
-## How It Works
-
-<picture>
-  <img src="./assets/overview.svg" alt="Cross-stack skill DAG showing how artifacts flow between Research, Marketing, Product, and Meta stacks" width="100%">
-</picture>
-
 ## Install
 
 ```bash
