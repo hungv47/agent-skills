@@ -47,7 +47,7 @@ npx skills add hungv47/meta-skills
 | `content-create` | Drafts social posts, ads, emails, blogs, case studies, video scripts | You need a specific content asset in a platform-native format |
 | `copywriting` | Headlines, hooks, CTAs, taglines, full-page section copy with scoring | You need persuasive copy for any surface — landing pages, ads, emails, product UI |
 | `lp-optimization` | Conversion audit — hero, CTA, social proof, objection handling | You have a landing page and want to improve its conversion rate |
-| `seo` | Technical audit, AI/GEO optimization, programmatic SEO, ASO | You want more organic traffic — search, AI answers, or app store visibility |
+| `seo` | Technical audit, AI/AEO optimization, programmatic SEO, ASO | You want more organic traffic — search, AI answers, or app store visibility |
 | `attribution` | Maps marketing activities to business outcomes, evaluates channel ROI | You're spending on marketing and need to know what's actually working |
 | `humanize` | Strips AI patterns, injects brand voice, compresses for density | You have AI-generated text that sounds robotic and needs to read human |
 
@@ -56,7 +56,7 @@ npx skills add hungv47/meta-skills
 > [`hungv47/product-skills`](https://github.com/hungv47/product-skills) &middot; 6 skills
 
 <picture>
-  <img src="./assets/product.svg" alt="Product pipeline: user-flow → system-architecture, plus horizontal code-cleanup and technical-writer" width="100%">
+  <img src="./assets/product.svg" alt="Product pipeline: user-flow → system-architecture → ship → deploy-verify, plus horizontal code-cleanup and technical-writer" width="100%">
 </picture>
 
 | Skill | What it does | Use when... |
