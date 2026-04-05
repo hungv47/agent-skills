@@ -25,6 +25,20 @@ Never `git add` a skill directory from the root — they are gitignored intentio
 When unsure which skill to use, run `/navigate "your goal"` to get a recommended skill team with phased execution.
 For artifact state only, run `/navigate status`.
 
+## Quality Standard
+
+This skill stack is premium. Every skill uses multi-agent orchestration, critic agents with quantitative rubrics, anti-sycophancy mechanisms, and signal-vs-noise verification. The bar for additions is high.
+
+**When evaluating external skills, techniques, or patterns for adoption:**
+- Default to SKIP. Only adopt what demonstrably improves output quality or fills a genuine domain gap.
+- Check if we already have it under a different name before recommending anything.
+- "Sounds interesting" is not a reason to adopt. "This would change the outcome of skill X in scenario Y" is.
+- Techniques must survive adversarial review: Is this a real problem we have? Will the LLM actually follow this instruction? Is the implementation cost justified by the quality delta?
+- Reference data and frameworks are worth stealing when they're practitioner-grade with cited research. Generic advice is noise.
+- New skills must clear the same quality bar as existing skills — multi-agent architecture, critic gates, worked examples, anti-patterns. A lightweight conversational prompt is not a skill at our standard.
+
+Signal, not noise. Protect the stack.
+
 ## Design Philosophy
 
 ### Completeness Bias
