@@ -39,7 +39,7 @@
 
   <rect x="380" y="126" width="160" height="56" rx="6" fill="#F5F3FF" stroke="#C4B5FD" stroke-width="1" stroke-dasharray="4 2"/>
   <text x="460" y="148" text-anchor="middle" font-size="12" fill="#5B21B6">seo</text>
-  <text x="460" y="164" text-anchor="middle" font-size="8" fill="#7C3AED">search + AI/GEO + ASO</text>
+  <text x="460" y="164" text-anchor="middle" font-size="8" fill="#7C3AED">search + AI/AEO + ASO</text>
 
   <rect x="560" y="126" width="160" height="56" rx="6" fill="#F5F3FF" stroke="#C4B5FD" stroke-width="1" stroke-dasharray="4 2"/>
   <text x="640" y="148" text-anchor="middle" font-size="12" fill="#5B21B6">humanize</text>

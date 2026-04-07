@@ -13,6 +13,14 @@ npx skills add hungv47/product-skills
 npx skills add hungv47/meta-skills
 ```
 
+## Full Pipeline
+
+<picture>
+  <img src="./assets/full-pipeline.svg" alt="All 25 skills end-to-end: 5 meta process wrappers, 6 research pipeline skills, 6 product skills (4 pipeline + 2 horizontal), 8 marketing skills (4 pipeline + 4 horizontal)" width="100%">
+</picture>
+
+**14 pipeline skills** run in sequence across three phases (Research → Product → Marketing). **6 horizontal skills** apply at any point within their stack. **5 meta skills** are domain-agnostic process wrappers that compose with any skill.
+
 ## Skill Stacks
 
 ### Research — understand your market and decide what to do
@@ -62,9 +70,9 @@ npx skills add hungv47/meta-skills
 | Skill | What it does | Use when... |
 |-------|-------------|-------------|
 | `user-flow` | Maps screens, decisions, transitions, edge cases, and error states | You're designing a feature and need to think through every screen and path |
-| `system-architecture` | Technical blueprints — tech stack, database schema, API design, file structure, deployment, security review (STRIDE + OWASP + LLM security) | You know what to build and need to decide *how* — the technical design |
-| `code-cleanup` | Structural audit, AI slop removal (code-level + frontend/visual), dead code, refactoring | Your codebase has accumulated cruft and needs a quality pass |
-| `technical-writer` | READMEs, API references, setup guides, runbooks from existing code. Sync mode for post-change doc updates | You have a codebase and need documentation generated or updated after changes |
+| `system-architecture` | Technical blueprints — tech stack, database schema, API design, file structure, deployment, security review (STRIDE + OWASP + LLM security), dependency classification | You know what to build and need to decide *how* — the technical design |
+| `code-cleanup` | Structural audit, AI slop removal (code-level + frontend/visual), dead code, unused assets, refactoring | Your codebase has accumulated cruft and needs a quality pass |
+| `technical-writer` | READMEs, API references, setup guides, runbooks from existing code. Ship log mode writes product context to `.agents/product-context.md`. Sync mode for post-change doc updates | You have a codebase and need documentation generated or updated after changes |
 | `ship` | Automated pre-merge pipeline — runs tests, checks review gate, organizes commits, creates PR | You've built and reviewed something and need to ship it cleanly |
 | `deploy-verify` | Post-deploy health check — page load, console errors, critical paths, response times | You just deployed and want to verify production is healthy |
 
@@ -78,7 +86,7 @@ npx skills add hungv47/meta-skills
 | `agent-room` | Multi-agent discussion rooms — debate (argue in rounds) or consensus polling | You're facing a complex decision and want multiple perspectives |
 | `task-breakdown` | Decomposes work into granular, testable tasks with acceptance criteria | Work is too big to just start — needs decomposition first |
 | `review-chain` | Fresh-eyes review — implement, review, resolve. Max 2 rounds | You've built something and want an independent quality check |
-| `navigate` | Scans artifacts, recommends next skill, composes multi-phase workflows | You need to orient — what exists, what to do next, or orchestrate a goal |
+| `navigate` | Scans artifacts, checks freshness, composes multi-phase workflows | You need to orient — what exists, what to do next, or orchestrate a goal |
 
 Meta-skills are domain-agnostic process wrappers. They compose with any skill in any stack.
 
@@ -106,6 +114,7 @@ Not sure which skill to run? Find your situation:
 | "Design the technical system" | `/system-architecture` |
 | "This codebase needs cleanup" | `/code-cleanup` |
 | "Generate docs from the code" | `/technical-writer` |
+| "Write a product snapshot for agents" | `/technical-writer --ship-log` |
 | "Update docs after this change" | `/technical-writer --sync` |
 | "Ship this branch as a PR" | `/ship` |
 | "Is production healthy after deploy?" | `/deploy-verify` |
@@ -150,7 +159,7 @@ Skills pass data through markdown files in `.agents/`:
 
 | Artifact | Produced by | Consumed by |
 |----------|------------|-------------|
-| `product-context.md` | `icp-research` | 12+ skills across all stacks |
+| `product-context.md` | `icp-research`, `technical-writer --ship-log` | 12+ skills across all stacks |
 | `market-research.md` | `market-research` | `solution-design` |
 | `problem-analysis.md` | `problem-analysis` | `solution-design` |
 | `solution-design.md` | `solution-design` | `imc-plan`, `system-architecture`, `funnel-planner` |
@@ -158,13 +167,21 @@ Skills pass data through markdown files in `.agents/`:
 | `design/brand-system.md` | `brand-system` | Visual decisions in content and landing pages |
 | `mkt/imc-plan.md` | `imc-plan` | `content-create`, `copywriting`, `seo`, `attribution` |
 | `mkt/content/[slug].md` | `content-create` | `humanize`, `attribution` |
+| `mkt/content/[slug].copy.md` | `copywriting` | `content-create`, `humanize` |
+| `mkt/content/[slug].humanized.md` | `humanize` | `attribution` |
+| `mkt/seo-[mode].md` | `seo` | `content-create`, `lp-optimization` |
+| `mkt/attribution.md` | `attribution` | — (terminal) |
+| `mkt/lp-optimization.md` | `lp-optimization` | — (terminal) |
 | `design/user-flow.md` | `user-flow` | `system-architecture`, `task-breakdown` |
 | `spec.md` | `discover` (optional) | `system-architecture`, `task-breakdown` |
 | `system-architecture.md` | `system-architecture` | `task-breakdown` |
 | `tasks.md` | `task-breakdown` | Task execution, `ship` |
+| `cleanup-report.md` | `code-cleanup` | — (terminal) |
+| `meta/agent-room-report.md` | `agent-room` | — (ephemeral) |
 | `meta/review-chain-report.md` | `review-chain` | `ship` (review gate) |
 | `ship-report.md` | `ship` | `deploy-verify` |
 | `deploy-verify-report.md` | `deploy-verify` | — (terminal) |
+| `workflow-plan.md` | `navigate` | Multi-phase tracking |
 
 Every artifact includes frontmatter with `skill`, `version`, `date`, and `status` fields for traceability.
 
@@ -180,7 +197,7 @@ SKILL.md (Orchestrator)
   └─ Critic Agent ────────────────────── PASS / FAIL (max 2 cycles)
 ```
 
-**~133 specialized agents** across domain skills. Meta-skills use additional patterns: **dynamic agent spawning** (`agent-room`, `review-chain`), **conversation-first discovery** (`discover`), and **utility** (`navigate`, `deploy-verify`).
+**~139 specialized agents** across domain skills. Meta-skills use additional patterns: **dynamic agent spawning** (`agent-room`, `review-chain`), **conversation-first discovery** (`discover`), and **utility** (`navigate`, `deploy-verify`).
 
 ## License
 
