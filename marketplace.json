@@ -3,6 +3,7 @@
   "description": "Multi-agent orchestration skills for research, marketing, product, and meta workflows. Every skill uses critic-gated parallel/sequential agent pipelines with quantitative rubrics.",
   "author": "hungv47",
   "version": "1.0.0",
+  "schema_version": "1",
   "license": "MIT",
   "domains": ["research", "marketing", "product", "meta"],
   "skills": [
