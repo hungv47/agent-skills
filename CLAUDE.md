@@ -39,6 +39,23 @@ This skill stack is premium. Every skill uses multi-agent orchestration, critic 
 
 Signal, not noise. Protect the stack.
 
+## Complexity Routing
+
+Every skill declares a `budget` tier in its frontmatter: `fast`, `standard`, or `deep`. When invoking a skill, read its budget field and adjust execution:
+
+| Budget | Execution | When |
+|--------|-----------|------|
+| **fast** | Single-agent, no sub-agent spawning, no critic gate. Respond directly. | discover, navigate, deploy-verify |
+| **standard** | Reduced orchestration. Essential agents only, one critic pass. Skip optional refinement agents. | experiment, humanize, ship, user-flow, technical-writer, agent-room, task-breakdown, review-chain |
+| **deep** | Full orchestration as documented. All layers, all agents, full critic gate. | icp-research, market-research, brand-system, seo, system-architecture, and 10 others |
+
+**Auto-downgrade heuristics** (apply before dispatching agents):
+- Input is ≤3 sentences AND doesn't reference prior artifacts → treat as fast regardless of tier
+- Single-topic request with clear scope and no cross-domain needs → cap at standard
+- References multiple artifacts, is cross-domain, or is ambiguous → use full skill tier
+
+**Override:** User can request deeper execution on any tier ("run this thoroughly", "full analysis"). Budget is the default, not a ceiling.
+
 ## Design Philosophy
 
 ### Completeness Bias
