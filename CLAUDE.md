@@ -47,10 +47,10 @@ Every skill declares a `budget` tier in its frontmatter: `fast`, `standard`, or 
 |--------|-----------|------|
 | **fast** | Single-agent, no sub-agent spawning, no critic gate. Respond directly. | discover, navigate, deploy-verify |
 | **standard** | Reduced orchestration. Essential agents only, one critic pass. Skip optional refinement agents. | experiment, humanize, ship, user-flow, technical-writer, agent-room, task-breakdown, review-chain |
-| **deep** | Full orchestration as documented. All layers, all agents, full critic gate. | icp-research, market-research, brand-system, seo, system-architecture, and 10 others |
+| **deep** | Full orchestration as documented. All layers, all agents, full critic gate. | All research skills (except experiment), copywriting, content-create, imc-plan, brand-system, seo, attribution, lp-optimization, system-architecture, code-cleanup |
 
 **Auto-downgrade heuristics** (apply before dispatching agents):
-- Input is ≤3 sentences AND doesn't reference prior artifacts → treat as fast regardless of tier
+- Input is ≤3 sentences AND doesn't reference prior artifacts AND skill budget is not deep → treat as fast
 - Single-topic request with clear scope and no cross-domain needs → cap at standard
 - References multiple artifacts, is cross-domain, or is ambiguous → use full skill tier
 

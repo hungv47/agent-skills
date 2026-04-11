@@ -16,7 +16,7 @@ npx skills add hungv47/meta-skills
 ## Full Pipeline
 
 <picture>
-  <img src="./assets/full-pipeline.svg" alt="All 25 skills end-to-end: 5 meta process wrappers, 6 research pipeline skills, 6 product skills (4 pipeline + 2 horizontal), 8 marketing skills (4 pipeline + 4 horizontal)" width="100%">
+  <img src="./assets/full-pipeline.svg" alt="All 26 skills end-to-end: 5 meta process wrappers, 7 research pipeline skills, 6 product skills (4 pipeline + 2 horizontal), 8 marketing skills (4 pipeline + 4 horizontal)" width="100%">
 </picture>
 
 **15 pipeline skills** run in sequence across three phases (Research → Product → Marketing). **6 horizontal skills** apply at any point within their stack. **5 meta skills** are domain-agnostic process wrappers that compose with any skill.
@@ -187,10 +187,10 @@ Each downstream skill produces richer output because it inherits upstream contex
 ```
 /discover "build a team dashboard with real-time project status"
   └─ conversation produces key decisions (scope, tech choices, edge cases)
-  └─ optionally writes .agents/spec.md (with FAILURE conditions)
+  └─ optionally writes .agents/spec.md (if user asks to save; includes FAILURE conditions)
 
 /user-flow "team dashboard"
-  ├─ reads .agents/spec.md (scope decisions)
+  ├─ reads .agents/spec.md (if saved) or conversation context
   └─ writes .agents/design/user-flow.md (screens, transitions, edge states)
 
 /system-architecture "team dashboard"
