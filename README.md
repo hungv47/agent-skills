@@ -1,6 +1,6 @@
 # Agent Skills
 
-25 skills for [AI agents](https://agentskills.io/home) that chain together — from problem diagnosis to shipped code.
+26 skills for [AI agents](https://agentskills.io/home) that chain together — from problem diagnosis to shipped code.
 
 Skills pass context through conversation and optional artifacts in `.agents/`. Downstream skills read conversation context or artifacts automatically, so output compounds as you move through the stack.
 
@@ -16,16 +16,16 @@ npx skills add hungv47/meta-skills
 ## Full Pipeline
 
 <picture>
-  <img src="./assets/full-pipeline.svg" alt="All 25 skills end-to-end: 5 meta process wrappers, 6 research pipeline skills, 6 product skills (4 pipeline + 2 horizontal), 8 marketing skills (4 pipeline + 4 horizontal)" width="100%">
+  <img src="./assets/full-pipeline.svg" alt="All 26 skills end-to-end: 5 meta process wrappers, 7 research pipeline skills, 6 product skills (4 pipeline + 2 horizontal), 8 marketing skills (4 pipeline + 4 horizontal)" width="100%">
 </picture>
 
-**14 pipeline skills** run in sequence across three phases (Research → Product → Marketing). **6 horizontal skills** apply at any point within their stack. **5 meta skills** are domain-agnostic process wrappers that compose with any skill.
+**15 pipeline skills** run in sequence across three phases (Research → Product → Marketing). **6 horizontal skills** apply at any point within their stack. **5 meta skills** are domain-agnostic process wrappers that compose with any skill.
 
 ## Skill Stacks
 
 ### Research — understand your market and decide what to do
 
-> [`hungv47/research-skills`](https://github.com/hungv47/research-skills) &middot; 6 skills
+> [`hungv47/research-skills`](https://github.com/hungv47/research-skills) &middot; 7 skills
 
 <picture>
   <img src="./assets/research.svg" alt="Research pipeline: icp-research → market-research + problem-analysis → solution-design → funnel-planner → experiment" width="100%">
@@ -38,6 +38,7 @@ npx skills add hungv47/meta-skills
 | `problem-analysis` | Structured diagnosis — logic trees, hypotheses, root cause analysis | A metric dropped, something broke, or you need to figure out *why* before jumping to solutions |
 | `solution-design` | Generates strategic options, scores trade-offs with ICE, recommends a path | The problem is clear and you need to decide *what* to build or pursue |
 | `funnel-planner` | Backward funnel modeling — revenue goals to traffic, conversions, unit economics | You need numeric targets: "how much traffic do we need to hit $X ARR?" |
+| `content-research` | Researches what content to create — competitor ads, audience communities, trending topics | You need data-driven content intelligence before writing anything |
 | `experiment` | Designs minimum viable tests with sample sizes and decision rules | You have an initiative and want to validate it before full commitment |
 
 ### Marketing — create, optimize, and measure marketing
@@ -153,6 +154,80 @@ Run `/navigate "your goal"` to get a recommended skill team, or follow this end-
 
 Each step builds on context from previous steps — through conversation or saved artifacts.
 
+## Worked Examples: Artifact Flow in Practice
+
+### Example 1: Research → Marketing Pipeline
+
+```
+/icp-research "B2B project management SaaS for agencies"
+  └─ writes .agents/product-context.md (personas, pain points, JTBD)
+  └─ writes .agents/mkt/icp-research.md (full audience analysis)
+
+/content-research "project management content landscape"
+  ├─ reads .agents/product-context.md (audience context)
+  ├─ reads .agents/mkt/icp-research.md (persona data)
+  └─ writes .agents/mkt/content-research.md (competitor ads, trending topics, content gaps)
+
+/imc-plan "Q3 launch campaign"
+  ├─ reads .agents/product-context.md (audience)
+  ├─ reads .agents/mkt/icp-research.md (personas)
+  ├─ reads .agents/mkt/content-research.md (content intelligence)
+  └─ writes .agents/mkt/imc-plan.md (channels, calendar, budget)
+
+/content-create "LinkedIn carousel about agency time tracking"
+  ├─ reads .agents/product-context.md (voice, audience language)
+  ├─ reads .agents/mkt/imc-plan.md (channel strategy, messaging pillars)
+  └─ writes .agents/mkt/content/agency-time-tracking.md (platform-native carousel)
+```
+
+Each downstream skill produces richer output because it inherits upstream context. The content-create output references audience pain points from icp-research, content gaps from content-research, and messaging pillars from imc-plan — without the user repeating any of it.
+
+### Example 2: Product Pipeline
+
+```
+/discover "build a team dashboard with real-time project status"
+  └─ conversation produces key decisions (scope, tech choices, edge cases)
+  └─ optionally writes .agents/spec.md (if user asks to save; includes FAILURE conditions)
+
+/user-flow "team dashboard"
+  ├─ reads .agents/spec.md (if saved) or conversation context
+  └─ writes .agents/design/user-flow.md (screens, transitions, edge states)
+
+/system-architecture "team dashboard"
+  ├─ reads .agents/spec.md (requirements)
+  ├─ reads .agents/design/user-flow.md (screens inform API design)
+  └─ writes .agents/system-architecture.md (stack, schema, API, deployment)
+
+/task-breakdown
+  ├─ reads .agents/system-architecture.md (what to build)
+  ├─ reads .agents/design/user-flow.md (UX requirements per task)
+  └─ writes .agents/tasks.md (ordered tasks with acceptance criteria)
+
+(build tasks) → /review-chain → /ship → /deploy-verify
+```
+
+### Example 3: Meta Orchestration
+
+```
+/navigate "launch an AI writing assistant for marketers"
+  ├─ scans .agents/ for existing artifacts
+  ├─ checks freshness of each artifact
+  └─ recommends phased skill team:
+
+    Phase 1 (Research): /icp-research → /market-research → /solution-design
+    Phase 2 (Strategy): /brand-system → /imc-plan → /funnel-planner
+    Phase 3 (Build):    /user-flow → /system-architecture → /task-breakdown
+    Phase 4 (Ship):     (execute) → /review-chain → /ship → /deploy-verify
+    Phase 5 (Market):   /content-create → /copywriting → /seo → /attribution
+
+/agent-room "debate: should we build a Chrome extension or a web app?"
+  ├─ spawns 3 agents (Architect, Pragmatist, Critic)
+  ├─ 3 rounds of structured debate
+  └─ writes .agents/meta/agent-room-report.md (consensus, splits, recommendation)
+```
+
+Navigate doesn't execute skills — it recommends them based on what artifacts exist and what's stale. The user drives the sequence.
+
 ## How Skills Communicate
 
 Skills pass data through markdown files in `.agents/`:
@@ -164,7 +239,8 @@ Skills pass data through markdown files in `.agents/`:
 | `problem-analysis.md` | `problem-analysis` | `solution-design` |
 | `solution-design.md` | `solution-design` | `imc-plan`, `system-architecture`, `funnel-planner` |
 | `targets.md` | `funnel-planner` | `attribution`, `experiment` |
-| `design/brand-system.md` | `brand-system` | Visual decisions in content and landing pages |
+| `mkt/content-research.md` | `content-research` | `imc-plan`, `content-create`, `copywriting` |
+| `brand/BRAND.md`, `brand/DESIGN.md` | `brand-system` | Visual decisions in content and landing pages |
 | `mkt/imc-plan.md` | `imc-plan` | `content-create`, `copywriting`, `seo`, `attribution` |
 | `mkt/content/[slug].md` | `content-create` | `humanize`, `attribution` |
 | `mkt/content/[slug].copy.md` | `copywriting` | `content-create`, `humanize` |
@@ -197,7 +273,7 @@ SKILL.md (Orchestrator)
   └─ Critic Agent ────────────────────── PASS / FAIL (max 2 cycles)
 ```
 
-**~139 specialized agents** across domain skills. Meta-skills use additional patterns: **dynamic agent spawning** (`agent-room`, `review-chain`), **conversation-first discovery** (`discover`), and **utility** (`navigate`, `deploy-verify`).
+**~145 specialized agents** across domain skills. Meta-skills use additional patterns: **dynamic agent spawning** (`agent-room`, `review-chain`), **conversation-first discovery** (`discover`), and **utility** (`navigate`, `deploy-verify`).
 
 ## License
 

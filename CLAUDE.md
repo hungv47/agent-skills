@@ -39,6 +39,36 @@ This skill stack is premium. Every skill uses multi-agent orchestration, critic 
 
 Signal, not noise. Protect the stack.
 
+## Complexity Routing
+
+Every skill declares a `budget` tier in its frontmatter: `fast`, `standard`, or `deep`. When invoking a skill, read its budget field and adjust execution:
+
+| Budget | Execution | When |
+|--------|-----------|------|
+| **fast** | Single-agent, no sub-agent spawning, no critic gate. Respond directly. | discover, navigate, deploy-verify |
+| **standard** | Reduced orchestration. Essential agents only, one critic pass. Skip optional refinement agents. | experiment, humanize, ship, user-flow, technical-writer, agent-room, task-breakdown, review-chain |
+| **deep** | Full orchestration as documented. All layers, all agents, full critic gate. | All research skills (except experiment), copywriting, content-create, imc-plan, brand-system, seo, attribution, lp-optimization, system-architecture, code-cleanup |
+
+**Auto-downgrade heuristics** (apply before dispatching agents):
+- Input is ≤3 sentences AND doesn't reference prior artifacts AND skill budget is not deep → treat as fast
+- Single-topic request with clear scope and no cross-domain needs → cap at standard
+- References multiple artifacts, is cross-domain, or is ambiguous → use full skill tier
+
+**Override:** User can request deeper execution on any tier ("run this thoroughly", "full analysis"). Budget is the default, not a ceiling.
+
+## Completion Status Protocol
+
+Every skill output ends with an explicit status. No implicit "here's the output" — the agent must declare the state.
+
+| Status | Meaning | When |
+|--------|---------|------|
+| **DONE** | Output meets all requirements and passes critic gate | Clean completion |
+| **DONE_WITH_CONCERNS** | Output delivered but with flagged risks or limitations | Critic passed but reviewer noted issues worth monitoring |
+| **BLOCKED** | Cannot complete — missing input, external dependency, or unresolvable conflict | State what's needed to unblock |
+| **NEEDS_CONTEXT** | Insufficient information to produce quality output | State what's missing and which upstream skill would provide it |
+
+Skills that produce artifacts must include the status in the artifact frontmatter (`status: done | done_with_concerns | blocked | needs_context`). Skills that return inline results state the status at the end of their response.
+
 ## Design Philosophy
 
 ### Completeness Bias
