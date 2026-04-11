@@ -56,6 +56,19 @@ Every skill declares a `budget` tier in its frontmatter: `fast`, `standard`, or 
 
 **Override:** User can request deeper execution on any tier ("run this thoroughly", "full analysis"). Budget is the default, not a ceiling.
 
+## Completion Status Protocol
+
+Every skill output ends with an explicit status. No implicit "here's the output" — the agent must declare the state.
+
+| Status | Meaning | When |
+|--------|---------|------|
+| **DONE** | Output meets all requirements and passes critic gate | Clean completion |
+| **DONE_WITH_CONCERNS** | Output delivered but with flagged risks or limitations | Critic passed but reviewer noted issues worth monitoring |
+| **BLOCKED** | Cannot complete — missing input, external dependency, or unresolvable conflict | State what's needed to unblock |
+| **NEEDS_CONTEXT** | Insufficient information to produce quality output | State what's missing and which upstream skill would provide it |
+
+Skills that produce artifacts must include the status in the artifact frontmatter (`status: done | done_with_concerns | blocked | needs_context`). Skills that return inline results state the status at the end of their response.
+
 ## Design Philosophy
 
 ### Completeness Bias
