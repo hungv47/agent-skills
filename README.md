@@ -1,10 +1,14 @@
 # Agent Skills
 
-26 skills for [AI agents](https://agentskills.io/home) that chain together — from problem diagnosis to shipped code.
+A composable skill stack for [AI agents](https://agentskills.io/home) that chains together — from problem diagnosis to shipped code.
 
 Skills pass context through conversation and optional artifacts in `.agents/`. Downstream skills read conversation context or artifacts automatically, so output compounds as you move through the stack.
 
 ## Install
+
+Installs via the [`skills` CLI](https://skills.sh). Requires Node.js 18+. Works with Claude Code, Cursor, Codex, Windsurf, Gemini CLI, and VS Code (auto-detects your editor).
+
+### Install a full stack
 
 ```bash
 npx skills add hungv47/research-skills
@@ -13,10 +17,61 @@ npx skills add hungv47/product-skills
 npx skills add hungv47/meta-skills
 ```
 
+### Install a single skill
+
+Cherry-pick any skill with `--skill` (the examples below are illustrative — any skill in a stack works):
+
+```bash
+npx skills add hungv47/marketing-skills --skill copywriting
+npx skills add hungv47/research-skills --skill icp-research
+npx skills add hungv47/product-skills --skill ship
+npx skills add hungv47/meta-skills --skill review-chain
+```
+
+Cherry-pick multiple skills in a single call:
+
+```bash
+npx skills add hungv47/marketing-skills --skill copywriting humanize
+```
+
+List what's available in a stack without installing:
+
+```bash
+npx skills add hungv47/marketing-skills --list
+```
+
+### Target a specific editor
+
+Use `--agent` to install into one or more editors. Defaults to auto-detect in the current directory.
+
+```bash
+npx skills add hungv47/meta-skills --agent claude-code
+npx skills add hungv47/meta-skills --agent claude-code cursor
+```
+
+### Install globally
+
+Make a skill available in every project on your machine:
+
+```bash
+npx skills add hungv47/meta-skills -g
+```
+
+### Other operations
+
+```bash
+npx skills list                          # list installed skills
+npx skills update                        # update to latest versions
+npx skills remove                        # interactive remove by skill name
+npx skills find copywriting              # search the skills registry
+```
+
+Run `npx skills --help` for the full command reference.
+
 ## Full Pipeline
 
 <picture>
-  <img src="./assets/full-pipeline.svg" alt="All 26 skills end-to-end: 5 meta process wrappers, 7 research pipeline skills, 6 product skills (4 pipeline + 2 horizontal), 8 marketing skills (4 pipeline + 4 horizontal)" width="100%">
+  <img src="./assets/full-pipeline.svg" alt="End-to-end pipeline: meta process wrappers, research pipeline skills, product skills (pipeline + horizontal), marketing skills (pipeline + horizontal)" width="100%">
 </picture>
 
 **15 pipeline skills** run in sequence across three phases (Research → Product → Marketing). **6 horizontal skills** apply at any point within their stack. **5 meta skills** are domain-agnostic process wrappers that compose with any skill.
