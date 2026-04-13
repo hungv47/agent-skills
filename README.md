@@ -19,13 +19,19 @@ npx skills add hungv47/meta-skills
 
 ### Install a single skill
 
-Cherry-pick with `--skill`:
+Cherry-pick any skill with `--skill` (the examples below are illustrative — any skill in a stack works):
 
 ```bash
 npx skills add hungv47/marketing-skills --skill copywriting
 npx skills add hungv47/research-skills --skill icp-research
 npx skills add hungv47/product-skills --skill ship
 npx skills add hungv47/meta-skills --skill review-chain
+```
+
+Cherry-pick multiple skills in a single call:
+
+```bash
+npx skills add hungv47/marketing-skills --skill copywriting humanize
 ```
 
 List what's available in a stack without installing:
@@ -58,12 +64,6 @@ npx skills list                          # list installed skills
 npx skills update                        # update to latest versions
 npx skills remove                        # interactive remove by skill name
 npx skills find copywriting              # search the skills registry
-```
-
-You can also cherry-pick multiple skills in one call:
-
-```bash
-npx skills add hungv47/marketing-skills --skill copywriting humanize
 ```
 
 Run `npx skills --help` for the full command reference.
