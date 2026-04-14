@@ -164,6 +164,19 @@
       "tags": ["humanize", "voice-injection", "ai-pattern-removal", "compression"]
     },
     {
+      "id": "vn-tone",
+      "domain": "marketing",
+      "name": "VN Tone Polish",
+      "description": "Polishes translated Vietnamese into native register (báo chí, semi-casual, bro, or pop-marketing). Fixes pronoun drift, missing particles, literal idioms, corporate translationese, typography. Post-translation polish only.",
+      "path": "marketing-skills/vn-tone",
+      "agents": 3,
+      "budget": "standard",
+      "estimated_cost_usd": "$0.08-0.20",
+      "produces": ["mkt/content/[slug].vn-tone.md"],
+      "consumes": ["product-context.md", "mkt/content/[slug].humanized.md", "mkt/content/[slug].md"],
+      "tags": ["vietnamese-tone", "vn-polish", "localization-polish", "translation-artifact-removal", "vietnamese-register"]
+    },
+    {
       "id": "lp-optimization",
       "domain": "marketing",
       "name": "LP Optimization",
