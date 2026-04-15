@@ -74,7 +74,7 @@ Run `npx skills --help` for the full command reference.
   <img src="./assets/full-pipeline.svg" alt="End-to-end pipeline: meta process wrappers, research pipeline skills, product skills (pipeline + horizontal), marketing skills (pipeline + horizontal)" width="100%">
 </picture>
 
-**15 pipeline skills** run in sequence across three phases (Research → Product → Marketing). **6 horizontal skills** apply at any point within their stack. **5 meta skills** are domain-agnostic process wrappers that compose with any skill.
+**15 pipeline skills** run in sequence across three phases (Research → Product → Marketing). **7 horizontal skills** apply at any point within their stack. **5 meta skills** are domain-agnostic process wrappers that compose with any skill. 27 skills total.
 
 ## Skill Stacks
 
@@ -98,7 +98,7 @@ Run `npx skills --help` for the full command reference.
 
 ### Marketing — create, optimize, and measure marketing
 
-> [`hungv47/marketing-skills`](https://github.com/hungv47/marketing-skills) &middot; 8 skills
+> [`hungv47/marketing-skills`](https://github.com/hungv47/marketing-skills) &middot; 9 skills
 
 <picture>
   <img src="./assets/marketing.svg" alt="Marketing pipeline: brand-system → imc-plan → content-create → attribution, plus horizontal skills" width="100%">
@@ -114,6 +114,7 @@ Run `npx skills --help` for the full command reference.
 | `seo` | Technical audit, AI/AEO optimization, programmatic SEO, ASO | You want more organic traffic — search, AI answers, or app store visibility |
 | `attribution` | Maps marketing activities to business outcomes, evaluates channel ROI | You're spending on marketing and need to know what's actually working |
 | `humanize` | Strips AI patterns, injects brand voice, compresses for density | You have AI-generated text that sounds robotic and needs to read human |
+| `vn-tone` | Polishes translated Vietnamese into a native register (báo chí, semi-casual, bro, or pop-marketing) | You have Vietnamese copy that reads translated/robotic or needs register alignment |
 
 ### Product — design and build software
 
@@ -166,6 +167,7 @@ Not sure which skill to run? Find your situation:
 | "We need more organic traffic" | `/seo` |
 | "What marketing is working?" | `/attribution` |
 | "This reads like AI wrote it" | `/humanize` |
+| "Polish Vietnamese that sounds translated" | `/vn-tone` |
 | "Map the screens for this feature" | `/user-flow` |
 | "Design the technical system" | `/system-architecture` |
 | "This codebase needs cleanup" | `/code-cleanup` |
@@ -299,7 +301,8 @@ Skills pass data through markdown files in `.agents/`:
 | `mkt/imc-plan.md` | `imc-plan` | `content-create`, `copywriting`, `seo`, `attribution` |
 | `mkt/content/[slug].md` | `content-create` | `humanize`, `attribution` |
 | `mkt/content/[slug].copy.md` | `copywriting` | `content-create`, `humanize` |
-| `mkt/content/[slug].humanized.md` | `humanize` | `attribution` |
+| `mkt/content/[slug].humanized.md` | `humanize` | `attribution`, `vn-tone` |
+| `mkt/content/[slug].vn-tone.md` | `vn-tone` | — (terminal) |
 | `mkt/seo-[mode].md` | `seo` | `content-create`, `lp-optimization` |
 | `mkt/attribution.md` | `attribution` | — (terminal) |
 | `mkt/lp-optimization.md` | `lp-optimization` | — (terminal) |
@@ -328,7 +331,7 @@ SKILL.md (Orchestrator)
   └─ Critic Agent ────────────────────── PASS / FAIL (max 2 cycles)
 ```
 
-**~145 specialized agents** across domain skills. Meta-skills use additional patterns: **dynamic agent spawning** (`agent-room`, `review-chain`), **conversation-first discovery** (`discover`), and **utility** (`navigate`, `deploy-verify`).
+**~150 specialized agents** across domain skills. Meta-skills use additional patterns: **dynamic agent spawning** (`agent-room`, `review-chain`), **conversation-first discovery** (`discover`), and **utility** (`navigate`, `deploy-verify`).
 
 ## License
 
