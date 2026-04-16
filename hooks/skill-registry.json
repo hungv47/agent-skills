@@ -309,7 +309,11 @@
         "newsletter",
         "carousel",
         "write content for",
-        "social presence"
+        "social presence",
+        "create a post",
+        "make a post",
+        "draft a post",
+        "write a post"
       ],
       "allOf": [
         [
@@ -350,7 +354,10 @@
         "call to action",
         "write a headline",
         "hook line",
-        "write a cta"
+        "write a cta",
+        "craft copy",
+        "hero copy",
+        "ad copy"
       ],
       "allOf": [
         [
@@ -418,7 +425,10 @@
         "channel strategy",
         "content calendar",
         "growth motion",
-        "marketing strategy"
+        "marketing strategy",
+        "plan the marketing",
+        "plan a campaign",
+        "gtm strategy"
       ],
       "allOf": [
         [
@@ -540,8 +550,10 @@
         "code audit",
         "refactor this",
         "clean up the code",
+        "clean up code",
         "remove unused",
-        "ai slop in code"
+        "ai slop in code",
+        "cleanup the codebase"
       ],
       "allOf": [
         [
@@ -675,7 +687,10 @@
         "api reference",
         "setup guide",
         "runbook",
-        "document this"
+        "document this",
+        "write docs",
+        "create documentation",
+        "document the api"
       ],
       "allOf": [
         [

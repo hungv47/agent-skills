@@ -17,7 +17,7 @@
  * Output: JSON on stdout { hookSpecificOutput: { additionalContext } } or {}
  */
 
-import { readFileSync } from "node:fs";
+import { readFileSync, statSync, readdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -136,8 +136,33 @@ function matchPromptWithReason(normalizedPrompt, compiled) {
 // Load registry
 // ---------------------------------------------------------------------------
 
+function checkRegistryStaleness(registryPath) {
+  const root = join(__dirname, "..");
+  const skillDirs = ["research-skills", "marketing-skills", "product-skills", "meta-skills"];
+  let registryMtime;
+  try {
+    registryMtime = statSync(registryPath).mtimeMs;
+  } catch {
+    return; // Missing registry is handled by loadRegistry
+  }
+  for (const dir of skillDirs) {
+    let entries;
+    try { entries = readdirSync(join(root, dir)); } catch { continue; }
+    for (const entry of entries) {
+      try {
+        const skillMtime = statSync(join(root, dir, entry, "SKILL.md")).mtimeMs;
+        if (skillMtime > registryMtime) {
+          process.stderr.write(`[skill-router] Registry may be stale: ${dir}/${entry}/SKILL.md is newer. Run: node hooks/build-registry.mjs\n`);
+          return;
+        }
+      } catch { continue; }
+    }
+  }
+}
+
 function loadRegistry() {
   const registryPath = join(__dirname, "skill-registry.json");
+  checkRegistryStaleness(registryPath);
   let raw;
   try {
     raw = readFileSync(registryPath, "utf-8");

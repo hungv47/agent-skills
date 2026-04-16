@@ -156,7 +156,7 @@ function main() {
 
       // Validate: at least one phrase or allOf group
       if (signals.phrases.length === 0 && signals.allOf.length === 0) {
-        console.warn(`[build-registry] ${entry}: promptSignals has no phrases or allOf — skipping`);
+        console.warn(`[build-registry] WARNING: ${entry} has promptSignals: block but parsing yielded empty phrases and allOf. Check YAML indent (expect 2-space fields, 4-space list items). Skipping.`);
         continue;
       }
 
