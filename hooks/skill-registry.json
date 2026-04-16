@@ -1,0 +1,889 @@
+{
+  "version": 1,
+  "skills": {
+    "content-research": {
+      "phrases": [
+        "what content should",
+        "competitor ads",
+        "trending content",
+        "content gaps",
+        "ad library",
+        "viral content",
+        "what are they posting",
+        "what are competitors posting",
+        "what content are"
+      ],
+      "allOf": [
+        [
+          "content",
+          "research"
+        ],
+        [
+          "competitor",
+          "content"
+        ]
+      ],
+      "anyOf": [
+        "swipe file",
+        "trend",
+        "ad research",
+        "content intelligence",
+        "viral",
+        "competitor"
+      ],
+      "noneOf": [
+        "write content",
+        "create a post",
+        "draft an email"
+      ],
+      "minScore": 6
+    },
+    "experiment": {
+      "phrases": [
+        "a/b test",
+        "experiment design",
+        "sample size",
+        "hypothesis test",
+        "run an experiment",
+        "validate this"
+      ],
+      "allOf": [
+        [
+          "experiment",
+          "design"
+        ],
+        [
+          "test",
+          "hypothesis"
+        ]
+      ],
+      "anyOf": [
+        "experiment",
+        "ab test",
+        "sample",
+        "hypothesis",
+        "validate"
+      ],
+      "noneOf": [
+        "market research",
+        "competitor"
+      ],
+      "minScore": 6
+    },
+    "funnel-planner": {
+      "phrases": [
+        "funnel model",
+        "unit economics",
+        "growth targets",
+        "ltv cac",
+        "revenue target",
+        "how much traffic do we need"
+      ],
+      "allOf": [
+        [
+          "funnel",
+          "model"
+        ],
+        [
+          "growth",
+          "target"
+        ]
+      ],
+      "anyOf": [
+        "funnel",
+        "ltv",
+        "cac",
+        "conversion rate",
+        "revenue",
+        "traffic"
+      ],
+      "noneOf": [
+        "market size",
+        "competitor"
+      ],
+      "minScore": 6
+    },
+    "icp-research": {
+      "phrases": [
+        "customer profile",
+        "buyer persona",
+        "target audience",
+        "who is my customer",
+        "ideal customer",
+        "customer segment"
+      ],
+      "allOf": [
+        [
+          "audience",
+          "research"
+        ],
+        [
+          "customer",
+          "segment"
+        ]
+      ],
+      "anyOf": [
+        "persona",
+        "demographic",
+        "psychographic",
+        "jobs-to-be-done",
+        "jtbd",
+        "voc"
+      ],
+      "noneOf": [
+        "competitor analysis",
+        "market size",
+        "tam"
+      ],
+      "minScore": 6
+    },
+    "market-research": {
+      "phrases": [
+        "market research",
+        "competitive analysis",
+        "market size",
+        "tam sam som",
+        "competitor analysis",
+        "market landscape"
+      ],
+      "allOf": [
+        [
+          "market",
+          "landscape"
+        ],
+        [
+          "competitive",
+          "dynamics"
+        ]
+      ],
+      "anyOf": [
+        "competitor",
+        "market",
+        "whitespace",
+        "sizing",
+        "tam"
+      ],
+      "noneOf": [
+        "customer persona",
+        "buyer persona"
+      ],
+      "minScore": 6
+    },
+    "problem-analysis": {
+      "phrases": [
+        "root cause",
+        "why is",
+        "what went wrong",
+        "metric decline",
+        "diagnose the problem",
+        "what is causing"
+      ],
+      "allOf": [
+        [
+          "problem",
+          "diagnosis"
+        ],
+        [
+          "root",
+          "cause"
+        ]
+      ],
+      "anyOf": [
+        "hypothesis",
+        "logic tree",
+        "metric",
+        "decline",
+        "diagnose"
+      ],
+      "noneOf": [
+        "market size",
+        "competitor analysis"
+      ],
+      "minScore": 6
+    },
+    "solution-design": {
+      "phrases": [
+        "what should we build",
+        "prioritize initiatives",
+        "ice score",
+        "which solution",
+        "strategic options",
+        "rank the options"
+      ],
+      "allOf": [
+        [
+          "solution",
+          "prioritize"
+        ],
+        [
+          "initiative",
+          "rank"
+        ]
+      ],
+      "anyOf": [
+        "prioritize",
+        "ice",
+        "initiative",
+        "solution",
+        "trade-off"
+      ],
+      "noneOf": [
+        "market research",
+        "buyer persona"
+      ],
+      "minScore": 6
+    },
+    "attribution": {
+      "phrases": [
+        "channel roi",
+        "marketing attribution",
+        "which channel is working",
+        "cac by channel",
+        "marketing measurement"
+      ],
+      "allOf": [
+        [
+          "channel",
+          "roi"
+        ],
+        [
+          "marketing",
+          "measurement"
+        ]
+      ],
+      "anyOf": [
+        "attribution",
+        "roi",
+        "cac",
+        "channel",
+        "measurement",
+        "multi-touch"
+      ],
+      "noneOf": [
+        "campaign plan",
+        "content calendar"
+      ],
+      "minScore": 6
+    },
+    "brand-system": {
+      "phrases": [
+        "brand identity",
+        "brand voice",
+        "design system",
+        "brand guidelines",
+        "visual identity",
+        "brand book"
+      ],
+      "allOf": [
+        [
+          "brand",
+          "identity"
+        ],
+        [
+          "design",
+          "system"
+        ]
+      ],
+      "anyOf": [
+        "brand",
+        "voice",
+        "typography",
+        "color system",
+        "design tokens",
+        "logo"
+      ],
+      "noneOf": [
+        "landing page audit",
+        "conversion rate"
+      ],
+      "minScore": 6
+    },
+    "content-create": {
+      "phrases": [
+        "social media",
+        "social post",
+        "linkedin post",
+        "write a blog",
+        "email campaign",
+        "video script",
+        "newsletter",
+        "carousel",
+        "write content for",
+        "social presence"
+      ],
+      "allOf": [
+        [
+          "write",
+          "content"
+        ],
+        [
+          "create",
+          "post"
+        ],
+        [
+          "draft",
+          "email"
+        ]
+      ],
+      "anyOf": [
+        "social",
+        "blog",
+        "email",
+        "video",
+        "carousel",
+        "newsletter",
+        "post",
+        "thread"
+      ],
+      "noneOf": [
+        "seo audit",
+        "keyword research",
+        "brand identity"
+      ],
+      "minScore": 6
+    },
+    "copywriting": {
+      "phrases": [
+        "write copy",
+        "headline",
+        "tagline",
+        "call to action",
+        "write a headline",
+        "hook line",
+        "write a cta"
+      ],
+      "allOf": [
+        [
+          "write",
+          "copy"
+        ],
+        [
+          "craft",
+          "headline"
+        ]
+      ],
+      "anyOf": [
+        "copy",
+        "headline",
+        "cta",
+        "tagline",
+        "hook",
+        "persuasive"
+      ],
+      "noneOf": [
+        "social media post",
+        "blog post",
+        "email campaign",
+        "carousel"
+      ],
+      "minScore": 6
+    },
+    "humanize": {
+      "phrases": [
+        "sounds like ai",
+        "too robotic",
+        "humanize this",
+        "remove ai patterns",
+        "make it sound human",
+        "ai slop"
+      ],
+      "allOf": [
+        [
+          "ai",
+          "pattern"
+        ],
+        [
+          "sound",
+          "human"
+        ]
+      ],
+      "anyOf": [
+        "humanize",
+        "robotic",
+        "ai-sounding",
+        "compress",
+        "voice injection"
+      ],
+      "noneOf": [
+        "brand identity",
+        "design system"
+      ],
+      "minScore": 6
+    },
+    "imc-plan": {
+      "phrases": [
+        "marketing plan",
+        "campaign plan",
+        "go to market",
+        "channel strategy",
+        "content calendar",
+        "growth motion",
+        "marketing strategy"
+      ],
+      "allOf": [
+        [
+          "marketing",
+          "plan"
+        ],
+        [
+          "channel",
+          "strategy"
+        ]
+      ],
+      "anyOf": [
+        "campaign",
+        "channel",
+        "calendar",
+        "gtm",
+        "plg",
+        "slg"
+      ],
+      "noneOf": [
+        "write copy",
+        "headline",
+        "tagline"
+      ],
+      "minScore": 6
+    },
+    "lp-optimization": {
+      "phrases": [
+        "landing page",
+        "conversion rate optimization",
+        "page optimization",
+        "cro audit",
+        "landing page audit",
+        "optimize the landing page"
+      ],
+      "allOf": [
+        [
+          "landing",
+          "page"
+        ],
+        [
+          "conversion",
+          "audit"
+        ]
+      ],
+      "anyOf": [
+        "landing page",
+        "conversion",
+        "cro",
+        "bounce rate",
+        "above the fold"
+      ],
+      "noneOf": [
+        "write copy",
+        "brand identity"
+      ],
+      "minScore": 6
+    },
+    "seo": {
+      "phrases": [
+        "seo audit",
+        "keyword research",
+        "search ranking",
+        "search optimization",
+        "app store optimization",
+        "aso"
+      ],
+      "allOf": [
+        [
+          "seo",
+          "audit"
+        ],
+        [
+          "keyword",
+          "research"
+        ]
+      ],
+      "anyOf": [
+        "seo",
+        "keyword",
+        "ranking",
+        "backlink",
+        "search",
+        "aso",
+        "aeo"
+      ],
+      "noneOf": [
+        "landing page audit",
+        "cro"
+      ],
+      "minScore": 6
+    },
+    "vn-tone": {
+      "phrases": [
+        "vietnamese",
+        "tiếng việt",
+        "polish vietnamese",
+        "vn tone",
+        "dịch sang tiếng việt"
+      ],
+      "allOf": [
+        [
+          "vietnamese",
+          "tone"
+        ]
+      ],
+      "anyOf": [
+        "tiếng việt",
+        "bro tone",
+        "báo chí",
+        "localization"
+      ],
+      "noneOf": [],
+      "minScore": 6
+    },
+    "code-cleanup": {
+      "phrases": [
+        "dead code",
+        "code audit",
+        "refactor this",
+        "clean up the code",
+        "remove unused",
+        "ai slop in code"
+      ],
+      "allOf": [
+        [
+          "code",
+          "cleanup"
+        ],
+        [
+          "dead",
+          "code"
+        ]
+      ],
+      "anyOf": [
+        "refactor",
+        "cleanup",
+        "dead code",
+        "unused",
+        "bloat"
+      ],
+      "noneOf": [
+        "system design",
+        "write documentation"
+      ],
+      "minScore": 6
+    },
+    "deploy-verify": {
+      "phrases": [
+        "is it working",
+        "health check",
+        "verify the deploy",
+        "post deploy check",
+        "check production",
+        "is production healthy"
+      ],
+      "allOf": [
+        [
+          "verify",
+          "deploy"
+        ],
+        [
+          "health",
+          "check"
+        ]
+      ],
+      "anyOf": [
+        "deploy",
+        "verify",
+        "health",
+        "production",
+        "canary",
+        "post-deploy"
+      ],
+      "noneOf": [
+        "create pr",
+        "pull request"
+      ],
+      "minScore": 6
+    },
+    "ship": {
+      "phrases": [
+        "ship it",
+        "create a pr",
+        "pull request",
+        "push to main",
+        "ready to merge",
+        "open a pr",
+        "ready to ship",
+        "let us ship"
+      ],
+      "allOf": [
+        [
+          "create",
+          "pr"
+        ],
+        [
+          "pull",
+          "request"
+        ]
+      ],
+      "anyOf": [
+        "ship",
+        "pr",
+        "merge",
+        "push",
+        "release"
+      ],
+      "noneOf": [
+        "documentation",
+        "code cleanup",
+        "refactor"
+      ],
+      "minScore": 6
+    },
+    "system-architecture": {
+      "phrases": [
+        "system design",
+        "tech stack",
+        "database schema",
+        "api design",
+        "architecture design",
+        "infrastructure plan"
+      ],
+      "allOf": [
+        [
+          "system",
+          "architecture"
+        ],
+        [
+          "tech",
+          "stack"
+        ]
+      ],
+      "anyOf": [
+        "architecture",
+        "schema",
+        "api",
+        "database",
+        "infrastructure",
+        "deployment"
+      ],
+      "noneOf": [
+        "user flow",
+        "brand identity",
+        "wireframe"
+      ],
+      "minScore": 6
+    },
+    "technical-writer": {
+      "phrases": [
+        "write documentation",
+        "write a readme",
+        "api reference",
+        "setup guide",
+        "runbook",
+        "document this"
+      ],
+      "allOf": [
+        [
+          "write",
+          "documentation"
+        ],
+        [
+          "api",
+          "reference"
+        ]
+      ],
+      "anyOf": [
+        "documentation",
+        "readme",
+        "docs",
+        "guide",
+        "runbook",
+        "reference"
+      ],
+      "noneOf": [
+        "code cleanup",
+        "refactor",
+        "dead code"
+      ],
+      "minScore": 6
+    },
+    "user-flow": {
+      "phrases": [
+        "user flow",
+        "screen flow",
+        "journey map",
+        "ux flow",
+        "wireframe flow",
+        "map the screens"
+      ],
+      "allOf": [
+        [
+          "user",
+          "flow"
+        ],
+        [
+          "screen",
+          "map"
+        ]
+      ],
+      "anyOf": [
+        "flow",
+        "journey",
+        "wireframe",
+        "screen",
+        "ux",
+        "transition"
+      ],
+      "noneOf": [
+        "brand identity",
+        "api design",
+        "database schema"
+      ],
+      "minScore": 6
+    },
+    "agent-room": {
+      "phrases": [
+        "debate this",
+        "get perspectives",
+        "discuss this from multiple angles",
+        "pros and cons",
+        "multiple viewpoints"
+      ],
+      "allOf": [
+        [
+          "multiple",
+          "perspective"
+        ]
+      ],
+      "anyOf": [
+        "debate",
+        "discuss",
+        "perspective",
+        "consensus",
+        "viewpoint",
+        "pros",
+        "cons"
+      ],
+      "noneOf": [
+        "code review",
+        "quality check"
+      ],
+      "minScore": 6
+    },
+    "discover": {
+      "phrases": [
+        "what should we build",
+        "help me think through",
+        "i have an idea",
+        "scope this",
+        "what do we need",
+        "clarify requirements"
+      ],
+      "allOf": [
+        [
+          "scope",
+          "definition"
+        ],
+        [
+          "clarify",
+          "requirements"
+        ]
+      ],
+      "anyOf": [
+        "requirements",
+        "idea",
+        "scope",
+        "clarify",
+        "spec",
+        "preflight",
+        "assumptions"
+      ],
+      "noneOf": [
+        "market research",
+        "competitive analysis",
+        "competitor"
+      ],
+      "minScore": 6
+    },
+    "navigate": {
+      "phrases": [
+        "what skills should i use",
+        "which skill",
+        "where do i start",
+        "project status",
+        "what skills do we have"
+      ],
+      "allOf": [
+        [
+          "which",
+          "skill"
+        ]
+      ],
+      "anyOf": [
+        "navigate",
+        "skill",
+        "workflow",
+        "status"
+      ],
+      "noneOf": [],
+      "minScore": 6
+    },
+    "review-chain": {
+      "phrases": [
+        "review this",
+        "code review",
+        "fresh eyes",
+        "quality check",
+        "check my work",
+        "review my code",
+        "review the code"
+      ],
+      "allOf": [
+        [
+          "review",
+          "code"
+        ],
+        [
+          "quality",
+          "check"
+        ]
+      ],
+      "anyOf": [
+        "review",
+        "verify",
+        "quality",
+        "fresh eyes"
+      ],
+      "noneOf": [
+        "debate",
+        "discuss",
+        "perspectives"
+      ],
+      "minScore": 6
+    },
+    "task-breakdown": {
+      "phrases": [
+        "break this down",
+        "task list",
+        "acceptance criteria",
+        "sprint planning",
+        "work breakdown",
+        "decompose this"
+      ],
+      "allOf": [
+        [
+          "break",
+          "down",
+          "tasks"
+        ]
+      ],
+      "anyOf": [
+        "tasks",
+        "breakdown",
+        "acceptance criteria",
+        "sprint",
+        "dependencies"
+      ],
+      "noneOf": [
+        "code review",
+        "documentation"
+      ],
+      "minScore": 6
+    }
+  }
+}
