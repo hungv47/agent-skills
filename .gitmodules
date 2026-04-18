@@ -1,0 +1,12 @@
+[submodule "research-skills"]
+	path = research-skills
+	url = https://github.com/hungv47/research-skills.git
+[submodule "marketing-skills"]
+	path = marketing-skills
+	url = https://github.com/hungv47/marketing-skills.git
+[submodule "product-skills"]
+	path = product-skills
+	url = https://github.com/hungv47/product-skills.git
+[submodule "meta-skills"]
+	path = meta-skills
+	url = https://github.com/hungv47/meta-skills.git

@@ -1,24 +1,58 @@
 ## Repository Structure
 
-This root repo holds the README and shared docs. The skill repos live as sibling directories but are gitignored — each has its own independent git repo and remote:
+This root repo holds the README and shared docs, and tracks the skill repos as **git submodules**. Each submodule is an independent repo with its own history and remote:
 
 - `research-skills/` — market research, audience, strategy, and experimentation skills
 - `marketing-skills/` — brand, content creation, optimization, and measurement skills
 - `product-skills/` — UX design, architecture, cleanup, and documentation skills
 - `meta-skills/` — process-layer skills (scope, plan, analyze, verify, navigate)
 
+Remotes: `github.com/hungv47/<name>-skills.git`. Submodule pointers (pinned commits) are recorded in `.gitmodules` and the root tree.
+
 ## Git Operations
 
-- **Root repo**: only tracks README.md, CLAUDE.md, .gitignore, and any shared docs
-- **Skill repos**: each subdirectory has its own git history and remote — commit inside them directly
+- **Root repo**: tracks README.md, CLAUDE.md, .gitignore, shared docs, `.gitmodules`, and the submodule pointers.
+- **Submodules**: each is a full git repo. Commit inside it, then update the pointer in root.
 
-When changing skill code, operate inside the specific skill repo:
+### Cloning / initializing
 
 ```bash
-cd product-skills && git add ... && git commit ...
+git clone --recurse-submodules <root-url>
+# or, after a plain clone:
+git submodule update --init --recursive
 ```
 
-Never `git add` a skill directory from the root — they are gitignored intentionally.
+Submodules clone in a detached-HEAD state at the pinned commit. Before making changes in a submodule:
+
+```bash
+cd product-skills && git checkout main && git pull
+```
+
+### Making changes in a submodule (double-commit)
+
+```bash
+cd product-skills
+# edit files
+git add ... && git commit -m "..."
+git push                      # (1) push submodule commit first
+
+cd ..
+git add product-skills        # stages the new pointer
+git commit -m "Bump product-skills to <short-sha>"
+git push                      # (2) push root's updated pointer
+```
+
+Forgetting step (2) leaves the root pointing at a stale commit. Always verify `git status` in root after committing inside a submodule.
+
+### Pulling updates
+
+```bash
+git pull --recurse-submodules
+# or, after a plain pull:
+git submodule update --init --recursive
+```
+
+Plain `git submodule update` moves submodules back to the pinned commit (detached HEAD). Re-run `git checkout main` inside any submodule before resuming work.
 
 ## Skill Discovery
 
