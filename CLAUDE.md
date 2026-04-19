@@ -137,3 +137,14 @@ Three mechanisms persist knowledge across sessions — each serves a different p
 | Auto-memory | `MEMORY.md` | Cross-session user/project memory (preferences, context, references) |
 | Learned rules | `.agents/meta/learned-rules.md` | Agent behavior corrections from user feedback |
 | Experience docs | `.agents/experience/{domain}.md` | Domain-specific Q&A from discover sessions — reduces repeat questions |
+
+## Artifact Placement
+
+Default output location for skill artifacts is `.agents/` (with topic subfolders like `.agents/mkt/`, `.agents/design/`, `.agents/meta/`, `.agents/experience/`).
+
+**Exception — dedicated top-level folder** (e.g., `brand/`): only when the artifact passes all three tests:
+1. **Evergreen** — long-lived reference, not a pipeline step.
+2. **Has associated assets** — logos, fonts, diagrams, inspiration, or similar co-located files.
+3. **Human-first audience** — founders, marketers, designers, or external consumers read it directly, not just as input to another skill.
+
+Partial matches stay in `.agents/`. Current stack has exactly one pass: `brand-system` → `brand/` (co-locates with `brand/logo/`, `brand/font/`, `brand/inspiration/`). Do not create new top-level folders without clearing all three.
