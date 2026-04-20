@@ -16,7 +16,7 @@
       "agents": 7,
       "budget": "deep",
       "estimated_cost_usd": "$1-3",
-      "produces": ["product-context.md", "mkt/icp-research.md"],
+      "produces": ["product-context.md", "icp-research.md"],
       "consumes": [],
       "tags": ["audience-research", "voc-research", "persona-development", "customer-profiling"]
     },
@@ -95,7 +95,7 @@
       "budget": "deep",
       "estimated_cost_usd": "$1-3",
       "produces": ["mkt/content-research.md"],
-      "consumes": ["product-context.md", "mkt/icp-research.md"],
+      "consumes": ["product-context.md", "icp-research.md"],
       "tags": ["content-intelligence", "ad-research", "trend-detection", "audience-listening"]
     },
     {
@@ -121,7 +121,7 @@
       "budget": "deep",
       "estimated_cost_usd": "$1-3",
       "produces": ["mkt/content/[slug].copy.md"],
-      "consumes": ["product-context.md", "mkt/icp-research.md", "mkt/imc-plan.md", "mkt/content-research.md"],
+      "consumes": ["product-context.md", "icp-research.md", "mkt/imc-plan.md", "mkt/content-research.md"],
       "tags": ["write-copy", "evaluate-copy", "headline", "cta", "tagline"]
     },
     {
@@ -134,7 +134,7 @@
       "budget": "deep",
       "estimated_cost_usd": "$1-3",
       "produces": ["mkt/content/[slug].md"],
-      "consumes": ["product-context.md", "mkt/icp-research.md", "mkt/imc-plan.md", "mkt/content-research.md"],
+      "consumes": ["product-context.md", "icp-research.md", "mkt/imc-plan.md", "mkt/content-research.md"],
       "tags": ["content-asset", "social-post", "email", "blog", "video-script"]
     },
     {
@@ -147,7 +147,7 @@
       "budget": "deep",
       "estimated_cost_usd": "$1-3",
       "produces": ["mkt/imc-plan.md"],
-      "consumes": ["product-context.md", "mkt/icp-research.md", "mkt/content-research.md", "solution-design.md"],
+      "consumes": ["product-context.md", "icp-research.md", "mkt/content-research.md", "solution-design.md"],
       "tags": ["campaign-planning", "channel-strategy", "content-calendar", "go-to-market"]
     },
     {
@@ -186,7 +186,7 @@
       "budget": "deep",
       "estimated_cost_usd": "$1-3",
       "produces": ["mkt/lp-optimization.md"],
-      "consumes": ["product-context.md", "mkt/icp-research.md"],
+      "consumes": ["product-context.md", "icp-research.md"],
       "tags": ["conversion-audit", "landing-page-audit", "page-optimization", "cro"]
     },
     {
@@ -199,7 +199,7 @@
       "budget": "deep",
       "estimated_cost_usd": "$2-5",
       "produces": ["mkt/seo-[mode].md"],
-      "consumes": ["product-context.md", "mkt/icp-research.md", "mkt/imc-plan.md"],
+      "consumes": ["product-context.md", "icp-research.md", "mkt/imc-plan.md"],
       "tags": ["seo-audit", "ai-seo", "programmatic-seo", "keyword-research", "aeo"]
     },
     {

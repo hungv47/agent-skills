@@ -129,7 +129,7 @@ Run `npx skills --help` for the full command reference.
 | `user-flow` | Maps screens, decisions, transitions, edge cases, and error states | You're designing a feature and need to think through every screen and path |
 | `system-architecture` | Technical blueprints — tech stack, database schema, API design, file structure, deployment, security review (STRIDE + OWASP + LLM security), dependency classification | You know what to build and need to decide *how* — the technical design |
 | `code-cleanup` | Structural audit, AI slop removal (code-level + frontend/visual), dead code, unused assets, refactoring | Your codebase has accumulated cruft and needs a quality pass |
-| `technical-writer` | READMEs, API references, setup guides, runbooks from existing code. Ship log mode writes product context to `.agents/product-context.md`. Sync mode for post-change doc updates | You have a codebase and need documentation generated or updated after changes |
+| `technical-writer` | READMEs, API references, setup guides, runbooks from existing code. Ship log mode writes product context to `research/product-context.md`. Sync mode for post-change doc updates | You have a codebase and need documentation generated or updated after changes |
 | `ship` | Automated pre-merge pipeline — runs tests, checks review gate, organizes commits, creates PR | You've built and reviewed something and need to ship it cleanly |
 | `deploy-verify` | Post-deploy health check — page load, console errors, critical paths, response times | You just deployed and want to verify production is healthy |
 
@@ -217,22 +217,22 @@ Each step builds on context from previous steps — through conversation or save
 
 ```
 /icp-research "B2B project management SaaS for agencies"
-  └─ writes .agents/product-context.md (personas, pain points, JTBD)
-  └─ writes .agents/mkt/icp-research.md (full audience analysis)
+  └─ writes research/product-context.md (personas, pain points, JTBD)
+  └─ writes research/icp-research.md (full audience analysis)
 
 /content-research "project management content landscape"
-  ├─ reads .agents/product-context.md (audience context)
-  ├─ reads .agents/mkt/icp-research.md (persona data)
+  ├─ reads research/product-context.md (audience context)
+  ├─ reads research/icp-research.md (persona data)
   └─ writes .agents/mkt/content-research.md (competitor ads, trending topics, content gaps)
 
 /imc-plan "Q3 launch campaign"
-  ├─ reads .agents/product-context.md (audience)
-  ├─ reads .agents/mkt/icp-research.md (personas)
+  ├─ reads research/product-context.md (audience)
+  ├─ reads research/icp-research.md (personas)
   ├─ reads .agents/mkt/content-research.md (content intelligence)
   └─ writes .agents/mkt/imc-plan.md (channels, calendar, budget)
 
 /content-create "LinkedIn carousel about agency time tracking"
-  ├─ reads .agents/product-context.md (voice, audience language)
+  ├─ reads research/product-context.md (voice, audience language)
   ├─ reads .agents/mkt/imc-plan.md (channel strategy, messaging pillars)
   └─ writes .agents/mkt/content/agency-time-tracking.md (platform-native carousel)
 ```
@@ -253,10 +253,10 @@ Each downstream skill produces richer output because it inherits upstream contex
 /system-architecture "team dashboard"
   ├─ reads .agents/spec.md (requirements)
   ├─ reads .agents/product/flow/*.md (every flow file; screens and surface matrix inform API design)
-  └─ writes .agents/system-architecture.md (stack, schema, API, deployment)
+  └─ writes architecture/system-architecture.md (stack, schema, API, deployment)
 
 /task-breakdown
-  ├─ reads .agents/system-architecture.md (what to build)
+  ├─ reads architecture/system-architecture.md (what to build)
   ├─ reads .agents/product/flow/*.md (UX requirements per task across every flow)
   └─ writes .agents/tasks.md (ordered tasks with acceptance criteria)
 

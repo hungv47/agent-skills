@@ -140,11 +140,19 @@ Three mechanisms persist knowledge across sessions — each serves a different p
 
 ## Artifact Placement
 
-Default output location for skill artifacts is `.agents/` (with topic subfolders like `.agents/mkt/`, `.agents/design/`, `.agents/meta/`, `.agents/experience/`).
+Default output location for skill artifacts is `.agents/` (with topic subfolders like `.agents/mkt/`, `.agents/product/`, `.agents/meta/`, `.agents/experience/`).
 
-**Exception — dedicated top-level folder** (e.g., `brand/`): only when the artifact passes all three tests:
-1. **Evergreen** — long-lived reference, not a pipeline step.
-2. **Has associated assets** — logos, fonts, diagrams, inspiration, or similar co-located files.
-3. **Human-first audience** — founders, marketers, designers, or external consumers read it directly, not just as input to another skill.
+**Exception — dedicated top-level folder**: only when the artifact is a **canonical source of truth**, not a pipeline step. The binding test:
 
-Partial matches stay in `.agents/`. Current stack has exactly one pass: `brand-system` → `brand/` (co-locates with `brand/logo/`, `brand/font/`, `brand/inspiration/`). Do not create new top-level folders without clearing all three.
+1. **Canonical** — the team's authoritative record for a domain (identity, system, audience)
+2. **Updated in place by humans** — amended over time as truth evolves, not regenerated wholesale by re-running the skill
+3. **Compound value** — future work keeps referencing it; consumed across sessions, not once-and-done
+
+Pipeline outputs, audits, snapshots, and one-shot reports stay in `.agents/` even if humans read them. The test isn't "is a human reading this?" — it's "does the team own this file and keep returning to it?"
+
+Current top-level folders (all three criteria must pass):
+- `brand/` — brand identity of record (from brand-system). Already co-locates `brand/logo/`, `brand/font/`, `brand/inspiration/`.
+- `architecture/` — system blueprint of record (from system-architecture). Intended to co-locate schemas, ADRs, and diagrams as they accumulate.
+- `research/` — audience and market of record (from icp-research, market-research). Holds `product-context.md`, `icp-research.md`, `market-research.md`; intended to co-locate interview transcripts, survey data, and competitor research as they accumulate.
+
+Do not add new top-level folders without clearing all three criteria. Folder sprawl is worse than consistent placement.
