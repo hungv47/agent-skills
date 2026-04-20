@@ -248,16 +248,16 @@ Each downstream skill produces richer output because it inherits upstream contex
 
 /user-flow "team dashboard"
   ├─ reads .agents/spec.md (if saved) or conversation context
-  └─ writes .agents/design/user-flow.md (screens, transitions, edge states)
+  └─ writes .agents/product/flow/team-dashboard.md (screens, transitions, platform-surface matrix, edge states)
 
 /system-architecture "team dashboard"
   ├─ reads .agents/spec.md (requirements)
-  ├─ reads .agents/design/user-flow.md (screens inform API design)
+  ├─ reads .agents/product/flow/*.md (every flow file; screens and surface matrix inform API design)
   └─ writes .agents/system-architecture.md (stack, schema, API, deployment)
 
 /task-breakdown
   ├─ reads .agents/system-architecture.md (what to build)
-  ├─ reads .agents/design/user-flow.md (UX requirements per task)
+  ├─ reads .agents/product/flow/*.md (UX requirements per task across every flow)
   └─ writes .agents/tasks.md (ordered tasks with acceptance criteria)
 
 (build tasks) → /review-chain → /ship → /deploy-verify
@@ -306,7 +306,7 @@ Skills pass data through markdown files in `.agents/`:
 | `mkt/seo-[mode].md` | `seo` | `content-create`, `lp-optimization` |
 | `mkt/attribution.md` | `attribution` | — (terminal) |
 | `mkt/lp-optimization.md` | `lp-optimization` | — (terminal) |
-| `design/user-flow.md` | `user-flow` | `system-architecture`, `task-breakdown` |
+| `product/flow/<flow-name>.md` + `product/flow/index.md` | `user-flow` | `system-architecture`, `task-breakdown` |
 | `spec.md` | `discover` (optional) | `system-architecture`, `task-breakdown` |
 | `system-architecture.md` | `system-architecture` | `task-breakdown` |
 | `tasks.md` | `task-breakdown` | Task execution, `ship` |

@@ -219,14 +219,14 @@
       "id": "user-flow",
       "domain": "product",
       "name": "User Flow",
-      "description": "Maps multi-step in-product flows — screens, decisions, transitions, edge cases, error states.",
+      "description": "Maps multi-step in-product flows — screens, decisions, transitions, platform-native touchpoints (dock, menu bar, widgets, notifications, Live Activity, Dynamic Island, etc.), edge cases, error states. One file per flow.",
       "path": "product-skills/user-flow",
-      "agents": 5,
+      "agents": 6,
       "budget": "standard",
-      "estimated_cost_usd": "$0.15-0.40",
-      "produces": ["design/user-flow.md"],
+      "estimated_cost_usd": "$0.20-0.50",
+      "produces": ["product/flow/<flow-name>.md", "product/flow/index.md"],
       "consumes": ["product-context.md", "brand/DESIGN.md"],
-      "tags": ["user-flow", "screen-mapping", "ux-flow", "journey-mapping"]
+      "tags": ["user-flow", "screen-mapping", "ux-flow", "journey-mapping", "platform-touchpoints", "multi-platform"]
     },
     {
       "id": "system-architecture",
@@ -238,7 +238,7 @@
       "budget": "deep",
       "estimated_cost_usd": "$1-3",
       "produces": ["system-architecture.md"],
-      "consumes": ["product-context.md", "spec.md", "solution-design.md", "design/user-flow.md"],
+      "consumes": ["product-context.md", "spec.md", "solution-design.md", "product/flow/*.md"],
       "tags": ["tech-stack", "database-schema", "api-design", "system-design"]
     },
     {
@@ -303,7 +303,7 @@
       "budget": "fast",
       "estimated_cost_usd": "$0.03-0.10",
       "produces": ["spec.md"],
-      "consumes": ["product-context.md", "design/user-flow.md"],
+      "consumes": ["product-context.md", "product/flow/*.md"],
       "tags": ["requirements", "interview", "spec-writing", "scope-definition"]
     },
     {
@@ -330,7 +330,7 @@
       "budget": "standard",
       "estimated_cost_usd": "$0.15-0.50",
       "produces": ["tasks.md"],
-      "consumes": ["system-architecture.md", "spec.md", "design/user-flow.md"],
+      "consumes": ["system-architecture.md", "spec.md", "product/flow/*.md"],
       "tags": ["task-decomposition", "dependency-mapping", "acceptance-criteria"]
     },
     {
