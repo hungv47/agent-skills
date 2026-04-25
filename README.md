@@ -68,6 +68,22 @@ npx skills find copywriting              # search the skills registry
 
 Run `npx skills --help` for the full command reference.
 
+### Alternative: Claude Code plugin marketplace
+
+For Claude Code users who prefer the native plugin system. Install all four packs via marketplace:
+
+```
+/plugin marketplace add hungv47/agent-skills
+/plugin install research-skills@agent-skills
+/plugin install marketing-skills@agent-skills
+/plugin install product-skills@agent-skills
+/plugin install meta-skills@agent-skills
+```
+
+After install, skills are namespaced — call them as `/research-skills:icp-research`, `/marketing-skills:copywriting`, `/product-skills:ship`, `/meta-skills:discover`, etc. Auto-invocation by Claude works the same as standalone skills.
+
+**`npx skills` is the recommended path for most users** — it's editor-agnostic (Claude Code, Cursor, Codex, Windsurf, Gemini CLI, VS Code), supports per-skill cherry-pick (`--skill <name>`), and skills are callable without a namespace prefix. The plugin marketplace is Claude Code only and namespace-scoped, useful mainly if you discover the stack through Claude Code's `/plugin marketplace` browser.
+
 ## Full Pipeline
 
 <picture>
