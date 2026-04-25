@@ -6,9 +6,30 @@
   },
   "metadata": {
     "description": "Multi-agent orchestration skills for research, marketing, product, and meta workflows. Each plugin uses critic-gated agent pipelines with quantitative rubrics.",
-    "version": "1.0.0"
+    "version": "1.1.0"
   },
   "plugins": [
+    {
+      "name": "research-skills",
+      "source": "./research-skills",
+      "description": "Market research, audience, strategy, and experimentation skills.",
+      "category": "research",
+      "tags": ["icp", "market-sizing", "problem-diagnosis", "experiments", "content-research"]
+    },
+    {
+      "name": "marketing-skills",
+      "source": "./marketing-skills",
+      "description": "Brand, content creation, optimization, and measurement skills.",
+      "category": "marketing",
+      "tags": ["brand", "copywriting", "content", "seo", "attribution", "cold-outreach"]
+    },
+    {
+      "name": "product-skills",
+      "source": "./product-skills",
+      "description": "UX design, architecture, cleanup, and documentation skills.",
+      "category": "product",
+      "tags": ["user-flow", "architecture", "code-cleanup", "ship", "deploy-verify"]
+    },
     {
       "name": "meta-skills",
       "source": "./meta-skills",
