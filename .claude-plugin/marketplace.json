@@ -1,0 +1,20 @@
+{
+  "name": "agent-skills",
+  "owner": {
+    "name": "hungv47",
+    "url": "https://github.com/hungv47"
+  },
+  "metadata": {
+    "description": "Multi-agent orchestration skills for research, marketing, product, and meta workflows. Each plugin uses critic-gated agent pipelines with quantitative rubrics.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "meta-skills",
+      "source": "./meta-skills",
+      "description": "Process-layer skills — discover, navigate, agent-room, task-breakdown, review-chain.",
+      "category": "orchestration",
+      "tags": ["scoping", "planning", "debate", "review", "multi-agent"]
+    }
+  ]
+}
