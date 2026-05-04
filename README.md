@@ -199,32 +199,9 @@ Not sure which skill to run? Find your situation:
 | "Debate this decision" | `/agents-panel` |
 | "Verify this output" | `/fresh-eyes` |
 
-## Example: Idea to Shipped Product
-
-End-to-end workflow:
-
-```
- 1. /icp-research        → understand your audience
- 2. /market-research      → map the competitive landscape
- 3. /diagnose     → diagnose the core problem
- 4. /prioritize      → prioritize what to build
- 5. /funnel-planner       → set numeric targets
- 6. /brand-system         → define visual identity
- 7. /user-flow            → map the screens
- 8. /discover             → conversational alignment (saves spec if needed)
- 9. /system-architecture  → design the technical blueprint
-10. /task-breakdown       → create buildable tasks
-11. (execute)             → build the tasks
-12. /fresh-eyes         → independent quality check
-13. /copywriting          → write headlines, hooks, CTAs
-14. /lp-brief             → brief the launch landing page
-15. /design-brief         → brief per-asset creative for the launch
-16. /lp-optimization      → audit the page post-launch
-```
-
-Each step builds on context from previous steps — through conversation or saved artifacts.
-
 ## Worked Examples: Artifact Flow in Practice
+
+Real workflows are 3-6 skills, not 16. Each example below is a chain users actually run end-to-end in one session.
 
 ### Example 1: Research → Marketing Pipeline
 
@@ -283,6 +260,64 @@ Each downstream skill produces richer output because it inherits upstream contex
   ├─ spawns 3 agents (Architect, Pragmatist, Critic)
   ├─ 3 rounds of structured debate
   └─ writes .agents/meta/agents-panel-report.md (consensus, splits, recommendation)
+```
+
+### Example 4: Diagnose a Declining Metric
+
+```
+/diagnose "checkout conversion dropped 30% over the last 6 weeks"
+  ├─ reads research/product-context.md (audience baseline)
+  ├─ Layer 1 parallel: tree-builder + external-check
+  ├─ Layer 2 sequential: hypothesis → data-mapper → verdict → critic
+  └─ writes .agents/diagnose.md (root cause + evidence + ranked hypotheses)
+
+/prioritize "checkout fixes from diagnose output"
+  ├─ reads .agents/diagnose.md (which causes to address)
+  ├─ reads research/product-context.md (audience constraints)
+  └─ writes .agents/prioritize.md (ICE-scored fix list with cut line)
+
+/funnel-planner "set checkout recovery targets"
+  ├─ reads .agents/prioritize.md (initiatives → metrics)
+  └─ writes .agents/targets.md (numeric targets for traffic, CR, revenue)
+```
+
+### Example 5: Audit and Rewrite a Landing Page
+
+```
+/lp-optimization https://example.com/pricing
+  ├─ reads research/product-context.md (audience pain language)
+  ├─ Layer 1 parallel: hero-audit + trust-audit + cta-audit + ux-audit
+  └─ writes .agents/mkt/lp-optimization.md (specific issues + prioritization)
+
+/lp-brief "/pricing redesign"
+  ├─ reads .agents/mkt/lp-optimization.md (what's broken)
+  ├─ reads brand/BRAND.md + brand/DESIGN.md (visual + voice)
+  └─ writes .agents/mkt/lp-brief/pricing/brief.md + asset-slots/*.prompt.md
+
+/design-brief "hero illustration for pricing (slot: hero-image)"
+  ├─ reads brand/DESIGN.md + .agents/mkt/lp-brief/pricing/asset-slots/hero-image.md
+  └─ writes .agents/mkt/design-briefs/pricing-hero.md (concept + image-gen prompt)
+
+/copywriting "rate the hero copy candidates from the brief"
+  ├─ reads .agents/mkt/lp-brief/pricing/brief.md (copy candidates inline)
+  └─ writes .agents/mkt/content/pricing-hero.copy.md (alternatives + rationale)
+```
+
+### Example 6: Write a Cold Outbound Sequence
+
+```
+/icp-research "founders of seed-stage B2B AI startups"
+  └─ writes research/product-context.md + research/icp-research.md (audience, signals, voice)
+
+/cold-outreach "first-touch email to founders of seed AI startups, channel: email"
+  ├─ reads research/product-context.md + research/icp-research.md (audience signals)
+  ├─ Layer 1: signal-analyst → strategist + proof-selector in parallel
+  ├─ Layer 2: composer → voice-auditor → critic → terminal humanize
+  └─ writes .agents/mkt/cold-outreach/founder-touch1.md + .rationale.md + .critic-score.md
+
+/cold-outreach "reply to: <prospect's response asking about pricing>"
+  ├─ reads .agents/mkt/cold-outreach/founder-touch1.md (prior touch context)
+  └─ writes .agents/mkt/cold-outreach/founder-reply1.md (reply + rationale + score)
 ```
 
 ## How Skills Communicate
