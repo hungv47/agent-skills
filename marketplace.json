@@ -56,16 +56,16 @@
       ]
     },
     {
-      "id": "problem-analysis",
+      "id": "diagnose",
       "domain": "research",
       "name": "Problem Analysis",
       "description": "Structured diagnosis \u2014 logic trees, testable hypotheses, root causes with evidence.",
-      "path": "research-skills/problem-analysis",
+      "path": "research-skills/diagnose",
       "agents": 6,
       "budget": "deep",
       "estimated_cost_usd": "$1-3",
       "produces": [
-        "problem-analysis.md"
+        "diagnose.md"
       ],
       "consumes": [
         "product-context.md"
@@ -78,21 +78,21 @@
       ]
     },
     {
-      "id": "solution-design",
+      "id": "prioritize",
       "domain": "research",
       "name": "Solution Design",
       "description": "Brainstorms and prioritizes strategic solutions \u2014 generates options, scores trade-offs, recommends a path.",
-      "path": "research-skills/solution-design",
+      "path": "research-skills/prioritize",
       "agents": 7,
       "budget": "deep",
       "estimated_cost_usd": "$1-3",
       "produces": [
-        "solution-design.md"
+        "prioritize.md"
       ],
       "consumes": [
         "product-context.md",
         "market-research.md",
-        "problem-analysis.md"
+        "diagnose.md"
       ],
       "tags": [
         "prioritization",
@@ -115,7 +115,7 @@
       ],
       "consumes": [
         "product-context.md",
-        "solution-design.md"
+        "prioritize.md"
       ],
       "tags": [
         "funnel-modeling",
@@ -162,7 +162,7 @@
       "consumes": [
         "product-context.md",
         "icp-research.md",
-        "mkt/imc-plan.md",
+        "mkt/campaign-plan.md",
         "mkt/content-research.md"
       ],
       "tags": [
@@ -174,22 +174,22 @@
       ]
     },
     {
-      "id": "imc-plan",
+      "id": "campaign-plan",
       "domain": "marketing",
       "name": "IMC Plan",
       "description": "Creates integrated marketing plans \u2014 channel strategy, positioning, content calendar, budget allocation, GTM timelines.",
-      "path": "marketing-skills/imc-plan",
+      "path": "marketing-skills/campaign-plan",
       "agents": 6,
       "budget": "deep",
       "estimated_cost_usd": "$1-3",
       "produces": [
-        "mkt/imc-plan.md"
+        "mkt/campaign-plan.md"
       ],
       "consumes": [
         "product-context.md",
         "icp-research.md",
         "mkt/content-research.md",
-        "solution-design.md"
+        "prioritize.md"
       ],
       "tags": [
         "campaign-planning",
@@ -284,7 +284,7 @@
       "consumes": [
         "product-context.md",
         "icp-research.md",
-        "mkt/imc-plan.md"
+        "mkt/campaign-plan.md"
       ],
       "tags": [
         "seo-audit",
@@ -312,7 +312,7 @@
         "icp-research.md",
         "brand/BRAND.md",
         "brand/DESIGN.md",
-        "mkt/imc-plan.md",
+        "mkt/campaign-plan.md",
         "mkt/lp-optimization.md"
       ],
       "tags": [
@@ -418,7 +418,7 @@
       "consumes": [
         "product-context.md",
         "spec.md",
-        "solution-design.md",
+        "prioritize.md",
         "product/flow/*.md"
       ],
       "tags": [
@@ -472,11 +472,11 @@
       ]
     },
     {
-      "id": "technical-writer",
+      "id": "docs-writing",
       "domain": "product",
       "name": "Technical Writer",
       "description": "Generates documentation \u2014 READMEs, API references, setup guides, runbooks, ship logs.",
-      "path": "product-skills/technical-writer",
+      "path": "product-skills/docs-writing",
       "agents": 6,
       "budget": "standard",
       "estimated_cost_usd": "$0.15-0.40",
@@ -518,17 +518,17 @@
       ]
     },
     {
-      "id": "agent-room",
+      "id": "agents-panel",
       "domain": "meta",
       "name": "Agent Room",
       "description": "Multi-agent discussion rooms \u2014 debate (N agents argue in rounds) or poll (N agents independently analyze, aggregate).",
-      "path": "meta-skills/agent-room",
+      "path": "meta-skills/agents-panel",
       "agents": 3,
       "agents_max": 10,
       "budget": "standard",
       "estimated_cost_usd": "$0.15-0.50",
       "produces": [
-        "meta/agent-room-report.md"
+        "meta/agents-panel-report.md"
       ],
       "consumes": [],
       "tags": [
@@ -562,16 +562,16 @@
       ]
     },
     {
-      "id": "review-chain",
+      "id": "fresh-eyes",
       "domain": "meta",
       "name": "Review Chain",
       "description": "Post-implementation fresh-eyes review. Chain: Implement \u2192 Review (independent) \u2192 Resolve. Max 2 rounds.",
-      "path": "meta-skills/review-chain",
+      "path": "meta-skills/fresh-eyes",
       "agents": 2,
       "budget": "standard",
       "estimated_cost_usd": "$0.15-0.50",
       "produces": [
-        "meta/review-chain-report.md"
+        "meta/fresh-eyes-report.md"
       ],
       "consumes": [],
       "tags": [

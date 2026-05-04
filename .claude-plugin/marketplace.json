@@ -14,7 +14,7 @@
       "source": "./research-skills",
       "description": "Market research, audience, and strategy skills.",
       "category": "research",
-      "tags": ["icp", "market-sizing", "problem-diagnosis", "solution-design", "funnel-planning"]
+      "tags": ["icp", "market-sizing", "problem-diagnosis", "prioritize", "funnel-planning"]
     },
     {
       "name": "marketing-skills",
@@ -28,12 +28,12 @@
       "source": "./product-skills",
       "description": "UX design, architecture, cleanup, and documentation skills.",
       "category": "product",
-      "tags": ["user-flow", "architecture", "code-cleanup", "technical-writer"]
+      "tags": ["user-flow", "architecture", "code-cleanup", "docs-writing"]
     },
     {
       "name": "meta-skills",
       "source": "./meta-skills",
-      "description": "Process-layer skills — discover, agent-room, task-breakdown, review-chain.",
+      "description": "Process-layer skills — discover, agents-panel, task-breakdown, fresh-eyes.",
       "category": "orchestration",
       "tags": ["scoping", "planning", "debate", "review", "multi-agent"]
     }

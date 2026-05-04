@@ -25,7 +25,7 @@ Cherry-pick any skill with `--skill` (the examples below are illustrative — an
 npx skills add hungv47/marketing-skills --skill copywriting
 npx skills add hungv47/research-skills --skill icp-research
 npx skills add hungv47/product-skills --skill system-architecture
-npx skills add hungv47/meta-skills --skill review-chain
+npx skills add hungv47/meta-skills --skill fresh-eyes
 ```
 
 Cherry-pick multiple skills in a single call:
@@ -97,15 +97,15 @@ End-to-end pipeline: meta process wrappers compose with research pipeline skills
 > [`hungv47/research-skills`](https://github.com/hungv47/research-skills) &middot; 5 skills
 
 ```
-icp-research → market-research + problem-analysis → solution-design → funnel-planner
+icp-research → market-research + diagnose → prioritize → funnel-planner
 ```
 
 | Skill | What it does | Use when... |
 |-------|-------------|-------------|
 | `icp-research` | Builds ideal customer profiles — demographics, pain points, jobs-to-be-done, segmentation | You're entering a new market, launching a product, or need to understand who you're building for |
 | `market-research` | Maps competitive landscape, TAM/SAM/SOM sizing, whitespace opportunities | You need to size an opportunity, understand competitors, or find market gaps |
-| `problem-analysis` | Structured diagnosis — logic trees, hypotheses, root cause analysis | A metric dropped, something broke, or you need to figure out *why* before jumping to solutions |
-| `solution-design` | Generates strategic options, scores trade-offs with ICE, recommends a path | The problem is clear and you need to decide *what* to build or pursue |
+| `diagnose` | Structured diagnosis — logic trees, hypotheses, root cause analysis | A metric dropped, something broke, or you need to figure out *why* before jumping to solutions |
+| `prioritize` | Generates strategic options, scores trade-offs with ICE, recommends a path | The problem is clear and you need to decide *what* to build or pursue |
 | `funnel-planner` | Backward funnel modeling — revenue goals to traffic, conversions, unit economics | You need numeric targets: "how much traffic do we need to hit $X ARR?" |
 
 ### Marketing — create, optimize, and measure marketing
@@ -115,7 +115,7 @@ icp-research → market-research + problem-analysis → solution-design → funn
 ```
 brand-system
   ↓
-imc-plan
+campaign-plan
   ↓
   ├─ lp-brief (per page)  → design-brief (per asset slot)
   ├─ seo (per mode)
@@ -128,7 +128,7 @@ Horizontal: copywriting, humanize, vn-tone — invoked at any stage.
 | Skill | What it does | Use when... |
 |-------|-------------|-------------|
 | `brand-system` | Brand identity — color palettes, typography, design tokens, voice, visual language | You need a visual identity system before creating any marketing materials |
-| `imc-plan` | Channel strategy, positioning, content calendar, budget allocation, GTM timelines | You're planning a campaign or go-to-market and need to decide where, when, and how much |
+| `campaign-plan` | Channel strategy, positioning, content calendar, budget allocation, GTM timelines | You're planning a campaign or go-to-market and need to decide where, when, and how much |
 | `copywriting` | Headlines, hooks, CTAs, taglines, full-page section copy with scoring | You need persuasive copy for any surface — landing pages, ads, emails, product UI |
 | `lp-optimization` | Conversion audit on a live page — hero, CTA, social proof, objection handling | You have a landing page and want to improve its conversion rate without a redesign |
 | `lp-brief` | Campaign-grade redesign brief — hypothesis, architecture, per-section spec, asset slots, hand-off prompts | You're redesigning a landing page and need a brief precise enough for a designer or AI tool to execute |
@@ -143,7 +143,7 @@ Horizontal: copywriting, humanize, vn-tone — invoked at any stage.
 > [`hungv47/product-skills`](https://github.com/hungv47/product-skills) &middot; 4 skills
 
 <picture>
-  <img src="./assets/product.svg" alt="Product pipeline: user-flow → system-architecture, plus horizontal code-cleanup and technical-writer" width="100%">
+  <img src="./assets/product.svg" alt="Product pipeline: user-flow → system-architecture, plus horizontal code-cleanup and docs-writing" width="100%">
 </picture>
 
 | Skill | What it does | Use when... |
@@ -151,7 +151,7 @@ Horizontal: copywriting, humanize, vn-tone — invoked at any stage.
 | `user-flow` | Maps screens, decisions, transitions, edge cases, and error states | You're designing a feature and need to think through every screen and path |
 | `system-architecture` | Technical blueprints — tech stack, database schema, API design, file structure, deployment, security review (STRIDE + OWASP + LLM security), dependency classification | You know what to build and need to decide *how* — the technical design |
 | `code-cleanup` | Structural audit, AI slop removal (code-level + frontend/visual), dead code, unused assets, refactoring | Your codebase has accumulated cruft and needs a quality pass |
-| `technical-writer` | READMEs, API references, setup guides, runbooks from existing code. Ship log mode writes product context to `research/product-context.md`. Sync mode for post-change doc updates | You have a codebase and need documentation generated or updated after changes |
+| `docs-writing` | READMEs, API references, setup guides, runbooks from existing code. Ship log mode writes product context to `research/product-context.md`. Sync mode for post-change doc updates | You have a codebase and need documentation generated or updated after changes |
 
 ### Meta — discover, debate, decompose, verify
 
@@ -160,9 +160,9 @@ Horizontal: copywriting, humanize, vn-tone — invoked at any stage.
 | Skill | What it does | Use when... |
 |-------|-------------|-------------|
 | `discover` | Conversational discovery — adapts from quick scoping (3-5 questions) to deep interviews | You have a vague idea or clear task and want alignment before building |
-| `agent-room` | Multi-agent discussion rooms — debate (argue in rounds) or consensus polling | You're facing a complex decision and want multiple perspectives |
+| `agents-panel` | Multi-agent discussion rooms — debate (argue in rounds) or consensus polling | You're facing a complex decision and want multiple perspectives |
 | `task-breakdown` | Decomposes work into granular, testable tasks with acceptance criteria | Work is too big to just start — needs decomposition first |
-| `review-chain` | Fresh-eyes review — implement, review, resolve. Max 2 rounds | You've built something and want an independent quality check |
+| `fresh-eyes` | Fresh-eyes review — implement, review, resolve. Max 2 rounds | You've built something and want an independent quality check |
 
 Meta-skills are domain-agnostic process wrappers. They compose with any skill in any stack.
 
@@ -174,11 +174,11 @@ Not sure which skill to run? Find your situation:
 |-----------|----------|
 | "Who are we building for?" | `/icp-research` |
 | "How big is this market?" | `/market-research` |
-| "Why did this metric drop?" | `/problem-analysis` |
-| "What should we build?" | `/solution-design` |
+| "Why did this metric drop?" | `/diagnose` |
+| "What should we build?" | `/prioritize` |
 | "How much traffic do we need?" | `/funnel-planner` |
 | "We need a brand identity" | `/brand-system` |
-| "Plan the launch campaign" | `/imc-plan` |
+| "Plan the launch campaign" | `/campaign-plan` |
 | "Write better headlines / CTAs / taglines" | `/copywriting` |
 | "Our landing page isn't converting" | `/lp-optimization` |
 | "Brief a landing-page redesign" | `/lp-brief` |
@@ -190,14 +190,14 @@ Not sure which skill to run? Find your situation:
 | "Map the screens for this feature" | `/user-flow` |
 | "Design the technical system" | `/system-architecture` |
 | "This codebase needs cleanup" | `/code-cleanup` |
-| "Generate docs from the code" | `/technical-writer` |
-| "Write a product snapshot for agents" | `/technical-writer --ship-log` |
-| "Update docs after this change" | `/technical-writer --sync` |
+| "Generate docs from the code" | `/docs-writing` |
+| "Write a product snapshot for agents" | `/docs-writing --ship-log` |
+| "Update docs after this change" | `/docs-writing --sync` |
 | "Scope this before building" | `/discover` |
 | "Help me think through this idea" | `/discover` |
 | "Break this into tasks" | `/task-breakdown` |
-| "Debate this decision" | `/agent-room` |
-| "Verify this output" | `/review-chain` |
+| "Debate this decision" | `/agents-panel` |
+| "Verify this output" | `/fresh-eyes` |
 
 ## Example: Idea to Shipped Product
 
@@ -206,8 +206,8 @@ End-to-end workflow:
 ```
  1. /icp-research        → understand your audience
  2. /market-research      → map the competitive landscape
- 3. /problem-analysis     → diagnose the core problem
- 4. /solution-design      → prioritize what to build
+ 3. /diagnose     → diagnose the core problem
+ 4. /prioritize      → prioritize what to build
  5. /funnel-planner       → set numeric targets
  6. /brand-system         → define visual identity
  7. /user-flow            → map the screens
@@ -215,7 +215,7 @@ End-to-end workflow:
  9. /system-architecture  → design the technical blueprint
 10. /task-breakdown       → create buildable tasks
 11. (execute)             → build the tasks
-12. /review-chain         → independent quality check
+12. /fresh-eyes         → independent quality check
 13. /copywriting          → write headlines, hooks, CTAs
 14. /lp-brief             → brief the launch landing page
 15. /design-brief         → brief per-asset creative for the launch
@@ -233,15 +233,15 @@ Each step builds on context from previous steps — through conversation or save
   └─ writes research/product-context.md (personas, pain points, JTBD)
   └─ writes research/icp-research.md (full audience analysis)
 
-/imc-plan "Q3 launch campaign"
+/campaign-plan "Q3 launch campaign"
   ├─ reads research/product-context.md (audience)
   ├─ reads research/icp-research.md (personas)
-  └─ writes .agents/mkt/imc-plan.md (channels, calendar, budget)
+  └─ writes .agents/mkt/campaign-plan.md (channels, calendar, budget)
 
 /lp-brief "Q3 launch landing page"
   ├─ reads research/product-context.md (voice, audience language)
   ├─ reads brand/BRAND.md + brand/DESIGN.md (visual language, lexicon)
-  ├─ reads .agents/mkt/imc-plan.md (campaign hypothesis, conversion targets)
+  ├─ reads .agents/mkt/campaign-plan.md (campaign hypothesis, conversion targets)
   └─ writes .agents/mkt/lp-brief/q3-launch/brief.md + asset-slots/*.prompt.md
 
 /design-brief "hero image for q3-launch (slot: hero-image)"
@@ -250,7 +250,7 @@ Each step builds on context from previous steps — through conversation or save
   └─ writes .agents/mkt/design-briefs/q3-launch-hero.md (concept + platform spec + image-gen prompt)
 ```
 
-Each downstream skill produces richer output because it inherits upstream context. The design-brief output references audience pain points from icp-research, messaging pillars from imc-plan, and the conversion hypothesis from lp-brief — without the user repeating any of it.
+Each downstream skill produces richer output because it inherits upstream context. The design-brief output references audience pain points from icp-research, messaging pillars from campaign-plan, and the conversion hypothesis from lp-brief — without the user repeating any of it.
 
 ### Example 2: Product Pipeline
 
@@ -273,16 +273,16 @@ Each downstream skill produces richer output because it inherits upstream contex
   ├─ reads .agents/product/flow/*.md (UX requirements per task across every flow)
   └─ writes .agents/tasks.md (ordered tasks with acceptance criteria)
 
-(build tasks) → /review-chain
+(build tasks) → /fresh-eyes
 ```
 
 ### Example 3: Multi-Perspective Decision
 
 ```
-/agent-room "debate: should we build a Chrome extension or a web app?"
+/agents-panel "debate: should we build a Chrome extension or a web app?"
   ├─ spawns 3 agents (Architect, Pragmatist, Critic)
   ├─ 3 rounds of structured debate
-  └─ writes .agents/meta/agent-room-report.md (consensus, splits, recommendation)
+  └─ writes .agents/meta/agents-panel-report.md (consensus, splits, recommendation)
 ```
 
 ## How Skills Communicate
@@ -291,13 +291,13 @@ Skills pass data through markdown files in `.agents/`:
 
 | Artifact | Produced by | Consumed by |
 |----------|------------|-------------|
-| `product-context.md` | `icp-research`, `technical-writer --ship-log` | 12+ skills across all stacks |
-| `market-research.md` | `market-research` | `solution-design` |
-| `problem-analysis.md` | `problem-analysis` | `solution-design` |
-| `solution-design.md` | `solution-design` | `imc-plan`, `system-architecture`, `funnel-planner` |
+| `product-context.md` | `icp-research`, `docs-writing --ship-log` | 12+ skills across all stacks |
+| `market-research.md` | `market-research` | `prioritize` |
+| `diagnose.md` | `diagnose` | `prioritize` |
+| `prioritize.md` | `prioritize` | `campaign-plan`, `system-architecture`, `funnel-planner` |
 | `targets.md` | `funnel-planner` | — (terminal until measurement skill exists) |
 | `brand/BRAND.md`, `brand/DESIGN.md`, `brand/ASSETS.md` | `brand-system` | Visual decisions in `lp-brief`, `design-brief`, `humanize`, `copywriting` |
-| `mkt/imc-plan.md` | `imc-plan` | `lp-brief`, `seo`, `cold-outreach`, `copywriting` |
+| `mkt/campaign-plan.md` | `campaign-plan` | `lp-brief`, `seo`, `cold-outreach`, `copywriting` |
 | `mkt/content/[slug].copy.md` | `copywriting` | `humanize`, `vn-tone`, `design-brief` (copy-anchor) |
 | `mkt/content/[slug].humanized.md` | `humanize` | `vn-tone` |
 | `mkt/content/[slug].vn-tone.md` | `vn-tone` | — (terminal) |
@@ -311,8 +311,8 @@ Skills pass data through markdown files in `.agents/`:
 | `system-architecture.md` | `system-architecture` | `task-breakdown` |
 | `tasks.md` | `task-breakdown` | Task execution |
 | `cleanup-report.md` | `code-cleanup` | — (terminal) |
-| `meta/agent-room-report.md` | `agent-room` | — (ephemeral) |
-| `meta/review-chain-report.md` | `review-chain` | — (terminal) |
+| `meta/agents-panel-report.md` | `agents-panel` | — (ephemeral) |
+| `meta/fresh-eyes-report.md` | `fresh-eyes` | — (terminal) |
 
 Every artifact includes frontmatter with `skill`, `version`, `date`, and `status` fields for traceability.
 
@@ -328,7 +328,7 @@ SKILL.md (Orchestrator)
   └─ Critic Agent ────────────────────── PASS / FAIL (max 2 cycles)
 ```
 
-**~150 specialized agents** across domain skills. Meta-skills use additional patterns: **dynamic agent spawning** (`agent-room`, `review-chain`) and **conversation-first discovery** (`discover`).
+**~150 specialized agents** across domain skills. Meta-skills use additional patterns: **dynamic agent spawning** (`agents-panel`, `fresh-eyes`) and **conversation-first discovery** (`discover`).
 
 ## License
 

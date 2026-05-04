@@ -100,7 +100,7 @@
       ],
       "minScore": 6
     },
-    "problem-analysis": {
+    "diagnose": {
       "phrases": [
         "root cause",
         "why is",
@@ -132,7 +132,7 @@
       ],
       "minScore": 6
     },
-    "solution-design": {
+    "prioritize": {
       "phrases": [
         "what should we build",
         "prioritize initiatives",
@@ -268,7 +268,7 @@
       ],
       "minScore": 6
     },
-    "imc-plan": {
+    "campaign-plan": {
       "phrases": [
         "marketing plan",
         "campaign plan",
@@ -610,7 +610,7 @@
       ],
       "minScore": 6
     },
-    "technical-writer": {
+    "docs-writing": {
       "phrases": [
         "write documentation",
         "write a readme",
@@ -681,7 +681,7 @@
       ],
       "minScore": 6
     },
-    "agent-room": {
+    "agents-panel": {
       "phrases": [
         "debate this",
         "get perspectives",
@@ -745,7 +745,7 @@
       ],
       "minScore": 6
     },
-    "review-chain": {
+    "fresh-eyes": {
       "phrases": [
         "review this",
         "code review",
