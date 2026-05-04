@@ -99,19 +99,6 @@
       "tags": ["write-copy", "evaluate-copy", "headline", "cta", "tagline"]
     },
     {
-      "id": "content-create",
-      "domain": "marketing",
-      "name": "Content Create",
-      "description": "Drafts marketing content — social posts, ads, emails, blogs, video scripts in platform-native formats.",
-      "path": "marketing-skills/content-create",
-      "agents": 8,
-      "budget": "deep",
-      "estimated_cost_usd": "$1-3",
-      "produces": ["mkt/content/[slug].md"],
-      "consumes": ["product-context.md", "icp-research.md", "mkt/imc-plan.md", "mkt/content-research.md"],
-      "tags": ["content-asset", "social-post", "email", "blog", "video-script"]
-    },
-    {
       "id": "imc-plan",
       "domain": "marketing",
       "name": "IMC Plan",
@@ -177,17 +164,43 @@
       "tags": ["seo-audit", "ai-seo", "programmatic-seo", "keyword-research", "aeo"]
     },
     {
-      "id": "attribution",
+      "id": "lp-brief",
       "domain": "marketing",
-      "name": "Attribution",
-      "description": "Maps marketing activities to business outcomes — channel ROI, what's driving results, where to double down.",
-      "path": "marketing-skills/attribution",
-      "agents": 7,
+      "name": "LP Brief",
+      "description": "Generates a campaign-grade brief for a landing-page redesign — hypothesis, surface rhythm, section spec, asset slots, copy candidates, hand-off prompts. Internalizes lp-optimization conversion principles as evaluation rubric.",
+      "path": "marketing-skills/lp-brief",
+      "agents": 9,
       "budget": "deep",
-      "estimated_cost_usd": "$1-3",
-      "produces": ["mkt/attribution.md"],
-      "consumes": ["product-context.md", "mkt/imc-plan.md", "mkt/content/[slug].md", "mkt/content/[slug].humanized.md", "solution-design.md", "targets.md", "experiment-[name].md"],
-      "tags": ["kpi-mapping", "channel-roi", "gap-analysis", "marketing-measurement"]
+      "estimated_cost_usd": "$2-4",
+      "produces": ["mkt/lp-brief/[slug]/brief.md", "mkt/lp-brief/[slug]/asset-slots/*.prompt.md"],
+      "consumes": ["product-context.md", "icp-research.md", "brand/BRAND.md", "brand/DESIGN.md", "mkt/imc-plan.md", "mkt/lp-optimization.md"],
+      "tags": ["landing-page", "redesign-brief", "conversion-architecture", "section-spec", "asset-slots"]
+    },
+    {
+      "id": "design-brief",
+      "domain": "marketing",
+      "name": "Design Brief",
+      "description": "Per-asset graphic-design brief — IG carousel/post/story, LinkedIn doc/single, FB ad, YouTube thumbnail, X card, banner/display, OOH, OG card. Platform-aware specs (aspect, safe zones, type scale, contrast, file format) plus downstream handoff (image-gen prompt / vector-tool spec / designer-handoff). Does not render — rendering is downstream.",
+      "path": "marketing-skills/design-brief",
+      "agents": 7,
+      "budget": "standard",
+      "estimated_cost_usd": "$1-2",
+      "produces": ["mkt/design-briefs/[slug].md"],
+      "consumes": ["brand/BRAND.md", "brand/DESIGN.md", "brand/ASSETS.md", "mkt/lp-brief/[slug]/asset-slots/*.md", "mkt/content/[slug].copy.md"],
+      "tags": ["graphic-design-brief", "ad-creative-brief", "social-graphic", "og-image", "thumbnail", "image-gen-prompt"]
+    },
+    {
+      "id": "cold-outreach",
+      "domain": "marketing",
+      "name": "Cold Outreach",
+      "description": "Cold email / DM / proposal composition with signal-based personalization, channel-specific craft, 5-dimension rubric scoring, automatic humanize terminal pass. Supports first-touch compose and inbound-reply handling.",
+      "path": "marketing-skills/cold-outreach",
+      "agents": 8,
+      "budget": "deep",
+      "estimated_cost_usd": "$0.50-1.50",
+      "produces": ["mkt/cold-outreach/[slug].md", "mkt/cold-outreach/[slug].rationale.md", "mkt/cold-outreach/[slug].critic-score.md"],
+      "consumes": ["product-context.md", "icp-research.md"],
+      "tags": ["cold-email", "linkedin-outreach", "twitter-outreach", "proposal-writing", "reply-handling"]
     },
     {
       "id": "user-flow",

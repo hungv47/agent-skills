@@ -88,7 +88,7 @@ After install, skills are namespaced — call them as `/research-skills:icp-rese
 
 End-to-end pipeline: meta process wrappers compose with research pipeline skills, product skills (pipeline + horizontal), and marketing skills (pipeline + horizontal).
 
-**11 pipeline skills** run in sequence across three phases (Research → Product → Marketing). **7 horizontal skills** apply at any point within their stack. **4 meta skills** are domain-agnostic process wrappers that compose with any skill. 22 skills total.
+**13 pipeline skills** run in sequence across three phases (Research → Product → Marketing). **6 horizontal skills** apply at any point within their stack. **4 meta skills** are domain-agnostic process wrappers that compose with any skill. 23 skills total.
 
 ## Skill Stacks
 
@@ -110,23 +110,33 @@ icp-research → market-research + problem-analysis → solution-design → funn
 
 ### Marketing — create, optimize, and measure marketing
 
-> [`hungv47/marketing-skills`](https://github.com/hungv47/marketing-skills) &middot; 9 skills
+> [`hungv47/marketing-skills`](https://github.com/hungv47/marketing-skills) &middot; 10 skills
 
-<picture>
-  <img src="./assets/marketing.svg" alt="Marketing pipeline: brand-system → imc-plan → content-create → attribution, plus horizontal skills" width="100%">
-</picture>
+```
+brand-system
+  ↓
+imc-plan
+  ↓
+  ├─ lp-brief (per page)  → design-brief (per asset slot)
+  ├─ seo (per mode)
+  └─ cold-outreach (per touch)
+
+Audit live pages: lp-optimization → (if redesign warranted) lp-brief
+Horizontal: copywriting, humanize, vn-tone — invoked at any stage.
+```
 
 | Skill | What it does | Use when... |
 |-------|-------------|-------------|
 | `brand-system` | Brand identity — color palettes, typography, design tokens, voice, visual language | You need a visual identity system before creating any marketing materials |
 | `imc-plan` | Channel strategy, positioning, content calendar, budget allocation, GTM timelines | You're planning a campaign or go-to-market and need to decide where, when, and how much |
-| `content-create` | Drafts social posts, ads, emails, blogs, case studies, video scripts | You need a specific content asset in a platform-native format |
 | `copywriting` | Headlines, hooks, CTAs, taglines, full-page section copy with scoring | You need persuasive copy for any surface — landing pages, ads, emails, product UI |
-| `lp-optimization` | Conversion audit — hero, CTA, social proof, objection handling | You have a landing page and want to improve its conversion rate |
+| `lp-optimization` | Conversion audit on a live page — hero, CTA, social proof, objection handling | You have a landing page and want to improve its conversion rate without a redesign |
+| `lp-brief` | Campaign-grade redesign brief — hypothesis, architecture, per-section spec, asset slots, hand-off prompts | You're redesigning a landing page and need a brief precise enough for a designer or AI tool to execute |
+| `design-brief` | Per-asset graphic-design brief with platform-aware specs (aspect, safe zones, type scale, contrast, file format) and downstream handoff (image-gen prompt / vector-tool spec / designer-handoff) | You need a brief for a single visual asset (IG carousel, OG image, banner ad, YT thumbnail, OOH, etc.) — rendering happens downstream |
 | `seo` | Technical audit, AI/AEO optimization, programmatic SEO, ASO | You want more organic traffic — search, AI answers, or app store visibility |
-| `attribution` | Maps marketing activities to business outcomes, evaluates channel ROI | You're spending on marketing and need to know what's actually working |
 | `humanize` | Strips AI patterns, injects brand voice, compresses for density | You have AI-generated text that sounds robotic and needs to read human |
 | `vn-tone` | Polishes translated Vietnamese into a native register (báo chí, semi-casual, bro, or pop-marketing) | You have Vietnamese copy that reads translated/robotic or needs register alignment |
+| `cold-outreach` | Cold email / DM / proposal composition with signal-based personalization, channel-specific craft, rubric scoring, terminal humanize pass | You're writing first-touch outbound or replies to inbound responses and want it to read like a sharp human, not a template |
 
 ### Product — design and build software
 
@@ -169,11 +179,12 @@ Not sure which skill to run? Find your situation:
 | "How much traffic do we need?" | `/funnel-planner` |
 | "We need a brand identity" | `/brand-system` |
 | "Plan the launch campaign" | `/imc-plan` |
-| "Write a LinkedIn post / email / blog" | `/content-create` |
-| "Write better headlines" | `/copywriting` |
+| "Write better headlines / CTAs / taglines" | `/copywriting` |
 | "Our landing page isn't converting" | `/lp-optimization` |
+| "Brief a landing-page redesign" | `/lp-brief` |
+| "Brief a single graphic-design asset (carousel / OG / thumbnail / banner)" | `/design-brief` |
 | "We need more organic traffic" | `/seo` |
-| "What marketing is working?" | `/attribution` |
+| "Write a cold email / DM / proposal" | `/cold-outreach` |
 | "This reads like AI wrote it" | `/humanize` |
 | "Polish Vietnamese that sounds translated" | `/vn-tone` |
 | "Map the screens for this feature" | `/user-flow` |
@@ -206,8 +217,9 @@ End-to-end workflow:
 11. (execute)             → build the tasks
 12. /review-chain         → independent quality check
 13. /copywriting          → write headlines, hooks, CTAs
-14. /content-create       → write launch content
-15. /lp-optimization      → optimize the landing page
+14. /lp-brief             → brief the launch landing page
+15. /design-brief         → brief per-asset creative for the launch
+16. /lp-optimization      → audit the page post-launch
 ```
 
 Each step builds on context from previous steps — through conversation or saved artifacts.
@@ -226,13 +238,19 @@ Each step builds on context from previous steps — through conversation or save
   ├─ reads research/icp-research.md (personas)
   └─ writes .agents/mkt/imc-plan.md (channels, calendar, budget)
 
-/content-create "LinkedIn carousel about agency time tracking"
+/lp-brief "Q3 launch landing page"
   ├─ reads research/product-context.md (voice, audience language)
-  ├─ reads .agents/mkt/imc-plan.md (channel strategy, messaging pillars)
-  └─ writes .agents/mkt/content/agency-time-tracking.md (platform-native carousel)
+  ├─ reads brand/BRAND.md + brand/DESIGN.md (visual language, lexicon)
+  ├─ reads .agents/mkt/imc-plan.md (campaign hypothesis, conversion targets)
+  └─ writes .agents/mkt/lp-brief/q3-launch/brief.md + asset-slots/*.prompt.md
+
+/design-brief "hero image for q3-launch (slot: hero-image)"
+  ├─ reads brand/DESIGN.md (palette, typography, sacred elements)
+  ├─ reads .agents/mkt/lp-brief/q3-launch/asset-slots/hero-image.md (slot spec)
+  └─ writes .agents/mkt/design-briefs/q3-launch-hero.md (concept + platform spec + image-gen prompt)
 ```
 
-Each downstream skill produces richer output because it inherits upstream context. The content-create output references audience pain points from icp-research and messaging pillars from imc-plan — without the user repeating any of it.
+Each downstream skill produces richer output because it inherits upstream context. The design-brief output references audience pain points from icp-research, messaging pillars from imc-plan, and the conversion hypothesis from lp-brief — without the user repeating any of it.
 
 ### Example 2: Product Pipeline
 
@@ -277,16 +295,17 @@ Skills pass data through markdown files in `.agents/`:
 | `market-research.md` | `market-research` | `solution-design` |
 | `problem-analysis.md` | `problem-analysis` | `solution-design` |
 | `solution-design.md` | `solution-design` | `imc-plan`, `system-architecture`, `funnel-planner` |
-| `targets.md` | `funnel-planner` | `attribution` |
-| `brand/BRAND.md`, `brand/DESIGN.md` | `brand-system` | Visual decisions in content and landing pages |
-| `mkt/imc-plan.md` | `imc-plan` | `content-create`, `copywriting`, `seo`, `attribution` |
-| `mkt/content/[slug].md` | `content-create` | `humanize`, `attribution` |
-| `mkt/content/[slug].copy.md` | `copywriting` | `content-create`, `humanize` |
-| `mkt/content/[slug].humanized.md` | `humanize` | `attribution`, `vn-tone` |
+| `targets.md` | `funnel-planner` | — (terminal until measurement skill exists) |
+| `brand/BRAND.md`, `brand/DESIGN.md`, `brand/ASSETS.md` | `brand-system` | Visual decisions in `lp-brief`, `design-brief`, `humanize`, `copywriting` |
+| `mkt/imc-plan.md` | `imc-plan` | `lp-brief`, `seo`, `cold-outreach`, `copywriting` |
+| `mkt/content/[slug].copy.md` | `copywriting` | `humanize`, `vn-tone`, `design-brief` (copy-anchor) |
+| `mkt/content/[slug].humanized.md` | `humanize` | `vn-tone` |
 | `mkt/content/[slug].vn-tone.md` | `vn-tone` | — (terminal) |
-| `mkt/seo-[mode].md` | `seo` | `content-create`, `lp-optimization` |
-| `mkt/attribution.md` | `attribution` | — (terminal) |
-| `mkt/lp-optimization.md` | `lp-optimization` | — (terminal) |
+| `mkt/seo-[mode].md` | `seo` | `copywriting`, `lp-optimization` |
+| `mkt/lp-optimization.md` | `lp-optimization` | `lp-brief` (when redesign warranted) |
+| `mkt/lp-brief/[slug]/brief.md` + `asset-slots/*.prompt.md` | `lp-brief` | `design-brief` (per slot) + external designer / image-gen |
+| `mkt/design-briefs/[slug].md` | `design-brief` | External image-gen / vector-tool / human designer |
+| `mkt/cold-outreach/[slug].md` | `cold-outreach` | — (terminal) |
 | `product/flow/<flow-name>.md` + `product/flow/index.md` | `user-flow` | `system-architecture`, `task-breakdown` |
 | `spec.md` | `discover` (optional) | `system-architecture`, `task-breakdown` |
 | `system-architecture.md` | `system-architecture` | `task-breakdown` |

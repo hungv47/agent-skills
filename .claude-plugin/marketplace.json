@@ -19,9 +19,9 @@
     {
       "name": "marketing-skills",
       "source": "./marketing-skills",
-      "description": "Brand, content creation, optimization, and measurement skills.",
+      "description": "Brand, copywriting, campaign planning, landing-page architecture, design briefs, search visibility, humanization, localization polish, and outbound.",
       "category": "marketing",
-      "tags": ["brand", "copywriting", "content", "seo", "attribution", "cold-outreach"]
+      "tags": ["brand", "copywriting", "lp-brief", "design-brief", "seo", "humanize", "cold-outreach"]
     },
     {
       "name": "product-skills",
