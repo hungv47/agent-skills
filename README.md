@@ -86,21 +86,19 @@ After install, skills are namespaced — call them as `/research-skills:icp-rese
 
 ## Full Pipeline
 
-<picture>
-  <img src="./assets/full-pipeline.svg" alt="End-to-end pipeline: meta process wrappers, research pipeline skills, product skills (pipeline + horizontal), marketing skills (pipeline + horizontal)" width="100%">
-</picture>
+End-to-end pipeline: meta process wrappers compose with research pipeline skills, product skills (pipeline + horizontal), and marketing skills (pipeline + horizontal).
 
-**15 pipeline skills** run in sequence across three phases (Research → Product → Marketing). **7 horizontal skills** apply at any point within their stack. **5 meta skills** are domain-agnostic process wrappers that compose with any skill. 27 skills total.
+**13 pipeline skills** run in sequence across three phases (Research → Product → Marketing). **7 horizontal skills** apply at any point within their stack. **5 meta skills** are domain-agnostic process wrappers that compose with any skill. 25 skills total.
 
 ## Skill Stacks
 
 ### Research — understand your market and decide what to do
 
-> [`hungv47/research-skills`](https://github.com/hungv47/research-skills) &middot; 7 skills
+> [`hungv47/research-skills`](https://github.com/hungv47/research-skills) &middot; 5 skills
 
-<picture>
-  <img src="./assets/research.svg" alt="Research pipeline: icp-research → market-research + problem-analysis → solution-design → funnel-planner → experiment" width="100%">
-</picture>
+```
+icp-research → market-research + problem-analysis → solution-design → funnel-planner
+```
 
 | Skill | What it does | Use when... |
 |-------|-------------|-------------|
@@ -109,8 +107,6 @@ After install, skills are namespaced — call them as `/research-skills:icp-rese
 | `problem-analysis` | Structured diagnosis — logic trees, hypotheses, root cause analysis | A metric dropped, something broke, or you need to figure out *why* before jumping to solutions |
 | `solution-design` | Generates strategic options, scores trade-offs with ICE, recommends a path | The problem is clear and you need to decide *what* to build or pursue |
 | `funnel-planner` | Backward funnel modeling — revenue goals to traffic, conversions, unit economics | You need numeric targets: "how much traffic do we need to hit $X ARR?" |
-| `content-research` | Researches what content to create — competitor ads, audience communities, trending topics | You need data-driven content intelligence before writing anything |
-| `experiment` | Designs minimum viable tests with sample sizes and decision rules | You have an initiative and want to validate it before full commitment |
 
 ### Marketing — create, optimize, and measure marketing
 
@@ -174,7 +170,6 @@ Not sure which skill to run? Find your situation:
 | "Why did this metric drop?" | `/problem-analysis` |
 | "What should we build?" | `/solution-design` |
 | "How much traffic do we need?" | `/funnel-planner` |
-| "Will this idea work?" | `/experiment` |
 | "We need a brand identity" | `/brand-system` |
 | "Plan the launch campaign" | `/imc-plan` |
 | "Write a LinkedIn post / email / blog" | `/content-create` |
@@ -222,7 +217,6 @@ Run `/navigate "your goal"` to get a recommended skill team, or follow this end-
 15. /copywriting          → write headlines, hooks, CTAs
 16. /content-create       → write launch content
 17. /lp-optimization      → optimize the landing page
-18. /experiment           → design the validation test
 ```
 
 Each step builds on context from previous steps — through conversation or saved artifacts.
@@ -236,15 +230,9 @@ Each step builds on context from previous steps — through conversation or save
   └─ writes research/product-context.md (personas, pain points, JTBD)
   └─ writes research/icp-research.md (full audience analysis)
 
-/content-research "project management content landscape"
-  ├─ reads research/product-context.md (audience context)
-  ├─ reads research/icp-research.md (persona data)
-  └─ writes .agents/mkt/content-research.md (competitor ads, trending topics, content gaps)
-
 /imc-plan "Q3 launch campaign"
   ├─ reads research/product-context.md (audience)
   ├─ reads research/icp-research.md (personas)
-  ├─ reads .agents/mkt/content-research.md (content intelligence)
   └─ writes .agents/mkt/imc-plan.md (channels, calendar, budget)
 
 /content-create "LinkedIn carousel about agency time tracking"
@@ -253,7 +241,7 @@ Each step builds on context from previous steps — through conversation or save
   └─ writes .agents/mkt/content/agency-time-tracking.md (platform-native carousel)
 ```
 
-Each downstream skill produces richer output because it inherits upstream context. The content-create output references audience pain points from icp-research, content gaps from content-research, and messaging pillars from imc-plan — without the user repeating any of it.
+Each downstream skill produces richer output because it inherits upstream context. The content-create output references audience pain points from icp-research and messaging pillars from imc-plan — without the user repeating any of it.
 
 ### Example 2: Product Pipeline
 
@@ -311,8 +299,7 @@ Skills pass data through markdown files in `.agents/`:
 | `market-research.md` | `market-research` | `solution-design` |
 | `problem-analysis.md` | `problem-analysis` | `solution-design` |
 | `solution-design.md` | `solution-design` | `imc-plan`, `system-architecture`, `funnel-planner` |
-| `targets.md` | `funnel-planner` | `attribution`, `experiment` |
-| `mkt/content-research.md` | `content-research` | `imc-plan`, `content-create`, `copywriting` |
+| `targets.md` | `funnel-planner` | `attribution` |
 | `brand/BRAND.md`, `brand/DESIGN.md` | `brand-system` | Visual decisions in content and landing pages |
 | `mkt/imc-plan.md` | `imc-plan` | `content-create`, `copywriting`, `seo`, `attribution` |
 | `mkt/content/[slug].md` | `content-create` | `humanize`, `attribution` |

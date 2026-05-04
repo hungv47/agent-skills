@@ -73,32 +73,6 @@
       "tags": ["funnel-modeling", "target-setting", "unit-economics", "ltv-cac"]
     },
     {
-      "id": "experiment",
-      "domain": "research",
-      "name": "Experiment",
-      "description": "Designs validation experiments — hypotheses, success metrics, sample sizes, minimum viable tests.",
-      "path": "research-skills/experiment",
-      "agents": 5,
-      "budget": "standard",
-      "estimated_cost_usd": "$0.15-0.40",
-      "produces": ["experiment-[name].md"],
-      "consumes": ["product-context.md", "solution-design.md", "targets.md"],
-      "tags": ["experiment-design", "ab-testing", "sample-sizing", "hypothesis-validation"]
-    },
-    {
-      "id": "content-research",
-      "domain": "research",
-      "name": "Content Research",
-      "description": "Researches what content to create — competitor ads, audience communities, trending topics, top-performing content.",
-      "path": "research-skills/content-research",
-      "agents": 7,
-      "budget": "deep",
-      "estimated_cost_usd": "$1-3",
-      "produces": ["mkt/content-research.md"],
-      "consumes": ["product-context.md", "icp-research.md"],
-      "tags": ["content-intelligence", "ad-research", "trend-detection", "audience-listening"]
-    },
-    {
       "id": "brand-system",
       "domain": "marketing",
       "name": "Brand System",

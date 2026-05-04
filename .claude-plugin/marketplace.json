@@ -12,9 +12,9 @@
     {
       "name": "research-skills",
       "source": "./research-skills",
-      "description": "Market research, audience, strategy, and experimentation skills.",
+      "description": "Market research, audience, and strategy skills.",
       "category": "research",
-      "tags": ["icp", "market-sizing", "problem-diagnosis", "experiments", "content-research"]
+      "tags": ["icp", "market-sizing", "problem-diagnosis", "solution-design", "funnel-planning"]
     },
     {
       "name": "marketing-skills",
