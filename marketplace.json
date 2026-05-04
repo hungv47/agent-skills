@@ -5,20 +5,33 @@
   "version": "1.0.0",
   "schema_version": "1",
   "license": "MIT",
-  "domains": ["research", "marketing", "product", "meta"],
+  "domains": [
+    "research",
+    "marketing",
+    "product",
+    "meta"
+  ],
   "skills": [
     {
       "id": "icp-research",
       "domain": "research",
       "name": "ICP Research",
-      "description": "Builds ideal customer profiles and buyer personas — demographics, pain points, JTBD, segmentation.",
+      "description": "Builds ideal customer profiles and buyer personas \u2014 demographics, pain points, JTBD, segmentation.",
       "path": "research-skills/icp-research",
       "agents": 7,
       "budget": "deep",
       "estimated_cost_usd": "$1-3",
-      "produces": ["product-context.md", "icp-research.md"],
+      "produces": [
+        "product-context.md",
+        "icp-research.md"
+      ],
       "consumes": [],
-      "tags": ["audience-research", "voc-research", "persona-development", "customer-profiling"]
+      "tags": [
+        "audience-research",
+        "voc-research",
+        "persona-development",
+        "customer-profiling"
+      ]
     },
     {
       "id": "market-research",
@@ -29,87 +42,161 @@
       "agents": 7,
       "budget": "deep",
       "estimated_cost_usd": "$1-3",
-      "produces": ["market-research.md"],
-      "consumes": ["product-context.md"],
-      "tags": ["competitive-analysis", "market-sizing", "tam-sam-som", "whitespace-analysis"]
+      "produces": [
+        "market-research.md"
+      ],
+      "consumes": [
+        "product-context.md"
+      ],
+      "tags": [
+        "competitive-analysis",
+        "market-sizing",
+        "tam-sam-som",
+        "whitespace-analysis"
+      ]
     },
     {
       "id": "problem-analysis",
       "domain": "research",
       "name": "Problem Analysis",
-      "description": "Structured diagnosis — logic trees, testable hypotheses, root causes with evidence.",
+      "description": "Structured diagnosis \u2014 logic trees, testable hypotheses, root causes with evidence.",
       "path": "research-skills/problem-analysis",
       "agents": 6,
       "budget": "deep",
       "estimated_cost_usd": "$1-3",
-      "produces": ["problem-analysis.md"],
-      "consumes": ["product-context.md"],
-      "tags": ["problem-diagnosis", "root-cause", "hypothesis-testing", "logic-tree"]
+      "produces": [
+        "problem-analysis.md"
+      ],
+      "consumes": [
+        "product-context.md"
+      ],
+      "tags": [
+        "problem-diagnosis",
+        "root-cause",
+        "hypothesis-testing",
+        "logic-tree"
+      ]
     },
     {
       "id": "solution-design",
       "domain": "research",
       "name": "Solution Design",
-      "description": "Brainstorms and prioritizes strategic solutions — generates options, scores trade-offs, recommends a path.",
+      "description": "Brainstorms and prioritizes strategic solutions \u2014 generates options, scores trade-offs, recommends a path.",
       "path": "research-skills/solution-design",
       "agents": 7,
       "budget": "deep",
       "estimated_cost_usd": "$1-3",
-      "produces": ["solution-design.md"],
-      "consumes": ["product-context.md", "market-research.md", "problem-analysis.md"],
-      "tags": ["prioritization", "ice-scoring", "initiative-planning", "strategic-options"]
+      "produces": [
+        "solution-design.md"
+      ],
+      "consumes": [
+        "product-context.md",
+        "market-research.md",
+        "problem-analysis.md"
+      ],
+      "tags": [
+        "prioritization",
+        "ice-scoring",
+        "initiative-planning",
+        "strategic-options"
+      ]
     },
     {
       "id": "funnel-planner",
       "domain": "research",
       "name": "Funnel Planner",
-      "description": "Models business funnels with numeric targets — revenue goals backward to traffic, conversion rates, unit economics.",
+      "description": "Models business funnels with numeric targets \u2014 revenue goals backward to traffic, conversion rates, unit economics.",
       "path": "research-skills/funnel-planner",
       "agents": 6,
       "budget": "deep",
       "estimated_cost_usd": "$1-3",
-      "produces": ["targets.md"],
-      "consumes": ["product-context.md", "solution-design.md"],
-      "tags": ["funnel-modeling", "target-setting", "unit-economics", "ltv-cac"]
+      "produces": [
+        "targets.md"
+      ],
+      "consumes": [
+        "product-context.md",
+        "solution-design.md"
+      ],
+      "tags": [
+        "funnel-modeling",
+        "target-setting",
+        "unit-economics",
+        "ltv-cac"
+      ]
     },
     {
       "id": "brand-system",
       "domain": "marketing",
       "name": "Brand System",
-      "description": "Builds brand identity systems — BRAND.md (story, voice, positioning) and DESIGN.md (palettes, tokens, components).",
+      "description": "Builds brand identity systems \u2014 BRAND.md (story, voice, positioning) and DESIGN.md (palettes, tokens, components).",
       "path": "marketing-skills/brand-system",
       "agents": 8,
       "budget": "deep",
       "estimated_cost_usd": "$2-5",
-      "produces": ["brand/BRAND.md", "brand/DESIGN.md"],
-      "consumes": ["product-context.md"],
-      "tags": ["brand-identity", "design-tokens", "visual-system", "brand-voice"]
+      "produces": [
+        "brand/BRAND.md",
+        "brand/DESIGN.md"
+      ],
+      "consumes": [
+        "product-context.md"
+      ],
+      "tags": [
+        "brand-identity",
+        "design-tokens",
+        "visual-system",
+        "brand-voice"
+      ]
     },
     {
       "id": "copywriting",
       "domain": "marketing",
       "name": "Copywriting",
-      "description": "Writes and evaluates persuasive copy — headlines, hooks, CTAs, taglines with rubric scoring and alternatives.",
+      "description": "Writes and evaluates persuasive copy \u2014 headlines, hooks, CTAs, taglines with rubric scoring and alternatives.",
       "path": "marketing-skills/copywriting",
       "agents": 9,
       "budget": "deep",
       "estimated_cost_usd": "$1-3",
-      "produces": ["mkt/content/[slug].copy.md"],
-      "consumes": ["product-context.md", "icp-research.md", "mkt/imc-plan.md", "mkt/content-research.md"],
-      "tags": ["write-copy", "evaluate-copy", "headline", "cta", "tagline"]
+      "produces": [
+        "mkt/content/[slug].copy.md"
+      ],
+      "consumes": [
+        "product-context.md",
+        "icp-research.md",
+        "mkt/imc-plan.md",
+        "mkt/content-research.md"
+      ],
+      "tags": [
+        "write-copy",
+        "evaluate-copy",
+        "headline",
+        "cta",
+        "tagline"
+      ]
     },
     {
       "id": "imc-plan",
       "domain": "marketing",
       "name": "IMC Plan",
-      "description": "Creates integrated marketing plans — channel strategy, positioning, content calendar, budget allocation, GTM timelines.",
+      "description": "Creates integrated marketing plans \u2014 channel strategy, positioning, content calendar, budget allocation, GTM timelines.",
       "path": "marketing-skills/imc-plan",
       "agents": 6,
       "budget": "deep",
       "estimated_cost_usd": "$1-3",
-      "produces": ["mkt/imc-plan.md"],
-      "consumes": ["product-context.md", "icp-research.md", "mkt/content-research.md", "solution-design.md"],
-      "tags": ["campaign-planning", "channel-strategy", "content-calendar", "go-to-market"]
+      "produces": [
+        "mkt/imc-plan.md"
+      ],
+      "consumes": [
+        "product-context.md",
+        "icp-research.md",
+        "mkt/content-research.md",
+        "solution-design.md"
+      ],
+      "tags": [
+        "campaign-planning",
+        "channel-strategy",
+        "content-calendar",
+        "go-to-market"
+      ]
     },
     {
       "id": "humanize",
@@ -120,74 +207,149 @@
       "agents": 6,
       "budget": "standard",
       "estimated_cost_usd": "$0.15-0.40",
-      "produces": ["mkt/content/[slug].humanized.md"],
-      "consumes": ["product-context.md", "mkt/content/[slug].md"],
-      "tags": ["humanize", "voice-injection", "ai-pattern-removal", "compression"]
+      "produces": [
+        "mkt/content/[slug].humanized.md"
+      ],
+      "consumes": [
+        "product-context.md",
+        "mkt/content/[slug].md"
+      ],
+      "tags": [
+        "humanize",
+        "voice-injection",
+        "ai-pattern-removal",
+        "compression"
+      ]
     },
     {
       "id": "vn-tone",
       "domain": "marketing",
       "name": "VN Tone Polish",
-      "description": "Polishes translated Vietnamese into native register (báo chí, semi-casual, bro, or pop-marketing). Fixes pronoun drift, missing particles, literal idioms, corporate translationese, typography. Post-translation polish only.",
+      "description": "Polishes translated Vietnamese into native register (b\u00e1o ch\u00ed, semi-casual, bro, or pop-marketing). Fixes pronoun drift, missing particles, literal idioms, corporate translationese, typography. Post-translation polish only.",
       "path": "marketing-skills/vn-tone",
       "agents": 3,
       "budget": "standard",
       "estimated_cost_usd": "$0.08-0.20",
-      "produces": ["mkt/content/[slug].vn-tone.md"],
-      "consumes": ["product-context.md", "mkt/content/[slug].humanized.md", "mkt/content/[slug].md"],
-      "tags": ["vietnamese-tone", "vn-polish", "localization-polish", "translation-artifact-removal", "vietnamese-register"]
+      "produces": [
+        "mkt/content/[slug].vn-tone.md"
+      ],
+      "consumes": [
+        "product-context.md",
+        "mkt/content/[slug].humanized.md",
+        "mkt/content/[slug].md"
+      ],
+      "tags": [
+        "vietnamese-tone",
+        "vn-polish",
+        "localization-polish",
+        "translation-artifact-removal",
+        "vietnamese-register"
+      ]
     },
     {
       "id": "lp-optimization",
       "domain": "marketing",
       "name": "LP Optimization",
-      "description": "Audits landing pages for conversion — hero, CTA, social proof, objection handling, page flow.",
+      "description": "Audits landing pages for conversion \u2014 hero, CTA, social proof, objection handling, page flow.",
       "path": "marketing-skills/lp-optimization",
       "agents": 7,
       "budget": "deep",
       "estimated_cost_usd": "$1-3",
-      "produces": ["mkt/lp-optimization.md"],
-      "consumes": ["product-context.md", "icp-research.md"],
-      "tags": ["conversion-audit", "landing-page-audit", "page-optimization", "cro"]
+      "produces": [
+        "mkt/lp-optimization.md"
+      ],
+      "consumes": [
+        "product-context.md",
+        "icp-research.md"
+      ],
+      "tags": [
+        "conversion-audit",
+        "landing-page-audit",
+        "page-optimization",
+        "cro"
+      ]
     },
     {
       "id": "seo",
       "domain": "marketing",
       "name": "SEO",
-      "description": "Audits and plans search visibility — keyword research, on-page, technical SEO, link building, AI search optimization.",
+      "description": "Audits and plans search visibility \u2014 keyword research, on-page, technical SEO, link building, AI search optimization.",
       "path": "marketing-skills/seo",
       "agents": 11,
       "budget": "deep",
       "estimated_cost_usd": "$2-5",
-      "produces": ["mkt/seo-[mode].md"],
-      "consumes": ["product-context.md", "icp-research.md", "mkt/imc-plan.md"],
-      "tags": ["seo-audit", "ai-seo", "programmatic-seo", "keyword-research", "aeo"]
+      "produces": [
+        "mkt/seo-[mode].md"
+      ],
+      "consumes": [
+        "product-context.md",
+        "icp-research.md",
+        "mkt/imc-plan.md"
+      ],
+      "tags": [
+        "seo-audit",
+        "ai-seo",
+        "programmatic-seo",
+        "keyword-research",
+        "aeo"
+      ]
     },
     {
       "id": "lp-brief",
       "domain": "marketing",
       "name": "LP Brief",
-      "description": "Generates a campaign-grade brief for a landing-page redesign — hypothesis, surface rhythm, section spec, asset slots, copy candidates, hand-off prompts. Internalizes lp-optimization conversion principles as evaluation rubric.",
+      "description": "Generates a campaign-grade brief for a landing-page redesign \u2014 hypothesis, surface rhythm, section spec, asset slots, copy candidates, hand-off prompts. Internalizes lp-optimization conversion principles as evaluation rubric.",
       "path": "marketing-skills/lp-brief",
       "agents": 9,
       "budget": "deep",
       "estimated_cost_usd": "$2-4",
-      "produces": ["mkt/lp-brief/[slug]/brief.md", "mkt/lp-brief/[slug]/asset-slots/*.prompt.md"],
-      "consumes": ["product-context.md", "icp-research.md", "brand/BRAND.md", "brand/DESIGN.md", "mkt/imc-plan.md", "mkt/lp-optimization.md"],
-      "tags": ["landing-page", "redesign-brief", "conversion-architecture", "section-spec", "asset-slots"]
+      "produces": [
+        "mkt/lp-brief/[slug]/brief.md",
+        "mkt/lp-brief/[slug]/asset-slots/*.prompt.md"
+      ],
+      "consumes": [
+        "product-context.md",
+        "icp-research.md",
+        "brand/BRAND.md",
+        "brand/DESIGN.md",
+        "mkt/imc-plan.md",
+        "mkt/lp-optimization.md"
+      ],
+      "tags": [
+        "landing-page",
+        "redesign-brief",
+        "conversion-architecture",
+        "section-spec",
+        "asset-slots"
+      ]
     },
     {
       "id": "design-brief",
       "domain": "marketing",
       "name": "Design Brief",
-      "description": "Per-asset graphic-design brief — IG carousel/post/story, LinkedIn doc/single, FB ad, YouTube thumbnail, X card, banner/display, OOH, OG card. Platform-aware specs (aspect, safe zones, type scale, contrast, file format) plus downstream handoff (image-gen prompt / vector-tool spec / designer-handoff). Does not render — rendering is downstream.",
+      "description": "Per-asset graphic-design brief \u2014 IG carousel/post/story, LinkedIn doc/single, FB ad, YouTube thumbnail, X card, banner/display, OOH, OG card. Platform-aware specs (aspect, safe zones, type scale, contrast, file format) plus downstream handoff (image-gen prompt / vector-tool spec / designer-handoff). Does not render \u2014 rendering is downstream.",
       "path": "marketing-skills/design-brief",
       "agents": 7,
       "budget": "standard",
       "estimated_cost_usd": "$1-2",
-      "produces": ["mkt/design-briefs/[slug].md"],
-      "consumes": ["brand/BRAND.md", "brand/DESIGN.md", "brand/ASSETS.md", "mkt/lp-brief/[slug]/asset-slots/*.md", "mkt/content/[slug].copy.md"],
-      "tags": ["graphic-design-brief", "ad-creative-brief", "social-graphic", "og-image", "thumbnail", "image-gen-prompt"]
+      "produces": [
+        "mkt/design-briefs/[slug].md"
+      ],
+      "consumes": [
+        "brand/BRAND.md",
+        "brand/DESIGN.md",
+        "brand/ASSETS.md",
+        "mkt/lp-brief/[slug]/asset-slots/*.md",
+        "mkt/content/[slug].copy.md"
+      ],
+      "tags": [
+        "graphic-design-brief",
+        "ad-creative-brief",
+        "social-graphic",
+        "og-image",
+        "thumbnail",
+        "image-gen-prompt"
+      ]
     },
     {
       "id": "cold-outreach",
@@ -198,35 +360,73 @@
       "agents": 8,
       "budget": "deep",
       "estimated_cost_usd": "$0.50-1.50",
-      "produces": ["mkt/cold-outreach/[slug].md", "mkt/cold-outreach/[slug].rationale.md", "mkt/cold-outreach/[slug].critic-score.md"],
-      "consumes": ["product-context.md", "icp-research.md"],
-      "tags": ["cold-email", "linkedin-outreach", "twitter-outreach", "proposal-writing", "reply-handling"]
+      "produces": [
+        "mkt/cold-outreach/[slug].md",
+        "mkt/cold-outreach/[slug].rationale.md",
+        "mkt/cold-outreach/[slug].critic-score.md"
+      ],
+      "consumes": [
+        "product-context.md",
+        "icp-research.md"
+      ],
+      "tags": [
+        "cold-email",
+        "linkedin-outreach",
+        "twitter-outreach",
+        "proposal-writing",
+        "reply-handling"
+      ]
     },
     {
       "id": "user-flow",
       "domain": "product",
       "name": "User Flow",
-      "description": "Maps multi-step in-product flows — screens, decisions, transitions, platform-native touchpoints (dock, menu bar, widgets, notifications, Live Activity, Dynamic Island, etc.), edge cases, error states. One file per flow.",
+      "description": "Maps multi-step in-product flows \u2014 screens, decisions, transitions, platform-native touchpoints (dock, menu bar, widgets, notifications, Live Activity, Dynamic Island, etc.), edge cases, error states. One file per flow.",
       "path": "product-skills/user-flow",
       "agents": 6,
       "budget": "standard",
       "estimated_cost_usd": "$0.20-0.50",
-      "produces": ["product/flow/<flow-name>.md", "product/flow/index.md"],
-      "consumes": ["product-context.md", "brand/DESIGN.md"],
-      "tags": ["user-flow", "screen-mapping", "ux-flow", "journey-mapping", "platform-touchpoints", "multi-platform"]
+      "produces": [
+        "product/flow/<flow-name>.md",
+        "product/flow/index.md"
+      ],
+      "consumes": [
+        "product-context.md",
+        "brand/DESIGN.md"
+      ],
+      "tags": [
+        "user-flow",
+        "screen-mapping",
+        "ux-flow",
+        "journey-mapping",
+        "platform-touchpoints",
+        "multi-platform"
+      ]
     },
     {
       "id": "system-architecture",
       "domain": "product",
       "name": "System Architecture",
-      "description": "Designs technical blueprints — tech stack, database schema, API design, file structure, deployment plan.",
+      "description": "Designs technical blueprints \u2014 tech stack, database schema, API design, file structure, deployment plan.",
       "path": "product-skills/system-architecture",
       "agents": 7,
       "budget": "deep",
       "estimated_cost_usd": "$1-3",
-      "produces": ["system-architecture.md"],
-      "consumes": ["product-context.md", "spec.md", "solution-design.md", "product/flow/*.md"],
-      "tags": ["tech-stack", "database-schema", "api-design", "system-design"]
+      "produces": [
+        "system-architecture.md"
+      ],
+      "consumes": [
+        "product-context.md",
+        "spec.md",
+        "solution-design.md",
+        "product/flow/*.md"
+      ],
+      "tags": [
+        "tech-stack",
+        "database-schema",
+        "api-design",
+        "system-design"
+      ]
     },
     {
       "id": "code-cleanup",
@@ -237,49 +437,106 @@
       "agents": 8,
       "budget": "deep",
       "estimated_cost_usd": "$1-3",
-      "produces": ["cleanup-report.md"],
+      "produces": [
+        "cleanup-report.md"
+      ],
       "consumes": [],
-      "tags": ["code-audit", "dead-code", "refactoring", "cleanup"]
+      "tags": [
+        "code-audit",
+        "dead-code",
+        "refactoring",
+        "cleanup"
+      ]
+    },
+    {
+      "id": "machine-cleanup",
+      "domain": "product",
+      "name": "Machine Cleanup",
+      "description": "Audits and cleans a developer's machine \u2014 dotfolders, caches, language toolchains, package-manager globals \u2014 with per-target classification, risk surfacing (auth, processes, shell-rc side effects), and explicit user confirmation before each deletion.",
+      "path": "product-skills/machine-cleanup",
+      "agents": 7,
+      "budget": "deep",
+      "estimated_cost_usd": "$1-3",
+      "produces": [
+        "machine-cleanup-report.md"
+      ],
+      "consumes": [],
+      "tags": [
+        "machine-cleanup",
+        "dotfolder-audit",
+        "cache-purge",
+        "package-prune",
+        "toolchain-removal",
+        "disk-reclaim",
+        "dev-machine-hygiene"
+      ]
     },
     {
       "id": "technical-writer",
       "domain": "product",
       "name": "Technical Writer",
-      "description": "Generates documentation — READMEs, API references, setup guides, runbooks, ship logs.",
+      "description": "Generates documentation \u2014 READMEs, API references, setup guides, runbooks, ship logs.",
       "path": "product-skills/technical-writer",
       "agents": 6,
       "budget": "standard",
       "estimated_cost_usd": "$0.15-0.40",
-      "produces": ["product-context.md"],
-      "consumes": ["product-context.md"],
-      "tags": ["documentation", "readme", "api-reference", "setup-guide", "ship-log"]
+      "produces": [
+        "product-context.md"
+      ],
+      "consumes": [
+        "product-context.md"
+      ],
+      "tags": [
+        "documentation",
+        "readme",
+        "api-reference",
+        "setup-guide",
+        "ship-log"
+      ]
     },
     {
       "id": "discover",
       "domain": "meta",
       "name": "Discover",
-      "description": "Conversational discovery — adapts from quick scoping (3-5 questions) to deep interviews (multi-round).",
+      "description": "Conversational discovery \u2014 adapts from quick scoping (3-5 questions) to deep interviews (multi-round).",
       "path": "meta-skills/discover",
       "agents": 0,
       "budget": "fast",
       "estimated_cost_usd": "$0.03-0.10",
-      "produces": ["spec.md"],
-      "consumes": ["product-context.md", "product/flow/*.md"],
-      "tags": ["requirements", "interview", "spec-writing", "scope-definition"]
+      "produces": [
+        "spec.md"
+      ],
+      "consumes": [
+        "product-context.md",
+        "product/flow/*.md"
+      ],
+      "tags": [
+        "requirements",
+        "interview",
+        "spec-writing",
+        "scope-definition"
+      ]
     },
     {
       "id": "agent-room",
       "domain": "meta",
       "name": "Agent Room",
-      "description": "Multi-agent discussion rooms — debate (N agents argue in rounds) or poll (N agents independently analyze, aggregate).",
+      "description": "Multi-agent discussion rooms \u2014 debate (N agents argue in rounds) or poll (N agents independently analyze, aggregate).",
       "path": "meta-skills/agent-room",
       "agents": 3,
       "agents_max": 10,
       "budget": "standard",
       "estimated_cost_usd": "$0.15-0.50",
-      "produces": ["meta/agent-room-report.md"],
+      "produces": [
+        "meta/agent-room-report.md"
+      ],
       "consumes": [],
-      "tags": ["debate", "consensus", "perspectives", "multi-agent"]
+      "tags": [
+        "debate",
+        "consensus",
+        "perspectives",
+        "multi-agent"
+      ]
     },
     {
       "id": "task-breakdown",
@@ -290,22 +547,39 @@
       "agents": 5,
       "budget": "standard",
       "estimated_cost_usd": "$0.15-0.50",
-      "produces": ["tasks.md"],
-      "consumes": ["system-architecture.md", "spec.md", "product/flow/*.md"],
-      "tags": ["task-decomposition", "dependency-mapping", "acceptance-criteria"]
+      "produces": [
+        "tasks.md"
+      ],
+      "consumes": [
+        "system-architecture.md",
+        "spec.md",
+        "product/flow/*.md"
+      ],
+      "tags": [
+        "task-decomposition",
+        "dependency-mapping",
+        "acceptance-criteria"
+      ]
     },
     {
       "id": "review-chain",
       "domain": "meta",
       "name": "Review Chain",
-      "description": "Post-implementation fresh-eyes review. Chain: Implement → Review (independent) → Resolve. Max 2 rounds.",
+      "description": "Post-implementation fresh-eyes review. Chain: Implement \u2192 Review (independent) \u2192 Resolve. Max 2 rounds.",
       "path": "meta-skills/review-chain",
       "agents": 2,
       "budget": "standard",
       "estimated_cost_usd": "$0.15-0.50",
-      "produces": ["meta/review-chain-report.md"],
+      "produces": [
+        "meta/review-chain-report.md"
+      ],
       "consumes": [],
-      "tags": ["verify", "review", "quality", "fresh-eyes"]
+      "tags": [
+        "verify",
+        "review",
+        "quality",
+        "fresh-eyes"
+      ]
     }
   ]
 }
