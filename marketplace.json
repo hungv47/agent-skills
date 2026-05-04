@@ -242,32 +242,6 @@
       "tags": ["documentation", "readme", "api-reference", "setup-guide", "ship-log"]
     },
     {
-      "id": "ship",
-      "domain": "product",
-      "name": "Ship",
-      "description": "Automated pre-merge pipeline — tests, review gate, commit organization, PR with structured body.",
-      "path": "product-skills/ship",
-      "agents": 4,
-      "budget": "standard",
-      "estimated_cost_usd": "$0.15-0.40",
-      "produces": ["ship-report.md"],
-      "consumes": ["meta/review-chain-report.md", "tasks.md", "spec.md"],
-      "tags": ["ship", "pr", "pull-request", "merge"]
-    },
-    {
-      "id": "deploy-verify",
-      "domain": "product",
-      "name": "Deploy Verify",
-      "description": "Post-deploy health check — page load, console errors, critical flows, response times. HEALTHY/DEGRADED/BROKEN.",
-      "path": "product-skills/deploy-verify",
-      "agents": 0,
-      "budget": "fast",
-      "estimated_cost_usd": "$0.03-0.05",
-      "produces": ["deploy-verify-report.md", "deploy-verify-baseline.json"],
-      "consumes": ["ship-report.md"],
-      "tags": ["deploy", "verify", "health-check", "production"]
-    },
-    {
       "id": "discover",
       "domain": "meta",
       "name": "Discover",

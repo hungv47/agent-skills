@@ -24,7 +24,7 @@ Cherry-pick any skill with `--skill` (the examples below are illustrative — an
 ```bash
 npx skills add hungv47/marketing-skills --skill copywriting
 npx skills add hungv47/research-skills --skill icp-research
-npx skills add hungv47/product-skills --skill ship
+npx skills add hungv47/product-skills --skill system-architecture
 npx skills add hungv47/meta-skills --skill review-chain
 ```
 
@@ -80,7 +80,7 @@ For Claude Code users who prefer the native plugin system. Install all four pack
 /plugin install meta-skills@agent-skills
 ```
 
-After install, skills are namespaced — call them as `/research-skills:icp-research`, `/marketing-skills:copywriting`, `/product-skills:ship`, `/meta-skills:discover`, etc. Auto-invocation by Claude works the same as standalone skills.
+After install, skills are namespaced — call them as `/research-skills:icp-research`, `/marketing-skills:copywriting`, `/product-skills:system-architecture`, `/meta-skills:discover`, etc. Auto-invocation by Claude works the same as standalone skills.
 
 **`npx skills` is the recommended path for most users** — it's editor-agnostic (Claude Code, Cursor, Codex, Windsurf, Gemini CLI, VS Code), supports per-skill cherry-pick (`--skill <name>`), and skills are callable without a namespace prefix. The plugin marketplace is Claude Code only and namespace-scoped, useful mainly if you discover the stack through Claude Code's `/plugin marketplace` browser.
 
@@ -88,7 +88,7 @@ After install, skills are namespaced — call them as `/research-skills:icp-rese
 
 End-to-end pipeline: meta process wrappers compose with research pipeline skills, product skills (pipeline + horizontal), and marketing skills (pipeline + horizontal).
 
-**13 pipeline skills** run in sequence across three phases (Research → Product → Marketing). **7 horizontal skills** apply at any point within their stack. **5 meta skills** are domain-agnostic process wrappers that compose with any skill. 25 skills total.
+**11 pipeline skills** run in sequence across three phases (Research → Product → Marketing). **7 horizontal skills** apply at any point within their stack. **5 meta skills** are domain-agnostic process wrappers that compose with any skill. 23 skills total.
 
 ## Skill Stacks
 
@@ -130,10 +130,10 @@ icp-research → market-research + problem-analysis → solution-design → funn
 
 ### Product — design and build software
 
-> [`hungv47/product-skills`](https://github.com/hungv47/product-skills) &middot; 6 skills
+> [`hungv47/product-skills`](https://github.com/hungv47/product-skills) &middot; 4 skills
 
 <picture>
-  <img src="./assets/product.svg" alt="Product pipeline: user-flow → system-architecture → ship → deploy-verify, plus horizontal code-cleanup and technical-writer" width="100%">
+  <img src="./assets/product.svg" alt="Product pipeline: user-flow → system-architecture, plus horizontal code-cleanup and technical-writer" width="100%">
 </picture>
 
 | Skill | What it does | Use when... |
@@ -142,8 +142,6 @@ icp-research → market-research + problem-analysis → solution-design → funn
 | `system-architecture` | Technical blueprints — tech stack, database schema, API design, file structure, deployment, security review (STRIDE + OWASP + LLM security), dependency classification | You know what to build and need to decide *how* — the technical design |
 | `code-cleanup` | Structural audit, AI slop removal (code-level + frontend/visual), dead code, unused assets, refactoring | Your codebase has accumulated cruft and needs a quality pass |
 | `technical-writer` | READMEs, API references, setup guides, runbooks from existing code. Ship log mode writes product context to `research/product-context.md`. Sync mode for post-change doc updates | You have a codebase and need documentation generated or updated after changes |
-| `ship` | Automated pre-merge pipeline — runs tests, checks review gate, organizes commits, creates PR | You've built and reviewed something and need to ship it cleanly |
-| `deploy-verify` | Post-deploy health check — page load, console errors, critical paths, response times | You just deployed and want to verify production is healthy |
 
 ### Meta — discover, debate, decompose, verify, navigate
 
@@ -185,8 +183,6 @@ Not sure which skill to run? Find your situation:
 | "Generate docs from the code" | `/technical-writer` |
 | "Write a product snapshot for agents" | `/technical-writer --ship-log` |
 | "Update docs after this change" | `/technical-writer --sync` |
-| "Ship this branch as a PR" | `/ship` |
-| "Is production healthy after deploy?" | `/deploy-verify` |
 | "Scope this before building" | `/discover` |
 | "Help me think through this idea" | `/discover` |
 | "Break this into tasks" | `/task-breakdown` |
@@ -212,11 +208,9 @@ Run `/navigate "your goal"` to get a recommended skill team, or follow this end-
 10. /task-breakdown       → create buildable tasks
 11. (execute)             → build the tasks
 12. /review-chain         → independent quality check
-13. /ship                 → run tests, create PR
-14. /deploy-verify        → verify production health
-15. /copywriting          → write headlines, hooks, CTAs
-16. /content-create       → write launch content
-17. /lp-optimization      → optimize the landing page
+13. /copywriting          → write headlines, hooks, CTAs
+14. /content-create       → write launch content
+15. /lp-optimization      → optimize the landing page
 ```
 
 Each step builds on context from previous steps — through conversation or saved artifacts.
@@ -264,7 +258,7 @@ Each downstream skill produces richer output because it inherits upstream contex
   ├─ reads .agents/product/flow/*.md (UX requirements per task across every flow)
   └─ writes .agents/tasks.md (ordered tasks with acceptance criteria)
 
-(build tasks) → /review-chain → /ship → /deploy-verify
+(build tasks) → /review-chain
 ```
 
 ### Example 3: Meta Orchestration
@@ -278,7 +272,7 @@ Each downstream skill produces richer output because it inherits upstream contex
     Phase 1 (Research): /icp-research → /market-research → /solution-design
     Phase 2 (Strategy): /brand-system → /imc-plan → /funnel-planner
     Phase 3 (Build):    /user-flow → /system-architecture → /task-breakdown
-    Phase 4 (Ship):     (execute) → /review-chain → /ship → /deploy-verify
+    Phase 4 (Ship):     (execute) → /review-chain
     Phase 5 (Market):   /content-create → /copywriting → /seo → /attribution
 
 /agent-room "debate: should we build a Chrome extension or a web app?"
@@ -312,12 +306,10 @@ Skills pass data through markdown files in `.agents/`:
 | `product/flow/<flow-name>.md` + `product/flow/index.md` | `user-flow` | `system-architecture`, `task-breakdown` |
 | `spec.md` | `discover` (optional) | `system-architecture`, `task-breakdown` |
 | `system-architecture.md` | `system-architecture` | `task-breakdown` |
-| `tasks.md` | `task-breakdown` | Task execution, `ship` |
+| `tasks.md` | `task-breakdown` | Task execution |
 | `cleanup-report.md` | `code-cleanup` | — (terminal) |
 | `meta/agent-room-report.md` | `agent-room` | — (ephemeral) |
-| `meta/review-chain-report.md` | `review-chain` | `ship` (review gate) |
-| `ship-report.md` | `ship` | `deploy-verify` |
-| `deploy-verify-report.md` | `deploy-verify` | — (terminal) |
+| `meta/review-chain-report.md` | `review-chain` | — (terminal) |
 | `workflow-plan.md` | `navigate` | Multi-phase tracking |
 
 Every artifact includes frontmatter with `skill`, `version`, `date`, and `status` fields for traceability.
@@ -334,7 +326,7 @@ SKILL.md (Orchestrator)
   └─ Critic Agent ────────────────────── PASS / FAIL (max 2 cycles)
 ```
 
-**~150 specialized agents** across domain skills. Meta-skills use additional patterns: **dynamic agent spawning** (`agent-room`, `review-chain`), **conversation-first discovery** (`discover`), and **utility** (`navigate`, `deploy-verify`).
+**~150 specialized agents** across domain skills. Meta-skills use additional patterns: **dynamic agent spawning** (`agent-room`, `review-chain`), **conversation-first discovery** (`discover`), and **utility** (`navigate`).
 
 ## License
 

@@ -18,21 +18,6 @@
   <text x="267" y="60" text-anchor="middle" font-size="12" font-weight="600" fill="#064E3B">system-architecture</text>
   <text x="267" y="74" text-anchor="middle" font-size="8" fill="#047857">stack, schema, API, security</text>
 
-  <path d="M 350 63 L 385 63" stroke="#6EE7B7" stroke-width="1.2" fill="none" marker-end="url(#arr)"/>
-  <text x="367" y="56" font-size="7" fill="#6B7280" font-style="italic">build</text>
-
-  <text x="435" y="28" text-anchor="middle" font-size="9" font-weight="600" fill="#065F46">SHIP</text>
-  <rect x="395" y="38" width="80" height="50" rx="6" fill="#D1FAE5" stroke="#059669" stroke-width="1.5"/>
-  <text x="435" y="60" text-anchor="middle" font-size="12" font-weight="600" fill="#064E3B">ship</text>
-  <text x="435" y="74" text-anchor="middle" font-size="8" fill="#047857">test, PR, merge</text>
-
-  <path d="M 475 63 L 510 63" stroke="#6EE7B7" stroke-width="1.2" fill="none" marker-end="url(#arr)"/>
-
-  <text x="590" y="28" text-anchor="middle" font-size="9" font-weight="600" fill="#065F46">VERIFY</text>
-  <rect x="520" y="38" width="130" height="50" rx="6" fill="#D1FAE5" stroke="#059669" stroke-width="1.5"/>
-  <text x="585" y="60" text-anchor="middle" font-size="12" font-weight="600" fill="#064E3B">deploy-verify</text>
-  <text x="585" y="74" text-anchor="middle" font-size="8" fill="#047857">post-deploy health check</text>
-
   <!-- Horizontal skills -->
   <text x="410" y="128" text-anchor="middle" font-size="9" font-weight="600" fill="#065F46">HORIZONTAL — use anytime</text>
 
