@@ -293,19 +293,6 @@
       "produces": ["meta/review-chain-report.md"],
       "consumes": [],
       "tags": ["verify", "review", "quality", "fresh-eyes"]
-    },
-    {
-      "id": "navigate",
-      "domain": "meta",
-      "name": "Navigate",
-      "description": "Artifact status + multi-phase orchestration. Scan what exists, check freshness, track complex workflows.",
-      "path": "meta-skills/navigate",
-      "agents": 0,
-      "budget": "fast",
-      "estimated_cost_usd": "$0.03-0.10",
-      "produces": ["workflow-plan.md"],
-      "consumes": [],
-      "tags": ["artifact-scan", "staleness-check", "project-status", "workflow-planning"]
     }
   ]
 }

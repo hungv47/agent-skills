@@ -88,7 +88,7 @@ After install, skills are namespaced — call them as `/research-skills:icp-rese
 
 End-to-end pipeline: meta process wrappers compose with research pipeline skills, product skills (pipeline + horizontal), and marketing skills (pipeline + horizontal).
 
-**11 pipeline skills** run in sequence across three phases (Research → Product → Marketing). **7 horizontal skills** apply at any point within their stack. **5 meta skills** are domain-agnostic process wrappers that compose with any skill. 23 skills total.
+**11 pipeline skills** run in sequence across three phases (Research → Product → Marketing). **7 horizontal skills** apply at any point within their stack. **4 meta skills** are domain-agnostic process wrappers that compose with any skill. 22 skills total.
 
 ## Skill Stacks
 
@@ -143,9 +143,9 @@ icp-research → market-research + problem-analysis → solution-design → funn
 | `code-cleanup` | Structural audit, AI slop removal (code-level + frontend/visual), dead code, unused assets, refactoring | Your codebase has accumulated cruft and needs a quality pass |
 | `technical-writer` | READMEs, API references, setup guides, runbooks from existing code. Ship log mode writes product context to `research/product-context.md`. Sync mode for post-change doc updates | You have a codebase and need documentation generated or updated after changes |
 
-### Meta — discover, debate, decompose, verify, navigate
+### Meta — discover, debate, decompose, verify
 
-> [`hungv47/meta-skills`](https://github.com/hungv47/meta-skills) &middot; 5 skills
+> [`hungv47/meta-skills`](https://github.com/hungv47/meta-skills) &middot; 4 skills
 
 | Skill | What it does | Use when... |
 |-------|-------------|-------------|
@@ -153,7 +153,6 @@ icp-research → market-research + problem-analysis → solution-design → funn
 | `agent-room` | Multi-agent discussion rooms — debate (argue in rounds) or consensus polling | You're facing a complex decision and want multiple perspectives |
 | `task-breakdown` | Decomposes work into granular, testable tasks with acceptance criteria | Work is too big to just start — needs decomposition first |
 | `review-chain` | Fresh-eyes review — implement, review, resolve. Max 2 rounds | You've built something and want an independent quality check |
-| `navigate` | Scans artifacts, checks freshness, composes multi-phase workflows | You need to orient — what exists, what to do next, or orchestrate a goal |
 
 Meta-skills are domain-agnostic process wrappers. They compose with any skill in any stack.
 
@@ -188,12 +187,10 @@ Not sure which skill to run? Find your situation:
 | "Break this into tasks" | `/task-breakdown` |
 | "Debate this decision" | `/agent-room` |
 | "Verify this output" | `/review-chain` |
-| "What artifacts do I have?" | `/navigate status` |
-| "I have a goal, what do I run?" | `/navigate "your goal"` |
 
 ## Example: Idea to Shipped Product
 
-Run `/navigate "your goal"` to get a recommended skill team, or follow this end-to-end workflow:
+End-to-end workflow:
 
 ```
  1. /icp-research        → understand your audience
@@ -261,27 +258,14 @@ Each downstream skill produces richer output because it inherits upstream contex
 (build tasks) → /review-chain
 ```
 
-### Example 3: Meta Orchestration
+### Example 3: Multi-Perspective Decision
 
 ```
-/navigate "launch an AI writing assistant for marketers"
-  ├─ scans .agents/ for existing artifacts
-  ├─ checks freshness of each artifact
-  └─ recommends phased skill team:
-
-    Phase 1 (Research): /icp-research → /market-research → /solution-design
-    Phase 2 (Strategy): /brand-system → /imc-plan → /funnel-planner
-    Phase 3 (Build):    /user-flow → /system-architecture → /task-breakdown
-    Phase 4 (Ship):     (execute) → /review-chain
-    Phase 5 (Market):   /content-create → /copywriting → /seo → /attribution
-
 /agent-room "debate: should we build a Chrome extension or a web app?"
   ├─ spawns 3 agents (Architect, Pragmatist, Critic)
   ├─ 3 rounds of structured debate
   └─ writes .agents/meta/agent-room-report.md (consensus, splits, recommendation)
 ```
-
-Navigate doesn't execute skills — it recommends them based on what artifacts exist and what's stale. The user drives the sequence.
 
 ## How Skills Communicate
 
@@ -310,7 +294,6 @@ Skills pass data through markdown files in `.agents/`:
 | `cleanup-report.md` | `code-cleanup` | — (terminal) |
 | `meta/agent-room-report.md` | `agent-room` | — (ephemeral) |
 | `meta/review-chain-report.md` | `review-chain` | — (terminal) |
-| `workflow-plan.md` | `navigate` | Multi-phase tracking |
 
 Every artifact includes frontmatter with `skill`, `version`, `date`, and `status` fields for traceability.
 
@@ -326,7 +309,7 @@ SKILL.md (Orchestrator)
   └─ Critic Agent ────────────────────── PASS / FAIL (max 2 cycles)
 ```
 
-**~150 specialized agents** across domain skills. Meta-skills use additional patterns: **dynamic agent spawning** (`agent-room`, `review-chain`), **conversation-first discovery** (`discover`), and **utility** (`navigate`).
+**~150 specialized agents** across domain skills. Meta-skills use additional patterns: **dynamic agent spawning** (`agent-room`, `review-chain`) and **conversation-first discovery** (`discover`).
 
 ## License
 

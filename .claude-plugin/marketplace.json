@@ -33,7 +33,7 @@
     {
       "name": "meta-skills",
       "source": "./meta-skills",
-      "description": "Process-layer skills — discover, navigate, agent-room, task-breakdown, review-chain.",
+      "description": "Process-layer skills — discover, agent-room, task-breakdown, review-chain.",
       "category": "orchestration",
       "tags": ["scoping", "planning", "debate", "review", "multi-agent"]
     }
