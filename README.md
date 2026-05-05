@@ -84,6 +84,53 @@ After install, skills are namespaced — call them as `/research-skills:icp-rese
 
 **`npx skills` is the recommended path for most users** — it's editor-agnostic (Claude Code, Cursor, Codex, Windsurf, Gemini CLI, VS Code), supports per-skill cherry-pick (`--skill <name>`), and skills are callable without a namespace prefix. The plugin marketplace is Claude Code only and namespace-scoped, useful mainly if you discover the stack through Claude Code's `/plugin marketplace` browser.
 
+## Getting Started
+
+### Fastest path: one stack for your work + meta globally
+
+Pick the stack closest to what you're building, then install meta globally so process skills work in every project:
+
+```bash
+# Pick what you're working on
+npx skills add hungv47/research-skills      # researching a market or audience
+npx skills add hungv47/marketing-skills     # writing copy, planning campaigns, briefing design
+npx skills add hungv47/product-skills       # designing or building software
+
+# Always useful — install globally, available everywhere
+npx skills add hungv47/meta-skills -g
+```
+
+If you're not sure which stack you need, install meta first and run `/discover` to scope your work — it'll tell you which skill to run next.
+
+### How invocation works
+
+Every installed skill becomes a slash command in your editor:
+
+```
+/icp-research "B2B project management SaaS for agencies"
+/system-architecture "team dashboard with real-time status"
+/discover "vague idea I want to flesh out"
+/fresh-eyes
+```
+
+You don't have to remember names. Type a plain-English request and your agent reads the available skills and proposes the right one. Saying *"help me figure out who we're building for"* surfaces `/icp-research`. Saying *"this codebase has accumulated cruft"* surfaces `/code-cleanup`.
+
+### Pre-Dispatch: skills ask once, remember forever
+
+Most skills bundle 3–7 context questions in a single message before dispatching their sub-agents. Answer all the questions in one reply — the skill is gathering enough context to run multiple agents in parallel.
+
+Answers persist to `.agents/experience/{domain}.md` (product, audience, brand, business, goals, technical). The next skill in the same project reads from this file and skips re-asking. First skill in a project costs 1–2 minutes of setup; everything downstream skips straight to work.
+
+### Where outputs land
+
+Most skills write to `.agents/`. Three folders are top-level because they're canonical records the team owns long-term:
+
+- `research/` — audience and market records (`product-context.md`, `icp-research.md`, `market-research.md`)
+- `brand/` — brand identity of record (`BRAND.md`, `DESIGN.md`, `ASSETS.md`)
+- `architecture/` — system blueprint of record (`system-architecture.md`, schemas, ADRs)
+
+Everything else (audits, briefs, plans, reports) lives under `.agents/` with topic subfolders (`mkt/`, `product/`, `meta/`, `experience/`).
+
 ## Full Pipeline
 
 End-to-end pipeline: meta process wrappers compose with research pipeline skills, product skills (pipeline + horizontal), and marketing skills (pipeline + horizontal).
@@ -93,6 +140,8 @@ End-to-end pipeline: meta process wrappers compose with research pipeline skills
 ## Skill Stacks
 
 ### Research — understand your market and decide what to do
+
+![Research Skills](./assets/banners/research-skills.png)
 
 > [`hungv47/research-skills`](https://github.com/hungv47/research-skills) &middot; 5 skills
 
@@ -109,6 +158,8 @@ icp-research → market-research + diagnose → prioritize → funnel-planner
 | `funnel-planner` | Backward funnel modeling — revenue goals to traffic, conversions, unit economics | You need numeric targets: "how much traffic do we need to hit $X ARR?" |
 
 ### Marketing — create, optimize, and measure marketing
+
+![Marketing Skills](./assets/banners/marketing-skills.png)
 
 > [`hungv47/marketing-skills`](https://github.com/hungv47/marketing-skills) &middot; 10 skills
 
@@ -140,11 +191,9 @@ Horizontal: copywriting, humanize, vn-tone — invoked at any stage.
 
 ### Product — design and build software
 
-> [`hungv47/product-skills`](https://github.com/hungv47/product-skills) &middot; 4 skills
+![Product Skills](./assets/banners/product-skills.png)
 
-<picture>
-  <img src="./assets/product.png" alt="Product pipeline: user-flow → system-architecture, plus horizontal code-cleanup and docs-writing" width="100%">
-</picture>
+> [`hungv47/product-skills`](https://github.com/hungv47/product-skills) &middot; 4 skills
 
 | Skill | What it does | Use when... |
 |-------|-------------|-------------|
@@ -154,6 +203,8 @@ Horizontal: copywriting, humanize, vn-tone — invoked at any stage.
 | `docs-writing` | READMEs, API references, setup guides, runbooks from existing code. Ship log mode writes product context to `research/product-context.md`. Sync mode for post-change doc updates | You have a codebase and need documentation generated or updated after changes |
 
 ### Meta — discover, debate, decompose, verify
+
+![Meta Skills](./assets/banners/meta-skills.png)
 
 > [`hungv47/meta-skills`](https://github.com/hungv47/meta-skills) &middot; 4 skills
 
@@ -319,6 +370,28 @@ Each downstream skill produces richer output because it inherits upstream contex
   ├─ reads .agents/mkt/cold-outreach/founder-touch1.md (prior touch context)
   └─ writes .agents/mkt/cold-outreach/founder-reply1.md (reply + rationale + score)
 ```
+
+## Tips for Effective Use
+
+**Start with `/discover` for vague work.** "Build something cool" gets nowhere. `/discover` interviews you in 3–8 questions and produces a concrete spec other skills can run on.
+
+**Run `/icp-research` before any marketing work.** It writes `research/product-context.md` — the foundation artifact 12+ downstream skills consume. Skip it and every downstream skill re-asks you for audience details.
+
+**Chain skills, don't one-shot.** A 5-skill chain (icp-research → diagnose → prioritize → campaign-plan → copywriting) produces sharper output than running copywriting alone, because each downstream skill inherits real upstream context. The Worked Examples above show real chains.
+
+**Run `/fresh-eyes` before shipping.** Security-sensitive code and data-mutation work auto-trigger it. Run it manually on marketing copy, briefs, and architecture docs — it catches what you can't see after staring at a draft.
+
+**Let artifacts compound.** `.agents/` and the canonical folders (`research/`, `brand/`, `architecture/`) accumulate across sessions. After a month you have prioritize history, target docs, every copy variant, every design brief — all version-stamped, all referenceable. Don't delete them.
+
+**Edit artifact frontmatter when reality changes.** If `research/product-context.md` says you serve agencies but you've pivoted to enterprise, edit the file directly. Skills read whatever's there now — they don't lock to the original session.
+
+**Answer Pre-Dispatch questions in one reply.** When a skill asks 5 questions in one message, answer all 5 in one response. The skill is bundling so it can dispatch parallel sub-agents — answering one at a time forces it to re-prompt and slows everything down.
+
+**Use horizontal skills late, not early.** `humanize`, `vn-tone`, `copywriting` apply to outputs from any pipeline skill. Run them as a polish pass after the pipeline produces a draft, not as a starting point.
+
+**Override skill recommendations when you have context.** Skills auto-detect the right path (e.g., `design-brief` auto-routes to image-gen vs. vector-tool). If you know better, override with flags or correct in the conversation.
+
+**Install `meta-skills` globally.** They're domain-agnostic. `/discover`, `/agents-panel`, `/task-breakdown`, `/fresh-eyes` are useful in every project on your machine — `npx skills add hungv47/meta-skills -g` is the install most people regret skipping.
 
 ## How Skills Communicate
 
