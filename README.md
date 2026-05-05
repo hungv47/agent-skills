@@ -143,7 +143,7 @@ Horizontal: copywriting, humanize, vn-tone — invoked at any stage.
 > [`hungv47/product-skills`](https://github.com/hungv47/product-skills) &middot; 4 skills
 
 <picture>
-  <img src="./assets/product.svg" alt="Product pipeline: user-flow → system-architecture, plus horizontal code-cleanup and docs-writing" width="100%">
+  <img src="./assets/product.png" alt="Product pipeline: user-flow → system-architecture, plus horizontal code-cleanup and docs-writing" width="100%">
 </picture>
 
 | Skill | What it does | Use when... |
