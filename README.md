@@ -1,5 +1,7 @@
 # Agent Skills
 
+![Agent Skills](./assets/banners/forsvn-skills.png)
+
 A composable skill stack for [AI agents](https://agentskills.io/home) that chains together — from problem diagnosis to shipped code.
 
 Skills pass context through conversation and optional artifacts in `.agents/`. Downstream skills read conversation context or artifacts automatically, so output compounds as you move through the stack.
