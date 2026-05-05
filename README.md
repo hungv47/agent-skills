@@ -365,6 +365,14 @@ SKILL.md (Orchestrator)
 
 **~150 specialized agents** across domain skills. Meta-skills use additional patterns: **dynamic agent spawning** (`agents-panel`, `fresh-eyes`) and **conversation-first discovery** (`discover`).
 
+## Changelog
+
+Per-stack release notes:
+- [research-skills/CHANGELOG.md](https://github.com/hungv47/research-skills/blob/main/CHANGELOG.md)
+- [marketing-skills/CHANGELOG.md](https://github.com/hungv47/marketing-skills/blob/main/CHANGELOG.md)
+- [product-skills/CHANGELOG.md](https://github.com/hungv47/product-skills/blob/main/CHANGELOG.md)
+- [meta-skills/CHANGELOG.md](https://github.com/hungv47/meta-skills/blob/main/CHANGELOG.md)
+
 ## License
 
 MIT
