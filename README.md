@@ -442,7 +442,7 @@ SKILL.md (Orchestrator)
 
 ## Changelog
 
-Per-stack release notes:
+Per-stack release notes (updated 2026-05-05):
 - [research-skills/CHANGELOG.md](https://github.com/hungv47/research-skills/blob/main/CHANGELOG.md)
 - [marketing-skills/CHANGELOG.md](https://github.com/hungv47/marketing-skills/blob/main/CHANGELOG.md)
 - [product-skills/CHANGELOG.md](https://github.com/hungv47/product-skills/blob/main/CHANGELOG.md)
