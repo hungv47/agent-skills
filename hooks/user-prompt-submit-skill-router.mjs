@@ -231,17 +231,17 @@ async function main() {
     (w) => `  - "${w.name}" matched: ${w.reason}`
   );
 
-  const mustRunLines = winners.map(
-    (w) => `You must run the Skill(${w.name}) tool.`
+  const suggestLines = winners.map(
+    (w) => `Consider running the Skill(${w.name}) tool if it fits the user's actual request.`
   );
 
   const additionalContext = [
-    `[skill-router] Auto-matched based on prompt analysis:`,
+    `[skill-router] Heuristic match (suggestion only — apply your own relevance gate, ignore if not a fit):`,
     ...matchLines,
     "",
     "---",
-    ...mustRunLines,
-    `<!-- skillRouter: ${JSON.stringify({ version: 1, matched: winners.map((w) => w.name), scores: winners.map((w) => w.score) })} -->`,
+    ...suggestLines,
+    `<!-- skillRouter: ${JSON.stringify({ version: 2, mode: "suggest", matched: winners.map((w) => w.name), scores: winners.map((w) => w.score) })} -->`,
   ].join("\n");
 
   const output = {
