@@ -137,7 +137,7 @@ Everything else (audits, briefs, plans, reports) lives under `.agents/` with top
 
 End-to-end pipeline: meta process wrappers compose with research pipeline skills, product skills (pipeline + horizontal), and marketing skills (pipeline + horizontal).
 
-**24 skills total**: 5 research + 10 marketing + 5 product + 4 meta. Research and product pipelines run in sequence; marketing has a pipeline plus horizontal skills (copywriting, humanize, vn-tone, lp-optimization) that apply at any stage. Meta skills are domain-agnostic process wrappers that compose with any skill.
+**26 skills total**: 6 research + 11 marketing + 5 product + 4 meta. Research and product pipelines run in sequence; marketing has a pipeline plus horizontal skills (copywriting, humanize, vn-tone, lp-optimization) that apply at any stage. Meta skills are domain-agnostic process wrappers that compose with any skill. Short-form video pipeline: `short-form-research` (research-skills) → `short-form-brief` (marketing-skills).
 
 ## Skill Stacks
 
@@ -145,10 +145,11 @@ End-to-end pipeline: meta process wrappers compose with research pipeline skills
 
 ![Research Skills](./assets/banners/research-skills.png)
 
-> [`hungv47/research-skills`](https://github.com/hungv47/research-skills) &middot; 5 skills
+> [`hungv47/research-skills`](https://github.com/hungv47/research-skills) &middot; 6 skills
 
 ```
 icp-research → market-research + diagnose → prioritize → funnel-planner
+short-form-research → .agents/mkt/short-form-research.md (consumed by short-form-brief)
 ```
 
 | Skill | What it does | Use when... |
@@ -163,7 +164,7 @@ icp-research → market-research + diagnose → prioritize → funnel-planner
 
 ![Marketing Skills](./assets/banners/marketing-skills.png)
 
-> [`hungv47/marketing-skills`](https://github.com/hungv47/marketing-skills) &middot; 10 skills
+> [`hungv47/marketing-skills`](https://github.com/hungv47/marketing-skills) &middot; 11 skills
 
 ```
 brand-system
