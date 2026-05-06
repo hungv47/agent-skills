@@ -137,7 +137,7 @@ Everything else (audits, briefs, plans, reports) lives under `.agents/` with top
 
 End-to-end pipeline: meta process wrappers compose with research pipeline skills, product skills (pipeline + horizontal), and marketing skills (pipeline + horizontal).
 
-**13 pipeline skills** run in sequence across three phases (Research → Product → Marketing). **6 horizontal skills** apply at any point within their stack. **4 meta skills** are domain-agnostic process wrappers that compose with any skill. 23 skills total.
+**24 skills total**: 5 research + 10 marketing + 5 product + 4 meta. Research and product pipelines run in sequence; marketing has a pipeline plus horizontal skills (copywriting, humanize, vn-tone, lp-optimization) that apply at any stage. Meta skills are domain-agnostic process wrappers that compose with any skill.
 
 ## Skill Stacks
 
@@ -195,13 +195,14 @@ Horizontal: copywriting, humanize, vn-tone — invoked at any stage.
 
 ![Product Skills](./assets/banners/product-skills.png)
 
-> [`hungv47/product-skills`](https://github.com/hungv47/product-skills) &middot; 4 skills
+> [`hungv47/product-skills`](https://github.com/hungv47/product-skills) &middot; 5 skills
 
 | Skill | What it does | Use when... |
 |-------|-------------|-------------|
 | `user-flow` | Maps screens, decisions, transitions, edge cases, and error states | You're designing a feature and need to think through every screen and path |
 | `system-architecture` | Technical blueprints — tech stack, database schema, API design, file structure, deployment, security review (STRIDE + OWASP + LLM security), dependency classification | You know what to build and need to decide *how* — the technical design |
 | `code-cleanup` | Structural audit, AI slop removal (code-level + frontend/visual), dead code, unused assets, refactoring | Your codebase has accumulated cruft and needs a quality pass |
+| `machine-cleanup` | Audits and cleans your dev machine — dotfolders, caches, language toolchains, package-manager globals — with risk surfacing (auth, processes, shell-rc) and per-target confirmation | Your machine has accumulated years of toolchains, caches, and SDKs and you want to reclaim disk safely |
 | `docs-writing` | READMEs, API references, setup guides, runbooks from existing code. Ship log mode writes product context to `research/product-context.md`. Sync mode for post-change doc updates | You have a codebase and need documentation generated or updated after changes |
 
 ### Meta — discover, debate, decompose, verify

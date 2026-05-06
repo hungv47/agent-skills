@@ -28,7 +28,7 @@
       "source": "./product-skills",
       "description": "UX design, architecture, cleanup, and documentation skills.",
       "category": "product",
-      "tags": ["user-flow", "architecture", "code-cleanup", "docs-writing"]
+      "tags": ["user-flow", "architecture", "code-cleanup", "machine-cleanup", "docs-writing"]
     },
     {
       "name": "meta-skills",
