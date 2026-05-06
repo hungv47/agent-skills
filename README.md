@@ -86,6 +86,10 @@ After install, skills are namespaced — call them as `/research-skills:icp-rese
 
 **`npx skills` is the recommended path for most users** — it's editor-agnostic (Claude Code, Cursor, Codex, Windsurf, Gemini CLI, VS Code), supports per-skill cherry-pick (`--skill <name>`), and skills are callable without a namespace prefix. The plugin marketplace is Claude Code only and namespace-scoped, useful mainly if you discover the stack through Claude Code's `/plugin marketplace` browser.
 
+#### Why isn't there one umbrella `agent-skills` plugin to install everything?
+
+The four packs are kept as separate plugins on purpose — research / marketing / product / meta are independent domains with independent release cadences and there's value in installing only the ones you need. The Claude Code plugin model also doesn't have "depends-on" semantics: an umbrella plugin could not declaratively pull in the other four, it would either have to duplicate every skill (bloating updates and breaking provenance) or be empty ceremony. The four-line install above is the honest minimum. If you want true one-command full-stack install, prefer `npx skills add hungv47/research-skills marketing-skills product-skills meta-skills` (the `skills` CLI accepts multiple stacks per call).
+
 ## Getting Started
 
 ### Fastest path: one stack for your work + meta globally
@@ -102,7 +106,20 @@ npx skills add hungv47/product-skills       # designing or building software
 npx skills add hungv47/meta-skills -g
 ```
 
-If you're not sure which stack you need, install meta first and run `/discover` to scope your work — it'll tell you which skill to run next.
+If you're not sure which stack you need, install meta and run `/start-meta` — it reads cross-stack project state and routes you to the right stack-orchestrator (`/start-research`, `/start-marketing`, `/start-product`) or to a process skill (`/discover`, `/agents-panel`, `/task-breakdown`, `/fresh-eyes`).
+
+### Stack orchestrators (don't know which skill to invoke?)
+
+Each stack ships with a `/start-<stack>` orchestrator that reads what's already in `.agents/`, `research/`, and `brand/`, parses your free-form ask, and proposes the next 1–3 skills with rationale + cost + duration. Use these as the entry point when you're new to the stack or returning mid-project:
+
+```
+/start-research      # who's the audience? market landscape? prioritization? targets?
+/start-marketing     # brand foundation? campaign? copy? LP? SEO? video? outreach?
+/start-product       # user flow? architecture? code cleanup? machine cleanup? docs?
+/start-meta          # cross-stack — routes to the right /start-X or process skill
+```
+
+Each starter never auto-invokes — it always prints the recommended `/skill-name` for you to type, after showing you the rationale. Re-running `/start-X` after a skill completes resumes the workflow.
 
 ### How invocation works
 
@@ -137,7 +154,7 @@ Everything else (audits, briefs, plans, reports) lives under `.agents/` with top
 
 End-to-end pipeline: meta process wrappers compose with research pipeline skills, product skills (pipeline + horizontal), and marketing skills (pipeline + horizontal).
 
-**26 skills total**: 6 research + 11 marketing + 5 product + 4 meta. Research and product pipelines run in sequence; marketing has a pipeline plus horizontal skills (copywriting, humanize, vn-tone, lp-optimization) that apply at any stage. Meta skills are domain-agnostic process wrappers that compose with any skill. Short-form video pipeline: `short-form-research` (research-skills) → `short-form-brief` (marketing-skills).
+**30 skills total**: 7 research + 12 marketing + 6 product + 5 meta. Each stack includes a `/start-<stack>` orchestrator that reads project state and routes to the right skill. Research and product pipelines run in sequence; marketing has a pipeline plus horizontal skills (copywriting, humanize, vn-tone, lp-optimization) that apply at any stage. Meta skills are domain-agnostic process wrappers that compose with any skill. Short-form video pipeline: `short-form-research` (research-skills) → `short-form-brief` (marketing-skills).
 
 ## Skill Stacks
 
@@ -145,7 +162,7 @@ End-to-end pipeline: meta process wrappers compose with research pipeline skills
 
 ![Research Skills](./assets/banners/research-skills.png)
 
-> [`hungv47/research-skills`](https://github.com/hungv47/research-skills) &middot; 6 skills
+> [`hungv47/research-skills`](https://github.com/hungv47/research-skills) &middot; 7 skills (incl. `/start-research`)
 
 ```
 icp-research → market-research + diagnose → prioritize → funnel-planner
@@ -164,7 +181,7 @@ short-form-research → .agents/mkt/short-form-research.md (consumed by short-fo
 
 ![Marketing Skills](./assets/banners/marketing-skills.png)
 
-> [`hungv47/marketing-skills`](https://github.com/hungv47/marketing-skills) &middot; 11 skills
+> [`hungv47/marketing-skills`](https://github.com/hungv47/marketing-skills) &middot; 12 skills (incl. `/start-marketing`)
 
 ```
 brand-system
@@ -196,7 +213,7 @@ Horizontal: copywriting, humanize, vn-tone — invoked at any stage.
 
 ![Product Skills](./assets/banners/product-skills.png)
 
-> [`hungv47/product-skills`](https://github.com/hungv47/product-skills) &middot; 5 skills
+> [`hungv47/product-skills`](https://github.com/hungv47/product-skills) &middot; 6 skills (incl. `/start-product`)
 
 | Skill | What it does | Use when... |
 |-------|-------------|-------------|
@@ -210,7 +227,7 @@ Horizontal: copywriting, humanize, vn-tone — invoked at any stage.
 
 ![Meta Skills](./assets/banners/meta-skills.png)
 
-> [`hungv47/meta-skills`](https://github.com/hungv47/meta-skills) &middot; 4 skills
+> [`hungv47/meta-skills`](https://github.com/hungv47/meta-skills) &middot; 5 skills (incl. `/start-meta`)
 
 | Skill | What it does | Use when... |
 |-------|-------------|-------------|
@@ -444,7 +461,7 @@ SKILL.md (Orchestrator)
 
 ## Changelog
 
-Per-stack release notes (updated 2026-05-05):
+Per-stack release notes (updated 2026-05-06 — added 4 stack orchestrators (`start-research`, `start-marketing`, `start-product`, `start-meta`); fixed declaration drift for `short-form-research`, `short-form-brief`, `machine-cleanup`):
 - [research-skills/CHANGELOG.md](https://github.com/hungv47/research-skills/blob/main/CHANGELOG.md)
 - [marketing-skills/CHANGELOG.md](https://github.com/hungv47/marketing-skills/blob/main/CHANGELOG.md)
 - [product-skills/CHANGELOG.md](https://github.com/hungv47/product-skills/blob/main/CHANGELOG.md)
