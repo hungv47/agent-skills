@@ -461,7 +461,7 @@ SKILL.md (Orchestrator)
 
 ## Changelog
 
-Per-stack release notes (updated 2026-05-06 — added 4 stack orchestrators (`start-research`, `start-marketing`, `start-product`, `start-meta`); fixed declaration drift for `short-form-research`, `short-form-brief`, `machine-cleanup`):
+Per-stack release notes (updated 2026-05-07 — manifest.json state index across all 4 stacks (manifest-spec + sync script in meta-skills, manifest-aware start-* skills in research/marketing/product); orchestrator + short-form catch-up bump):
 - [research-skills/CHANGELOG.md](https://github.com/hungv47/research-skills/blob/main/CHANGELOG.md)
 - [marketing-skills/CHANGELOG.md](https://github.com/hungv47/marketing-skills/blob/main/CHANGELOG.md)
 - [product-skills/CHANGELOG.md](https://github.com/hungv47/product-skills/blob/main/CHANGELOG.md)
