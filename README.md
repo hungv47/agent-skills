@@ -461,7 +461,7 @@ SKILL.md (Orchestrator)
 
 ## Changelog
 
-Per-stack release notes (updated 2026-05-08 — CLAUDE.md path migration to skill-artifacts/ taxonomy across all 4 stacks):
+Per-stack release notes (updated 2026-05-08 — meta-skills v2.3.2 — agents-panel + fresh-eyes body write to dated-slug paths (close v1.5.0 T33 mismatch)):
 - [research-skills/CHANGELOG.md](https://github.com/hungv47/research-skills/blob/main/CHANGELOG.md)
 - [marketing-skills/CHANGELOG.md](https://github.com/hungv47/marketing-skills/blob/main/CHANGELOG.md)
 - [product-skills/CHANGELOG.md](https://github.com/hungv47/product-skills/blob/main/CHANGELOG.md)
