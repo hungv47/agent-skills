@@ -461,7 +461,7 @@ SKILL.md (Orchestrator)
 
 ## Changelog
 
-Per-stack release notes (updated 2026-05-08 — T33 path migration + short-form-eval scaffold + fresh-eyes hardening):
+Per-stack release notes (updated 2026-05-08 — CLAUDE.md path migration to skill-artifacts/ taxonomy across all 4 stacks):
 - [research-skills/CHANGELOG.md](https://github.com/hungv47/research-skills/blob/main/CHANGELOG.md)
 - [marketing-skills/CHANGELOG.md](https://github.com/hungv47/marketing-skills/blob/main/CHANGELOG.md)
 - [product-skills/CHANGELOG.md](https://github.com/hungv47/product-skills/blob/main/CHANGELOG.md)
