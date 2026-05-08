@@ -148,7 +148,7 @@ Most skills write to `.agents/`. Three folders are top-level because they're can
 - `brand/` — brand identity of record (`BRAND.md`, `DESIGN.md`, `ASSETS.md`)
 - `architecture/` — system blueprint of record (`system-architecture.md`, schemas, ADRs)
 
-Everything else (audits, briefs, plans, reports) lives under `.agents/` with topic subfolders (`mkt/`, `product/`, `meta/`, `experience/`).
+Everything else (audits, briefs, plans, reports) lives under `.agents/` with topic subfolders (`skill-artifacts/mkt/`, `product/`, `meta/`, `experience/`).
 
 ## Full Pipeline
 
@@ -166,7 +166,7 @@ End-to-end pipeline: meta process wrappers compose with research pipeline skills
 
 ```
 icp-research → market-research + diagnose → prioritize → funnel-planner
-short-form-research → .agents/mkt/short-form-research.md (consumed by short-form-brief)
+short-form-research → .agents/skill-artifacts/mkt/short-form-research.md (consumed by short-form-brief)
 ```
 
 | Skill | What it does | Use when... |
@@ -285,18 +285,18 @@ Real workflows are 3-6 skills, not 16. Each example below is a chain users actua
 /campaign-plan "Q3 launch campaign"
   ├─ reads research/product-context.md (audience)
   ├─ reads research/icp-research.md (personas)
-  └─ writes .agents/mkt/campaign-plan.md (channels, calendar, budget)
+  └─ writes .agents/skill-artifacts/mkt/campaign-plan.md (channels, calendar, budget)
 
 /lp-brief "Q3 launch landing page"
   ├─ reads research/product-context.md (voice, audience language)
   ├─ reads brand/BRAND.md + brand/DESIGN.md (visual language, lexicon)
-  ├─ reads .agents/mkt/campaign-plan.md (campaign hypothesis, conversion targets)
-  └─ writes .agents/mkt/lp-brief/q3-launch/brief.md + asset-slots/*.prompt.md
+  ├─ reads .agents/skill-artifacts/mkt/campaign-plan.md (campaign hypothesis, conversion targets)
+  └─ writes .agents/skill-artifacts/mkt/lp-brief/q3-launch/brief.md + asset-slots/*.prompt.md
 
 /design-brief "hero image for q3-launch (slot: hero-image)"
   ├─ reads brand/DESIGN.md (palette, typography, sacred elements)
-  ├─ reads .agents/mkt/lp-brief/q3-launch/asset-slots/hero-image.md (slot spec)
-  └─ writes .agents/mkt/design-briefs/q3-launch-hero.md (concept + platform spec + image-gen prompt)
+  ├─ reads .agents/skill-artifacts/mkt/lp-brief/q3-launch/asset-slots/hero-image.md (slot spec)
+  └─ writes .agents/skill-artifacts/mkt/design-briefs/q3-launch-hero.md (concept + platform spec + image-gen prompt)
 ```
 
 Each downstream skill produces richer output because it inherits upstream context. The design-brief output references audience pain points from icp-research, messaging pillars from campaign-plan, and the conversion hypothesis from lp-brief — without the user repeating any of it.
@@ -306,21 +306,21 @@ Each downstream skill produces richer output because it inherits upstream contex
 ```
 /discover "build a team dashboard with real-time project status"
   └─ conversation produces key decisions (scope, tech choices, edge cases)
-  └─ optionally writes .agents/spec.md (if user asks to save; includes FAILURE conditions)
+  └─ optionally writes .agents/skill-artifacts/meta/specs/<slug>.md (if user asks to save; includes FAILURE conditions)
 
 /user-flow "team dashboard"
-  ├─ reads .agents/spec.md (if saved) or conversation context
-  └─ writes .agents/product/flow/team-dashboard.md (screens, transitions, platform-surface matrix, edge states)
+  ├─ reads .agents/skill-artifacts/meta/specs/<slug>.md (if saved) or conversation context
+  └─ writes .agents/skill-artifacts/product/flow/team-dashboard.md (screens, transitions, platform-surface matrix, edge states)
 
 /system-architecture "team dashboard"
-  ├─ reads .agents/spec.md (requirements)
-  ├─ reads .agents/product/flow/*.md (every flow file; screens and surface matrix inform API design)
+  ├─ reads .agents/skill-artifacts/meta/specs/<slug>.md (requirements)
+  ├─ reads .agents/skill-artifacts/product/flow/*.md (every flow file; screens and surface matrix inform API design)
   └─ writes architecture/system-architecture.md (stack, schema, API, deployment)
 
 /task-breakdown
   ├─ reads architecture/system-architecture.md (what to build)
-  ├─ reads .agents/product/flow/*.md (UX requirements per task across every flow)
-  └─ writes .agents/tasks.md (ordered tasks with acceptance criteria)
+  ├─ reads .agents/skill-artifacts/product/flow/*.md (UX requirements per task across every flow)
+  └─ writes .agents/skill-artifacts/meta/tasks.md (ordered tasks with acceptance criteria)
 
 (build tasks) → /fresh-eyes
 ```
@@ -331,7 +331,7 @@ Each downstream skill produces richer output because it inherits upstream contex
 /agents-panel "debate: should we build a Chrome extension or a web app?"
   ├─ spawns 3 agents (Architect, Pragmatist, Critic)
   ├─ 3 rounds of structured debate
-  └─ writes .agents/meta/agents-panel-report.md (consensus, splits, recommendation)
+  └─ writes .agents/skill-artifacts/meta/decisions/[date]-<slug>.md (consensus, splits, recommendation)
 ```
 
 ### Example 4: Diagnose a Declining Metric
@@ -341,16 +341,16 @@ Each downstream skill produces richer output because it inherits upstream contex
   ├─ reads research/product-context.md (audience baseline)
   ├─ Layer 1 parallel: tree-builder + external-check
   ├─ Layer 2 sequential: hypothesis → data-mapper → verdict → critic
-  └─ writes .agents/diagnose.md (root cause + evidence + ranked hypotheses)
+  └─ writes .agents/skill-artifacts/meta/records/diagnose-*.md (root cause + evidence + ranked hypotheses)
 
 /prioritize "checkout fixes from diagnose output"
-  ├─ reads .agents/diagnose.md (which causes to address)
+  ├─ reads .agents/skill-artifacts/meta/records/diagnose-*.md (which causes to address)
   ├─ reads research/product-context.md (audience constraints)
-  └─ writes .agents/prioritize.md (ICE-scored fix list with cut line)
+  └─ writes .agents/skill-artifacts/meta/sketches/prioritize-*.md (ICE-scored fix list with cut line)
 
 /funnel-planner "set checkout recovery targets"
-  ├─ reads .agents/prioritize.md (initiatives → metrics)
-  └─ writes .agents/targets.md (numeric targets for traffic, CR, revenue)
+  ├─ reads .agents/skill-artifacts/meta/sketches/prioritize-*.md (initiatives → metrics)
+  └─ writes .agents/skill-artifacts/meta/records/targets-*.md (numeric targets for traffic, CR, revenue)
 ```
 
 ### Example 5: Audit and Rewrite a Landing Page
@@ -359,20 +359,20 @@ Each downstream skill produces richer output because it inherits upstream contex
 /lp-optimization https://example.com/pricing
   ├─ reads research/product-context.md (audience pain language)
   ├─ Layer 1 parallel: hero-audit + trust-audit + cta-audit + ux-audit
-  └─ writes .agents/mkt/lp-optimization.md (specific issues + prioritization)
+  └─ writes .agents/skill-artifacts/mkt/lp-optimization.md (specific issues + prioritization)
 
 /lp-brief "/pricing redesign"
-  ├─ reads .agents/mkt/lp-optimization.md (what's broken)
+  ├─ reads .agents/skill-artifacts/mkt/lp-optimization.md (what's broken)
   ├─ reads brand/BRAND.md + brand/DESIGN.md (visual + voice)
-  └─ writes .agents/mkt/lp-brief/pricing/brief.md + asset-slots/*.prompt.md
+  └─ writes .agents/skill-artifacts/mkt/lp-brief/pricing/brief.md + asset-slots/*.prompt.md
 
 /design-brief "hero illustration for pricing (slot: hero-image)"
-  ├─ reads brand/DESIGN.md + .agents/mkt/lp-brief/pricing/asset-slots/hero-image.md
-  └─ writes .agents/mkt/design-briefs/pricing-hero.md (concept + image-gen prompt)
+  ├─ reads brand/DESIGN.md + .agents/skill-artifacts/mkt/lp-brief/pricing/asset-slots/hero-image.md
+  └─ writes .agents/skill-artifacts/mkt/design-briefs/pricing-hero.md (concept + image-gen prompt)
 
 /copywriting "rate the hero copy candidates from the brief"
-  ├─ reads .agents/mkt/lp-brief/pricing/brief.md (copy candidates inline)
-  └─ writes .agents/mkt/content/pricing-hero.copy.md (alternatives + rationale)
+  ├─ reads .agents/skill-artifacts/mkt/lp-brief/pricing/brief.md (copy candidates inline)
+  └─ writes .agents/skill-artifacts/mkt/content/pricing-hero.copy.md (alternatives + rationale)
 ```
 
 ### Example 6: Write a Cold Outbound Sequence
@@ -385,11 +385,11 @@ Each downstream skill produces richer output because it inherits upstream contex
   ├─ reads research/product-context.md + research/icp-research.md (audience signals)
   ├─ Layer 1: signal-analyst → strategist + proof-selector in parallel
   ├─ Layer 2: composer → voice-auditor → critic → terminal humanize
-  └─ writes .agents/mkt/cold-outreach/founder-touch1.md + .rationale.md + .critic-score.md
+  └─ writes .agents/skill-artifacts/mkt/cold-outreach/founder-touch1.md + .rationale.md + .critic-score.md
 
 /cold-outreach "reply to: <prospect's response asking about pricing>"
-  ├─ reads .agents/mkt/cold-outreach/founder-touch1.md (prior touch context)
-  └─ writes .agents/mkt/cold-outreach/founder-reply1.md (reply + rationale + score)
+  ├─ reads .agents/skill-artifacts/mkt/cold-outreach/founder-touch1.md (prior touch context)
+  └─ writes .agents/skill-artifacts/mkt/cold-outreach/founder-reply1.md (reply + rationale + score)
 ```
 
 ## Tips for Effective Use
@@ -422,26 +422,26 @@ Skills pass data through markdown files in `.agents/`:
 |----------|------------|-------------|
 | `product-context.md` | `icp-research`, `docs-writing --ship-log` | 12+ skills across all stacks |
 | `market-research.md` | `market-research` | `prioritize` |
-| `diagnose.md` | `diagnose` | `prioritize` |
-| `prioritize.md` | `prioritize` | `campaign-plan`, `system-architecture`, `funnel-planner` |
-| `targets.md` | `funnel-planner` | — (terminal until measurement skill exists) |
+| `skill-artifacts/meta/records/diagnose-*.md` | `diagnose` | `prioritize` |
+| `skill-artifacts/meta/sketches/prioritize-*.md` | `prioritize` | `campaign-plan`, `system-architecture`, `funnel-planner` |
+| `skill-artifacts/meta/records/targets-*.md` | `funnel-planner` | — (terminal until measurement skill exists) |
 | `brand/BRAND.md`, `brand/DESIGN.md`, `brand/ASSETS.md` | `brand-system` | Visual decisions in `lp-brief`, `design-brief`, `humanize`, `copywriting` |
-| `mkt/campaign-plan.md` | `campaign-plan` | `lp-brief`, `seo`, `cold-outreach`, `copywriting` |
-| `mkt/content/[slug].copy.md` | `copywriting` | `humanize`, `vn-tone`, `design-brief` (copy-anchor) |
-| `mkt/content/[slug].humanized.md` | `humanize` | `vn-tone` |
-| `mkt/content/[slug].vn-tone.md` | `vn-tone` | — (terminal) |
-| `mkt/seo-[mode].md` | `seo` | `copywriting`, `lp-optimization` |
-| `mkt/lp-optimization.md` | `lp-optimization` | `lp-brief` (when redesign warranted) |
-| `mkt/lp-brief/[slug]/brief.md` + `asset-slots/*.prompt.md` | `lp-brief` | `design-brief` (per slot) + external designer / image-gen |
-| `mkt/design-briefs/[slug].md` | `design-brief` | External image-gen / vector-tool / human designer |
-| `mkt/cold-outreach/[slug].md` | `cold-outreach` | — (terminal) |
-| `product/flow/<flow-name>.md` + `product/flow/index.md` | `user-flow` | `system-architecture`, `task-breakdown` |
-| `spec.md` | `discover` (optional) | `system-architecture`, `task-breakdown` |
+| `skill-artifacts/mkt/campaign-plan.md` | `campaign-plan` | `lp-brief`, `seo`, `cold-outreach`, `copywriting` |
+| `skill-artifacts/mkt/content/[slug].copy.md` | `copywriting` | `humanize`, `vn-tone`, `design-brief` (copy-anchor) |
+| `skill-artifacts/mkt/content/[slug].humanized.md` | `humanize` | `vn-tone` |
+| `skill-artifacts/mkt/content/[slug].vn-tone.md` | `vn-tone` | — (terminal) |
+| `skill-artifacts/mkt/seo-[mode].md` | `seo` | `copywriting`, `lp-optimization` |
+| `skill-artifacts/mkt/lp-optimization.md` | `lp-optimization` | `lp-brief` (when redesign warranted) |
+| `skill-artifacts/mkt/lp-brief/[slug]/brief.md` + `asset-slots/*.prompt.md` | `lp-brief` | `design-brief` (per slot) + external designer / image-gen |
+| `skill-artifacts/mkt/design-briefs/[slug].md` | `design-brief` | External image-gen / vector-tool / human designer |
+| `skill-artifacts/mkt/cold-outreach/[slug].md` | `cold-outreach` | — (terminal) |
+| `skill-artifacts/product/flow/<flow-name>.md` + `skill-artifacts/product/flow/index.md` | `user-flow` | `system-architecture`, `task-breakdown` |
+| `skill-artifacts/meta/specs/<slug>.md` | `discover` (optional) | `system-architecture`, `task-breakdown` |
 | `system-architecture.md` | `system-architecture` | `task-breakdown` |
-| `tasks.md` | `task-breakdown` | Task execution |
-| `cleanup-report.md` | `code-cleanup` | — (terminal) |
-| `meta/agents-panel-report.md` | `agents-panel` | — (ephemeral) |
-| `meta/fresh-eyes-report.md` | `fresh-eyes` | — (terminal) |
+| `skill-artifacts/meta/tasks.md` | `task-breakdown` | Task execution |
+| `skill-artifacts/meta/records/cleanup-*.md` | `code-cleanup` | — (terminal) |
+| `skill-artifacts/meta/decisions/[date]-<slug>.md` | `agents-panel` | — (lifecycle: decision — dated, immutable) |
+| `skill-artifacts/meta/records/[date]-fresh-eyes-<slug>.md` | `fresh-eyes` | — (lifecycle: snapshot — dated, immutable) |
 
 Every artifact includes frontmatter with `skill`, `version`, `date`, and `status` fields for traceability.
 
@@ -461,7 +461,7 @@ SKILL.md (Orchestrator)
 
 ## Changelog
 
-Per-stack release notes (updated 2026-05-08 — meta-skills v2.3.2 — agents-panel + fresh-eyes body write to dated-slug paths (close v1.5.0 T33 mismatch)):
+Per-stack release notes (updated 2026-05-08 — meta-skills v2.3.3 — close remaining body/frontmatter contradictions + umbrella README cleanup):
 - [research-skills/CHANGELOG.md](https://github.com/hungv47/research-skills/blob/main/CHANGELOG.md)
 - [marketing-skills/CHANGELOG.md](https://github.com/hungv47/marketing-skills/blob/main/CHANGELOG.md)
 - [product-skills/CHANGELOG.md](https://github.com/hungv47/product-skills/blob/main/CHANGELOG.md)
