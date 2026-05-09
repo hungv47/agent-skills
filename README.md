@@ -485,7 +485,7 @@ npx skills add hungv47/marketing-skills --skill copywriting
 npx skills add hungv47/meta-skills --agent claude-code
 ```
 
-Per-stack release notes (updated 2026-05-10 — REB-4 — bang-backtick script-interpolation convention + 3 meta-skills retrofits):
+Per-stack release notes (updated 2026-05-10 — REB-4 fresh-eyes patch — silent-fallback fix on bang-backtick interpolations):
 
 - [research-skills/CHANGELOG.md](https://github.com/hungv47/research-skills/blob/main/CHANGELOG.md)
 - [marketing-skills/CHANGELOG.md](https://github.com/hungv47/marketing-skills/blob/main/CHANGELOG.md)
