@@ -210,6 +210,7 @@ Horizontal: copywriting, humanize, vn-tone — invoked at any stage.
 | `humanize` | Strips AI patterns, injects brand voice, compresses for density | You have AI-generated text that sounds robotic and needs to read human |
 | `vn-tone` | Polishes translated Vietnamese into a native register (báo chí, semi-casual, bro, or pop-marketing) | You have Vietnamese copy that reads translated/robotic or needs register alignment |
 | `cold-outreach` | Cold email / DM / proposal composition with signal-based personalization, channel-specific craft, rubric scoring, terminal humanize pass | You're writing first-touch outbound or replies to inbound responses and want it to read like a sharp human, not a template |
+| `short-form-brief` | Per-asset short-form video brief — hook, shot list, on-screen text, audio plan, caption, CTA, aspect, length. Hard cap: 1 hero + 2 platform variants per invocation. Brand modes: founder / company. Polish chain auto-routes per (market, brand_mode) | You're producing a TikTok / Reels / Shorts / X / LinkedIn video and need a production-ready brief tied to platform-intelligence + ICP voice |
 | `social-copy` | Platform-native social copy — A/B hook variants, body, CTA. Char-limit + CTA-truncation enforced; 5-dim critic rubric (hook strength / char-word limit / CTA placement / pattern-interrupt density / format compliance) | You need ready-to-publish copy for tiktok / reels / shorts / x / linkedin from a brief or topic |
 
 ### Product — design and build software
@@ -465,7 +466,7 @@ SKILL.md (Orchestrator)
 
 ## Changelog
 
-Per-stack release notes (updated 2026-05-09 — T41 start→orchestrate rename across 4 stacks (BREAKING) + social-copy + cleanup-artifacts + Phase 0.5b closeout):
+Per-stack release notes (updated 2026-05-09 — fresh-eyes patch — close v2.0.0 manifest + routing + Phase 0.5b CHANGELOG gaps):
 - [research-skills/CHANGELOG.md](https://github.com/hungv47/research-skills/blob/main/CHANGELOG.md)
 - [marketing-skills/CHANGELOG.md](https://github.com/hungv47/marketing-skills/blob/main/CHANGELOG.md)
 - [product-skills/CHANGELOG.md](https://github.com/hungv47/product-skills/blob/main/CHANGELOG.md)
