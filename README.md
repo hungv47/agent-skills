@@ -485,7 +485,7 @@ npx skills add hungv47/marketing-skills --skill copywriting
 npx skills add hungv47/meta-skills --agent claude-code
 ```
 
-Per-stack release notes (updated 2026-05-10 — REB-2 marketing reference enrichment — copywriting gains 3 ref files + emotional-trigger density gate; short-form-brief gains format-fit test; short-form-research pattern-extractor gains synthesis heuristic):
+Per-stack release notes (updated 2026-05-10 — fresh-eyes patch — REB-2 fabrications in emotional-triggers.md fixed; hook-agent + psychology-agent wiring closed):
 
 - [research-skills/CHANGELOG.md](https://github.com/hungv47/research-skills/blob/main/CHANGELOG.md)
 - [marketing-skills/CHANGELOG.md](https://github.com/hungv47/marketing-skills/blob/main/CHANGELOG.md)
