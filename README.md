@@ -494,11 +494,13 @@ Per-stack release notes:
 
 ## Changelog
 
-Per-stack release notes (updated 2026-05-09 — fresh-eyes patch — close v2.0.0 manifest + routing + Phase 0.5b CHANGELOG gaps):
-- [research-skills/CHANGELOG.md](https://github.com/hungv47/research-skills/blob/main/CHANGELOG.md)
-- [marketing-skills/CHANGELOG.md](https://github.com/hungv47/marketing-skills/blob/main/CHANGELOG.md)
-- [product-skills/CHANGELOG.md](https://github.com/hungv47/product-skills/blob/main/CHANGELOG.md)
-- [meta-skills/CHANGELOG.md](https://github.com/hungv47/meta-skills/blob/main/CHANGELOG.md)
+Full release history with per-version notes:
+
+- [agent-skills/releases](https://github.com/hungv47/agent-skills/releases)
+- [research-skills/releases](https://github.com/hungv47/research-skills/releases)
+- [marketing-skills/releases](https://github.com/hungv47/marketing-skills/releases)
+- [product-skills/releases](https://github.com/hungv47/product-skills/releases)
+- [meta-skills/releases](https://github.com/hungv47/meta-skills/releases)
 
 ## License
 
