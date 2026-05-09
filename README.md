@@ -464,6 +464,34 @@ SKILL.md (Orchestrator)
 
 **~150 specialized agents** across domain skills. Meta-skills use additional patterns: **dynamic agent spawning** (`agents-panel`, `fresh-eyes`) and **conversation-first discovery** (`discover`).
 
+## Releases
+
+Get the latest version of skills you already have installed:
+
+```bash
+npx skills update
+```
+
+Add a new skill stack or cherry-pick a skill you don't have yet:
+
+```bash
+# Full stack
+npx skills add hungv47/research-skills
+
+# Single skill
+npx skills add hungv47/marketing-skills --skill copywriting
+
+# Specific editor
+npx skills add hungv47/meta-skills --agent claude-code
+```
+
+Per-stack release notes:
+
+- [research-skills/CHANGELOG.md](https://github.com/hungv47/research-skills/blob/main/CHANGELOG.md)
+- [marketing-skills/CHANGELOG.md](https://github.com/hungv47/marketing-skills/blob/main/CHANGELOG.md)
+- [product-skills/CHANGELOG.md](https://github.com/hungv47/product-skills/blob/main/CHANGELOG.md)
+- [meta-skills/CHANGELOG.md](https://github.com/hungv47/meta-skills/blob/main/CHANGELOG.md)
+
 ## Changelog
 
 Per-stack release notes (updated 2026-05-09 — fresh-eyes patch — close v2.0.0 manifest + routing + Phase 0.5b CHANGELOG gaps):
