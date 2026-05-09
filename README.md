@@ -106,20 +106,20 @@ npx skills add hungv47/product-skills       # designing or building software
 npx skills add hungv47/meta-skills -g
 ```
 
-If you're not sure which stack you need, install meta and run `/start-meta` — it reads cross-stack project state and routes you to the right stack-orchestrator (`/start-research`, `/start-marketing`, `/start-product`) or to a process skill (`/discover`, `/agents-panel`, `/task-breakdown`, `/fresh-eyes`).
+If you're not sure which stack you need, install meta and run `/orchestrate-meta` — it reads cross-stack project state and routes you to the right stack-orchestrator (`/orchestrate-research`, `/orchestrate-marketing`, `/orchestrate-product`) or to a process skill (`/discover`, `/agents-panel`, `/task-breakdown`, `/fresh-eyes`).
 
 ### Stack orchestrators (don't know which skill to invoke?)
 
-Each stack ships with a `/start-<stack>` orchestrator that reads what's already in `.agents/`, `research/`, and `brand/`, parses your free-form ask, and proposes the next 1–3 skills with rationale + cost + duration. Use these as the entry point when you're new to the stack or returning mid-project:
+Each stack ships with a `/orchestrate-<stack>` orchestrator that reads what's already in `.agents/`, `research/`, and `brand/`, parses your free-form ask, and proposes the next 1–3 skills with rationale + cost + duration. Use these as the entry point when you're new to the stack or returning mid-project:
 
 ```
-/start-research      # who's the audience? market landscape? prioritization? targets?
-/start-marketing     # brand foundation? campaign? copy? LP? SEO? video? outreach?
-/start-product       # user flow? architecture? code cleanup? machine cleanup? docs?
-/start-meta          # cross-stack — routes to the right /start-X or process skill
+/orchestrate-research      # who's the audience? market landscape? prioritization? targets?
+/orchestrate-marketing     # brand foundation? campaign? copy? LP? SEO? video? outreach?
+/orchestrate-product       # user flow? architecture? code cleanup? machine cleanup? docs?
+/orchestrate-meta          # cross-stack — routes to the right /orchestrate-* or process skill
 ```
 
-Each starter never auto-invokes — it always prints the recommended `/skill-name` for you to type, after showing you the rationale. Re-running `/start-X` after a skill completes resumes the workflow.
+Each orchestrator never auto-invokes — it always prints the recommended `/skill-name` for you to type, after showing you the rationale. Re-running `/orchestrate-*` after a skill completes resumes the workflow.
 
 ### How invocation works
 
@@ -154,7 +154,7 @@ Everything else (audits, briefs, plans, reports) lives under `.agents/` with top
 
 End-to-end pipeline: meta process wrappers compose with research pipeline skills, product skills (pipeline + horizontal), and marketing skills (pipeline + horizontal).
 
-**30 skills total**: 7 research + 12 marketing + 6 product + 5 meta. Each stack includes a `/start-<stack>` orchestrator that reads project state and routes to the right skill. Research and product pipelines run in sequence; marketing has a pipeline plus horizontal skills (copywriting, humanize, vn-tone, lp-optimization) that apply at any stage. Meta skills are domain-agnostic process wrappers that compose with any skill. Short-form video pipeline: `short-form-research` (research-skills) → `short-form-brief` (marketing-skills).
+**33 skills total**: 8 research + 13 marketing + 6 product + 6 meta. Each stack includes a `/orchestrate-<stack>` orchestrator that reads project state and routes to the right skill. Research and product pipelines run in sequence; marketing has a pipeline plus horizontal skills (copywriting, humanize, vn-tone, lp-optimization) that apply at any stage. Meta skills are domain-agnostic process wrappers that compose with any skill. Short-form video pipeline: `short-form-research` (research-skills) → `short-form-brief` + `social-copy` (marketing-skills) → `short-form-eval` (research-skills, closes the loop).
 
 ## Skill Stacks
 
@@ -162,7 +162,7 @@ End-to-end pipeline: meta process wrappers compose with research pipeline skills
 
 ![Research Skills](./assets/banners/research-skills.png)
 
-> [`hungv47/research-skills`](https://github.com/hungv47/research-skills) &middot; 7 skills (incl. `/start-research`)
+> [`hungv47/research-skills`](https://github.com/hungv47/research-skills) &middot; 8 skills (incl. `/orchestrate-research`)
 
 ```
 icp-research → market-research + diagnose → prioritize → funnel-planner
@@ -176,12 +176,14 @@ short-form-research → .agents/skill-artifacts/mkt/short-form-research.md (cons
 | `diagnose` | Structured diagnosis — logic trees, hypotheses, root cause analysis | A metric dropped, something broke, or you need to figure out *why* before jumping to solutions |
 | `prioritize` | Generates strategic options, scores trade-offs with ICE, recommends a path | The problem is clear and you need to decide *what* to build or pursue |
 | `funnel-planner` | Backward funnel modeling — revenue goals to traffic, conversions, unit economics | You need numeric targets: "how much traffic do we need to hit $X ARR?" |
+| `short-form-research` | Per-platform best-practice catalog — pulls hook archetypes, format constraints, algorithm signals, anti-patterns into `.agents/skill-artifacts/research/short-form-research.md` (consumed by short-form-brief) | You're starting a video pipeline and need fresh research grounding hooks/formats/signals across tiktok/reels/shorts/x/linkedin |
+| `short-form-eval` | Closes the feedback loop — scores published short-form posts against the original brief, logs patterns, flags platform-signal staleness | You've published a video and want to know what the brief got right vs. what surprised you |
 
 ### Marketing — create, optimize, and measure marketing
 
 ![Marketing Skills](./assets/banners/marketing-skills.png)
 
-> [`hungv47/marketing-skills`](https://github.com/hungv47/marketing-skills) &middot; 12 skills (incl. `/start-marketing`)
+> [`hungv47/marketing-skills`](https://github.com/hungv47/marketing-skills) &middot; 13 skills (incl. `/orchestrate-marketing`)
 
 ```
 brand-system
@@ -208,12 +210,13 @@ Horizontal: copywriting, humanize, vn-tone — invoked at any stage.
 | `humanize` | Strips AI patterns, injects brand voice, compresses for density | You have AI-generated text that sounds robotic and needs to read human |
 | `vn-tone` | Polishes translated Vietnamese into a native register (báo chí, semi-casual, bro, or pop-marketing) | You have Vietnamese copy that reads translated/robotic or needs register alignment |
 | `cold-outreach` | Cold email / DM / proposal composition with signal-based personalization, channel-specific craft, rubric scoring, terminal humanize pass | You're writing first-touch outbound or replies to inbound responses and want it to read like a sharp human, not a template |
+| `social-copy` | Platform-native social copy — A/B hook variants, body, CTA. Char-limit + CTA-truncation enforced; 5-dim critic rubric (hook strength / char-word limit / CTA placement / pattern-interrupt density / format compliance) | You need ready-to-publish copy for tiktok / reels / shorts / x / linkedin from a brief or topic |
 
 ### Product — design and build software
 
 ![Product Skills](./assets/banners/product-skills.png)
 
-> [`hungv47/product-skills`](https://github.com/hungv47/product-skills) &middot; 6 skills (incl. `/start-product`)
+> [`hungv47/product-skills`](https://github.com/hungv47/product-skills) &middot; 6 skills (incl. `/orchestrate-product`)
 
 | Skill | What it does | Use when... |
 |-------|-------------|-------------|
@@ -227,7 +230,7 @@ Horizontal: copywriting, humanize, vn-tone — invoked at any stage.
 
 ![Meta Skills](./assets/banners/meta-skills.png)
 
-> [`hungv47/meta-skills`](https://github.com/hungv47/meta-skills) &middot; 5 skills (incl. `/start-meta`)
+> [`hungv47/meta-skills`](https://github.com/hungv47/meta-skills) &middot; 6 skills (incl. `/orchestrate-meta`)
 
 | Skill | What it does | Use when... |
 |-------|-------------|-------------|
@@ -235,6 +238,7 @@ Horizontal: copywriting, humanize, vn-tone — invoked at any stage.
 | `agents-panel` | Multi-agent discussion rooms — debate (argue in rounds) or consensus polling | You're facing a complex decision and want multiple perspectives |
 | `task-breakdown` | Decomposes work into granular, testable tasks with acceptance criteria | Work is too big to just start — needs decomposition first |
 | `fresh-eyes` | Fresh-eyes review — implement, review, resolve. Max 2 rounds | You've built something and want an independent quality check |
+| `cleanup-artifacts` | Audits + grooms `.agents/` — classifies KEEP/STALE/ORPHAN/LEGACY/EPHEMERAL, archives behind explicit per-category confirmation. Never deletes | `.agents/` has gone junk-drawer or you're prepping for a release |
 
 Meta-skills are domain-agnostic process wrappers. They compose with any skill in any stack.
 
@@ -461,7 +465,7 @@ SKILL.md (Orchestrator)
 
 ## Changelog
 
-Per-stack release notes (updated 2026-05-08 — meta-skills v2.3.3 — close remaining body/frontmatter contradictions + umbrella README cleanup):
+Per-stack release notes (updated 2026-05-09 — T41 start→orchestrate rename across 4 stacks (BREAKING) + social-copy + cleanup-artifacts + Phase 0.5b closeout):
 - [research-skills/CHANGELOG.md](https://github.com/hungv47/research-skills/blob/main/CHANGELOG.md)
 - [marketing-skills/CHANGELOG.md](https://github.com/hungv47/marketing-skills/blob/main/CHANGELOG.md)
 - [product-skills/CHANGELOG.md](https://github.com/hungv47/product-skills/blob/main/CHANGELOG.md)

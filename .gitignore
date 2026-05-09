@@ -2,3 +2,5 @@
 .agents/
 CLAUDE.md
 AGENTS.md
+.scion
+.scion/agents
