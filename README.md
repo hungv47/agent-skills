@@ -485,7 +485,7 @@ npx skills add hungv47/marketing-skills --skill copywriting
 npx skills add hungv47/meta-skills --agent claude-code
 ```
 
-Per-stack release notes (updated 2026-05-10 — REB-3 ad-intelligence reference seedbank — 3 pre-staged refs in marketing-skills 4.0.4):
+Per-stack release notes (updated 2026-05-10 — REB-3 fresh-eyes patch — stitched-bullet quotes split + tier vocabulary aligned):
 
 - [research-skills/CHANGELOG.md](https://github.com/hungv47/research-skills/blob/main/CHANGELOG.md)
 - [marketing-skills/CHANGELOG.md](https://github.com/hungv47/marketing-skills/blob/main/CHANGELOG.md)
