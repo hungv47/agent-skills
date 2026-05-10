@@ -485,7 +485,7 @@ npx skills add hungv47/marketing-skills --skill copywriting
 npx skills add hungv47/meta-skills --agent claude-code
 ```
 
-Per-stack release notes (updated 2026-05-11 — REB-5 Wave 2 — discover operator-grade upgrade (meta-skills 3.2.0): plan-review 4-mode framework + mandatory output sections + idea-critic agent):
+Per-stack release notes (updated 2026-05-11 — REB-5 Wave 2 fresh-eyes patch (meta-skills 3.2.1): 8 findings closed; no behavioral regressions):
 
 - [research-skills/CHANGELOG.md](https://github.com/hungv47/research-skills/blob/main/CHANGELOG.md)
 - [marketing-skills/CHANGELOG.md](https://github.com/hungv47/marketing-skills/blob/main/CHANGELOG.md)
