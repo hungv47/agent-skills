@@ -485,7 +485,7 @@ npx skills add hungv47/marketing-skills --skill copywriting
 npx skills add hungv47/meta-skills --agent claude-code
 ```
 
-Per-stack release notes (updated 2026-05-11 — campaign-plan distribution-models/clipping-and-live ref + short-form-research clip-density tagging):
+Per-stack release notes (updated 2026-05-11 — campaign-plan 4.1.3 fresh-eyes patch (§6 inferred-tag completion)):
 
 - [research-skills/CHANGELOG.md](https://github.com/hungv47/research-skills/blob/main/CHANGELOG.md)
 - [marketing-skills/CHANGELOG.md](https://github.com/hungv47/marketing-skills/blob/main/CHANGELOG.md)
