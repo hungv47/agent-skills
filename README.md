@@ -485,7 +485,7 @@ npx skills add hungv47/marketing-skills --skill copywriting
 npx skills add hungv47/meta-skills --agent claude-code
 ```
 
-Per-stack release notes (updated 2026-05-11 — meta-skills 3.2.3 + marketing-skills 4.1.1 — fresh-eyes patch (routing bug + format-spec + source-fidelity fixes)):
+Per-stack release notes (updated 2026-05-11 — campaign-plan distribution-models/clipping-and-live ref + short-form-research clip-density tagging):
 
 - [research-skills/CHANGELOG.md](https://github.com/hungv47/research-skills/blob/main/CHANGELOG.md)
 - [marketing-skills/CHANGELOG.md](https://github.com/hungv47/marketing-skills/blob/main/CHANGELOG.md)
