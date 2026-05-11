@@ -485,7 +485,7 @@ npx skills add hungv47/marketing-skills --skill copywriting
 npx skills add hungv47/meta-skills --agent claude-code
 ```
 
-Per-stack release notes (updated 2026-05-11 — humanize: 10 new AI-tell patterns (37 -> 47)):
+Per-stack release notes (updated 2026-05-11 — meta-skills 3.2.2 — Skill-Authoring Patterns grows to 7 (WorkOS extraction)):
 
 - [research-skills/CHANGELOG.md](https://github.com/hungv47/research-skills/blob/main/CHANGELOG.md)
 - [marketing-skills/CHANGELOG.md](https://github.com/hungv47/marketing-skills/blob/main/CHANGELOG.md)
