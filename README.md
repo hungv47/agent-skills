@@ -485,7 +485,7 @@ npx skills add hungv47/marketing-skills --skill copywriting
 npx skills add hungv47/meta-skills --agent claude-code
 ```
 
-Per-stack release notes (updated 2026-05-11 — cold-outreach 4.1.4 — Saraev teaser-preview rules + iMessage/SMS channel):
+Per-stack release notes (updated 2026-05-11 — cold-outreach 4.1.5 — fresh-eyes patch on 4.1.4 (source-fidelity + wiring)):
 
 - [research-skills/CHANGELOG.md](https://github.com/hungv47/research-skills/blob/main/CHANGELOG.md)
 - [marketing-skills/CHANGELOG.md](https://github.com/hungv47/marketing-skills/blob/main/CHANGELOG.md)

@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Multi-agent orchestration skills for research, marketing, product, and meta workflows. Each plugin uses critic-gated agent pipelines with quantitative rubrics.",
-    "version": "2.3.4"
+    "version": "2.3.5"
   },
   "plugins": [
     {
