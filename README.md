@@ -485,7 +485,7 @@ npx skills add hungv47/marketing-skills --skill copywriting
 npx skills add hungv47/meta-skills --agent claude-code
 ```
 
-Per-stack release notes (updated 2026-05-11 — cold-outreach 4.1.5 — fresh-eyes patch on 4.1.4 (source-fidelity + wiring)):
+Per-stack release notes (updated 2026-05-11 — 3 orchestrate-* siblings (research/marketing/product) get the orchestrate-meta Step 1 disk-snapshot retrofit):
 
 - [research-skills/CHANGELOG.md](https://github.com/hungv47/research-skills/blob/main/CHANGELOG.md)
 - [marketing-skills/CHANGELOG.md](https://github.com/hungv47/marketing-skills/blob/main/CHANGELOG.md)
