@@ -485,7 +485,7 @@ npx skills add hungv47/marketing-skills --skill copywriting
 npx skills add hungv47/meta-skills --agent claude-code
 ```
 
-Per-stack release notes (updated 2026-05-11 — marketing-skills 4.1.0 — cold-outreach Saraev four-step framework + critic Specificity Floor):
+Per-stack release notes (updated 2026-05-11 — meta-skills 3.2.3 + marketing-skills 4.1.1 — fresh-eyes patch (routing bug + format-spec + source-fidelity fixes)):
 
 - [research-skills/CHANGELOG.md](https://github.com/hungv47/research-skills/blob/main/CHANGELOG.md)
 - [marketing-skills/CHANGELOG.md](https://github.com/hungv47/marketing-skills/blob/main/CHANGELOG.md)
