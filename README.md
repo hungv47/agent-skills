@@ -485,7 +485,7 @@ npx skills add hungv47/marketing-skills --skill copywriting
 npx skills add hungv47/meta-skills --agent claude-code
 ```
 
-Per-stack release notes (updated 2026-05-11 — ad-copy skill scaffold (Phase 1.2) — Meta paid-ad copy for retargeting + cold-traffic):
+Per-stack release notes (updated 2026-05-11 — ad-copy v4.2.1 — fresh-eyes patch (rubric discipline + humanize content-type wiring)):
 
 - [research-skills/CHANGELOG.md](https://github.com/hungv47/research-skills/blob/main/CHANGELOG.md)
 - [marketing-skills/CHANGELOG.md](https://github.com/hungv47/marketing-skills/blob/main/CHANGELOG.md)
