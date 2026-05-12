@@ -2,7 +2,7 @@
   "name": "agent-skills",
   "description": "Multi-agent orchestration skills for research, marketing, product, and meta workflows. Every skill uses critic-gated parallel/sequential agent pipelines with quantitative rubrics. 4 stack orchestrators (start-research, start-marketing, start-product, start-meta) route users to the right skill based on intent + state.",
   "author": "hungv47",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "schema_version": "1",
   "license": "MIT",
   "domains": [
@@ -193,7 +193,6 @@
         "mkt/campaign-plan.md",
         "mkt/content/*.md",
         "mkt/lp-brief/**/brief.md",
-        "mkt/lp-optimization.md",
         "mkt/seo-*.md",
         "mkt/cold-outreach/*.md",
         "mkt/short-form-brief/**/brief.md"
@@ -331,7 +330,7 @@
       "id": "lp-optimization",
       "domain": "marketing",
       "name": "LP Optimization",
-      "description": "Audits landing pages for conversion \u2014 hero, CTA, social proof, objection handling, page flow.",
+      "description": "Deprecated heuristic landing-page teardown. Use lp-brief for construction/redesign; reserve this for explicit best-practice teardown requests or data-backed CRO notes until a dedicated CRO skill exists.",
       "path": "marketing-skills/skills/lp-optimization",
       "agents": 7,
       "budget": "deep",
@@ -344,9 +343,9 @@
         "icp-research.md"
       ],
       "tags": [
-        "conversion-audit",
+        "deprecated",
+        "heuristic-teardown",
         "landing-page-audit",
-        "page-optimization",
         "cro"
       ]
     },
@@ -379,7 +378,7 @@
       "id": "lp-brief",
       "domain": "marketing",
       "name": "LP Brief",
-      "description": "Generates a campaign-grade brief for a landing-page redesign \u2014 hypothesis, surface rhythm, section spec, asset slots, copy candidates, hand-off prompts. Internalizes lp-optimization conversion principles as evaluation rubric.",
+      "description": "Generates a campaign-grade brief for a high-converting landing page or redesign \u2014 hypothesis, surface rhythm, section spec, asset slots, copy candidates, hand-off prompts, and built-in conversion-principles gate.",
       "path": "marketing-skills/skills/lp-brief",
       "agents": 9,
       "budget": "deep",
@@ -394,7 +393,7 @@
         "brand/BRAND.md",
         "brand/DESIGN.md",
         "mkt/campaign-plan.md",
-        "mkt/lp-optimization.md"
+        "page-state-or-post-launch-evidence"
       ],
       "tags": [
         "landing-page",

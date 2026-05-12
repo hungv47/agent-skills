@@ -154,7 +154,7 @@ Everything else (audits, briefs, plans, reports) lives under `.agents/` with top
 
 End-to-end pipeline: meta process wrappers compose with research pipeline skills, product skills (pipeline + horizontal), and marketing skills (pipeline + horizontal).
 
-**33 skills total**: 8 research + 13 marketing + 6 product + 6 meta. Each stack includes a `/orchestrate-<stack>` orchestrator that reads project state and routes to the right skill. Research and product pipelines run in sequence; marketing has a pipeline plus horizontal skills (copywriting, humanize, vn-tone, lp-optimization) that apply at any stage. Meta skills are domain-agnostic process wrappers that compose with any skill. Short-form video pipeline: `short-form-research` (research-skills) → `short-form-brief` + `social-copy` (marketing-skills) → `short-form-eval` (research-skills, closes the loop).
+**33 skills total**: 8 research + 13 marketing + 6 product + 6 meta. Each stack includes a `/orchestrate-<stack>` orchestrator that reads project state and routes to the right skill. Research and product pipelines run in sequence; marketing has a pipeline plus horizontal skills (copywriting, humanize, vn-tone) that apply at any stage; `lp-optimization` remains installed but deprecated for explicit teardown only. Meta skills are domain-agnostic process wrappers that compose with any skill. Short-form video pipeline: `short-form-research` (research-skills) → `short-form-brief` + `social-copy` (marketing-skills) → `short-form-eval` (research-skills, closes the loop).
 
 ## Skill Stacks
 
@@ -190,11 +190,11 @@ brand-system
   ↓
 campaign-plan
   ↓
-  ├─ lp-brief (per page)  → design-brief (per asset slot)
+  ├─ lp-brief (per page; owns conversion best practices) → design-brief (per asset slot)
   ├─ seo (per mode)
   └─ cold-outreach (per touch)
 
-Audit live pages: lp-optimization → (if redesign warranted) lp-brief
+Deprecated: lp-optimization remains for explicit heuristic teardown only.
 Horizontal: copywriting, humanize, vn-tone — invoked at any stage.
 ```
 
@@ -203,8 +203,8 @@ Horizontal: copywriting, humanize, vn-tone — invoked at any stage.
 | `brand-system` | Brand identity — color palettes, typography, design tokens, voice, visual language | You need a visual identity system before creating any marketing materials |
 | `campaign-plan` | Channel strategy, positioning, content calendar, budget allocation, GTM timelines | You're planning a campaign or go-to-market and need to decide where, when, and how much |
 | `copywriting` | Headlines, hooks, CTAs, taglines, full-page section copy with scoring | You need persuasive copy for any surface — landing pages, ads, emails, product UI |
-| `lp-optimization` | Conversion audit on a live page — hero, CTA, social proof, objection handling | You have a landing page and want to improve its conversion rate without a redesign |
-| `lp-brief` | Campaign-grade redesign brief — hypothesis, architecture, per-section spec, asset slots, hand-off prompts | You're redesigning a landing page and need a brief precise enough for a designer or AI tool to execute |
+| `lp-optimization` | Deprecated heuristic teardown of a live page | You explicitly want a best-practice teardown and understand it is not true CRO without behavioral evidence |
+| `lp-brief` | Campaign-grade landing-page brief — hypothesis, architecture, per-section spec, conversion gate, asset slots, hand-off prompts | You're creating or revising a landing page and need a brief precise enough for a designer or AI tool to execute |
 | `design-brief` | Per-asset graphic-design brief with platform-aware specs (aspect, safe zones, type scale, contrast, file format) and downstream handoff (image-gen prompt / vector-tool spec / designer-handoff) | You need a brief for a single visual asset (IG carousel, OG image, banner ad, YT thumbnail, OOH, etc.) — rendering happens downstream |
 | `seo` | Technical audit, AI/AEO optimization, programmatic SEO, ASO | You want more organic traffic — search, AI answers, or app store visibility |
 | `humanize` | Strips AI patterns, injects brand voice, compresses for density | You have AI-generated text that sounds robotic and needs to read human |
@@ -257,8 +257,8 @@ Not sure which skill to run? Find your situation:
 | "We need a brand identity" | `/brand-system` |
 | "Plan the launch campaign" | `/campaign-plan` |
 | "Write better headlines / CTAs / taglines" | `/copywriting` |
-| "Our landing page isn't converting" | `/lp-optimization` |
-| "Brief a landing-page redesign" | `/lp-brief` |
+| "Our landing page isn't converting" | `/lp-brief` |
+| "Brief a landing page or redesign" | `/lp-brief` |
 | "Brief a single graphic-design asset (carousel / OG / thumbnail / banner)" | `/design-brief` |
 | "We need more organic traffic" | `/seo` |
 | "Write a cold email / DM / proposal" | `/cold-outreach` |
@@ -358,17 +358,13 @@ Each downstream skill produces richer output because it inherits upstream contex
   └─ writes .agents/skill-artifacts/meta/records/targets-*.md (numeric targets for traffic, CR, revenue)
 ```
 
-### Example 5: Audit and Rewrite a Landing Page
+### Example 5: Brief and Revise a Landing Page
 
 ```
-/lp-optimization https://example.com/pricing
-  ├─ reads research/product-context.md (audience pain language)
-  ├─ Layer 1 parallel: hero-audit + trust-audit + cta-audit + ux-audit
-  └─ writes .agents/skill-artifacts/mkt/lp-optimization.md (specific issues + prioritization)
-
 /lp-brief "/pricing redesign"
-  ├─ reads .agents/skill-artifacts/mkt/lp-optimization.md (what's broken)
   ├─ reads brand/BRAND.md + brand/DESIGN.md (visual + voice)
+  ├─ reads research/product-context.md + research/icp-research.md (audience pain language)
+  ├─ uses page state / analytics notes if provided
   └─ writes .agents/skill-artifacts/mkt/lp-brief/pricing/brief.md + asset-slots/*.prompt.md
 
 /design-brief "hero illustration for pricing (slot: hero-image)"
@@ -435,8 +431,8 @@ Skills pass data through markdown files in `.agents/`:
 | `skill-artifacts/mkt/content/[slug].copy.md` | `copywriting` | `humanize`, `vn-tone`, `design-brief` (copy-anchor) |
 | `skill-artifacts/mkt/content/[slug].humanized.md` | `humanize` | `vn-tone` |
 | `skill-artifacts/mkt/content/[slug].vn-tone.md` | `vn-tone` | — (terminal) |
-| `skill-artifacts/mkt/seo-[mode].md` | `seo` | `copywriting`, `lp-optimization` |
-| `skill-artifacts/mkt/lp-optimization.md` | `lp-optimization` | `lp-brief` (when redesign warranted) |
+| `skill-artifacts/mkt/seo-[mode].md` | `seo` | `copywriting`, `lp-brief` |
+| `skill-artifacts/mkt/lp-optimization.md` | `lp-optimization` | Deprecated teardown artifact; reference manually only if useful |
 | `skill-artifacts/mkt/lp-brief/[slug]/brief.md` + `asset-slots/*.prompt.md` | `lp-brief` | `design-brief` (per slot) + external designer / image-gen |
 | `skill-artifacts/mkt/design-briefs/[slug].md` | `design-brief` | External image-gen / vector-tool / human designer |
 | `skill-artifacts/mkt/cold-outreach/[slug].md` | `cold-outreach` | — (terminal) |
@@ -485,7 +481,7 @@ npx skills add hungv47/marketing-skills --skill copywriting
 npx skills add hungv47/meta-skills --agent claude-code
 ```
 
-Per-stack release notes (updated 2026-05-12 — Add generated artifact index for artifact selection):
+Per-stack release notes (updated 2026-05-12 — Landing-page conversion best practices now live in lp-brief; lp-optimization deprecated for teardown):
 
 - [research-skills/CHANGELOG.md](https://github.com/hungv47/research-skills/blob/main/CHANGELOG.md)
 - [marketing-skills/CHANGELOG.md](https://github.com/hungv47/marketing-skills/blob/main/CHANGELOG.md)
