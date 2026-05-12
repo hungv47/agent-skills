@@ -306,39 +306,6 @@
       ],
       "minScore": 6
     },
-    "lp-optimization": {
-      "phrases": [
-        "landing page",
-        "conversion rate optimization",
-        "page optimization",
-        "cro audit",
-        "landing page audit",
-        "optimize the landing page"
-      ],
-      "allOf": [
-        [
-          "landing",
-          "page"
-        ],
-        [
-          "conversion",
-          "audit"
-        ]
-      ],
-      "anyOf": [
-        "landing page",
-        "conversion",
-        "cro",
-        "bounce rate",
-        "above the fold"
-      ],
-      "noneOf": [
-        "write copy",
-        "brand identity",
-        "redesign"
-      ],
-      "minScore": 6
-    },
     "lp-brief": {
       "phrases": [
         "landing page brief",

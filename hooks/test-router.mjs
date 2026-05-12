@@ -27,7 +27,6 @@ const tests = [
   ["Plan our go to market strategy", "imc-plan"],
   ["This text sounds like AI wrote it, humanize it", "humanize"],
   ["Polish this vietnamese text for bro tone", "vn-tone"],
-  ["Audit the landing page for conversions", "lp-optimization"],
   ["Do an SEO audit of our site", "seo"],
   ["Which marketing channel has the best ROI?", "attribution"],
   ["Map the user flow for onboarding", "user-flow"],

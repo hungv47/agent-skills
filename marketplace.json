@@ -327,29 +327,6 @@
       ]
     },
     {
-      "id": "lp-optimization",
-      "domain": "marketing",
-      "name": "LP Optimization",
-      "description": "Deprecated heuristic landing-page teardown. Use lp-brief for construction/redesign; reserve this for explicit best-practice teardown requests or data-backed CRO notes until a dedicated CRO skill exists.",
-      "path": "marketing-skills/skills/lp-optimization",
-      "agents": 7,
-      "budget": "deep",
-      "estimated_cost_usd": "$1-3",
-      "produces": [
-        "mkt/lp-optimization.md"
-      ],
-      "consumes": [
-        "product-context.md",
-        "icp-research.md"
-      ],
-      "tags": [
-        "deprecated",
-        "heuristic-teardown",
-        "landing-page-audit",
-        "cro"
-      ]
-    },
-    {
       "id": "seo",
       "domain": "marketing",
       "name": "SEO",
