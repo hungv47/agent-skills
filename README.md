@@ -485,7 +485,7 @@ npx skills add hungv47/marketing-skills --skill copywriting
 npx skills add hungv47/meta-skills --agent claude-code
 ```
 
-Per-stack release notes (updated 2026-05-12 — marketing-skills 4.3.0 — seo skill AEO depth expansion (4 enrichments)):
+Per-stack release notes (updated 2026-05-12 — v5.0.0 coordinated cut — tier discipline + docs-writing release-notes mode):
 
 - [research-skills/CHANGELOG.md](https://github.com/hungv47/research-skills/blob/main/CHANGELOG.md)
 - [marketing-skills/CHANGELOG.md](https://github.com/hungv47/marketing-skills/blob/main/CHANGELOG.md)
