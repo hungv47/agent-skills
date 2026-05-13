@@ -1,6 +1,9 @@
 .DS_Store
+skills-resources/
 .agents/
 CLAUDE.md
 AGENTS.md
+IDEA.md
 .scion
 .scion/agents
+autoresearch/

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Scans all SKILL.md files in the 4 skill subdirectories,
+ * Scans all SKILL.md files in the 4 stack skill directories,
  * extracts promptSignals from YAML frontmatter, and writes
  * hooks/skill-registry.json.
  *
@@ -17,10 +17,10 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
 
 const SKILL_DIRS = [
-  "research-skills",
-  "marketing-skills",
-  "product-skills",
-  "meta-skills",
+  "research-skills/skills",
+  "marketing-skills/skills",
+  "product-skills/skills",
+  "meta-skills/skills",
 ];
 
 /**

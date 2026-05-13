@@ -25,7 +25,7 @@ Solo-operator stack, small user base, no SLA. Target: 1–2 releases/week, not 5
 
 ## CHANGELOG entries — release notes, not journal
 
-`CHANGELOG.md` entries are release notes the user sees on `/plugin update`. They are NOT the canonical record of everything that happened in a release window. Canonical lives in commit history + `.agents/skill-artifacts/meta/records/` (fresh-eyes reports) + `roadmap.md` (strategic decisions).
+`CHANGELOG.md` entries are release notes the user sees on `/plugin update`. They are NOT the canonical record of everything that happened in a release window. Canonical lives in commit history + `skills-resources/meta/records/` (fresh-eyes reports) + `roadmap.md` (strategic decisions).
 
 Each entry follows this shape:
 
@@ -37,7 +37,7 @@ One-paragraph summary of user-visible change. What's different for someone runni
 ### {Added|Changed|Fixed|Removed}
 - ≤4 bullets. Each bullet ≤2 lines. One user-visible change per bullet.
 
-Full review: `.agents/skill-artifacts/meta/records/YYYY-MM-DD-fresh-eyes-{slug}.md`
+Full review: `skills-resources/meta/records/YYYY-MM-DD-fresh-eyes-{slug}.md`
 ```
 
 ### Anti-patterns

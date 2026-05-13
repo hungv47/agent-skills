@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Multi-agent orchestration skills for research, marketing, product, and meta workflows. Each plugin uses critic-gated agent pipelines with quantitative rubrics.",
-    "version": "4.0.0"
+    "version": "5.0.0"
   },
   "plugins": [
     {
@@ -19,9 +19,9 @@
     {
       "name": "marketing-skills",
       "source": "./marketing-skills",
-      "description": "Brand, copywriting, campaign planning, landing-page architecture, design briefs, search visibility, humanization, localization polish, outbound, short-form video briefs, and platform-native social-copy.",
+      "description": "Brand, copywriting, campaign planning, landing-page architecture/evaluation, paid ads, design briefs, search visibility, humanization, localization polish, outbound, short-form video briefs, and platform-native social-copy.",
       "category": "marketing",
-      "tags": ["brand", "copywriting", "lp-brief", "design-brief", "seo", "humanize", "cold-outreach", "short-form", "social-copy"]
+      "tags": ["brand", "copywriting", "lp-brief", "lp-eval", "ad-copy", "design-brief", "seo", "humanize", "cold-outreach", "short-form", "social-copy"]
     },
     {
       "name": "product-skills",
@@ -33,9 +33,9 @@
     {
       "name": "meta-skills",
       "source": "./meta-skills",
-      "description": "Process-layer skills — discover, agents-panel, task-breakdown, fresh-eyes, cleanup-artifacts.",
+      "description": "Process-layer skills — discover, eval-loop, agents-panel, task-breakdown, fresh-eyes, cleanup-artifacts.",
       "category": "orchestration",
-      "tags": ["scoping", "planning", "debate", "review", "multi-agent", "cleanup", "hygiene"]
+      "tags": ["scoping", "planning", "eval-loop", "results-ledger", "debate", "review", "multi-agent", "cleanup", "hygiene"]
     }
   ]
 }

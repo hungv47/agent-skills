@@ -138,7 +138,12 @@ function matchPromptWithReason(normalizedPrompt, compiled) {
 
 function checkRegistryStaleness(registryPath) {
   const root = join(__dirname, "..");
-  const skillDirs = ["research-skills", "marketing-skills", "product-skills", "meta-skills"];
+  const skillDirs = [
+    "research-skills/skills",
+    "marketing-skills/skills",
+    "product-skills/skills",
+    "meta-skills/skills",
+  ];
   let registryMtime;
   try {
     registryMtime = statSync(registryPath).mtimeMs;
