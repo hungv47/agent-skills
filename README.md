@@ -148,7 +148,7 @@ Most skills write to `skills-resources/`. Three folders are top-level because th
 - `brand/` — brand identity of record (`BRAND.md`, `DESIGN.md`, `ASSETS.md`)
 - `architecture/` — system blueprint of record (`system-architecture.md`, schemas, ADRs)
 
-Everything else lives under `skills-resources/` with domain subfolders. Measurable work goes into a loop: `skills-resources/marketing/loops/[slug]/` co-locates strategy, marketing/content execution, evals, `results.tsv`, and promoted learnings for one initiative. One-shot audits, briefs, specs, decisions, and reports live under `skills-resources/marketing/`, `product/`, `research/`, `meta/`, or `experience/` (no `loops/` subfolder needed).
+Everything else lives under `skills-resources/` with domain subfolders. Measurable work goes into a loop: `skills-resources/{marketing|product|research}/loops/[slug]/` co-locates strategy, execution, evals, `results.tsv`, and promoted learnings for one initiative. One-shot audits, briefs, specs, decisions, and reports live under `skills-resources/marketing/`, `product/`, `research/`, `meta/`, or `experience/` (no `loops/` subfolder needed).
 
 ## Full Pipeline
 
@@ -166,7 +166,7 @@ End-to-end pipeline: meta process wrappers compose with research pipeline skills
 
 ```
 icp-research → market-research + diagnose → prioritize → funnel-planner
-short-form-research → skills-resources/marketing/short-form-research.md (consumed by short-form-brief)
+short-form-research → skills-resources/research/short-form-research/[slug].md (consumed by short-form-brief)
 ```
 
 | Skill | What it does | Use when... |
@@ -176,7 +176,7 @@ short-form-research → skills-resources/marketing/short-form-research.md (consu
 | `diagnose` | Structured diagnosis — logic trees, hypotheses, root cause analysis | A metric dropped, something broke, or you need to figure out *why* before jumping to solutions |
 | `prioritize` | Generates strategic options, scores trade-offs with ICE, recommends a path | The problem is clear and you need to decide *what* to build or pursue |
 | `funnel-planner` | Backward funnel modeling — revenue goals to traffic, conversions, unit economics | You need numeric targets: "how much traffic do we need to hit $X ARR?" |
-| `short-form-research` | Per-platform best-practice catalog — pulls hook archetypes, format constraints, algorithm signals, anti-patterns into `skills-resources/research/short-form-research.md` (consumed by short-form-brief) | You're starting a video pipeline and need fresh research grounding hooks/formats/signals across tiktok/reels/shorts/x/linkedin |
+| `short-form-research` | Per-platform best-practice catalog — pulls hook archetypes, format constraints, algorithm signals, anti-patterns into `skills-resources/research/short-form-research/[slug].md` (consumed by short-form-brief) | You're starting a video pipeline and need fresh research grounding hooks/formats/signals across tiktok/reels/shorts/x/linkedin |
 | `short-form-eval` | Closes the feedback loop — scores published short-form posts against the original brief, logs patterns, flags platform-signal staleness | You've published a video and want to know what the brief got right vs. what surprised you |
 
 ### Marketing — create, optimize, and measure marketing
@@ -444,10 +444,10 @@ Skills pass data through markdown files in `skills-resources/`, canonical folder
 | `skills-resources/marketing/cold-outreach/[slug].md` | `cold-outreach` | — (terminal) |
 | `skills-resources/product/flow/<flow-name>.md` + `skills-resources/product/flow/index.md` | `user-flow` | `system-architecture`, `task-breakdown` |
 | `skills-resources/meta/specs/<slug>.md` | `discover` (optional) | `system-architecture`, `task-breakdown` |
-| `skills-resources/marketing/loops/[slug]/program.md` + `context.md` | `eval-loop` | Strategy, marketing/content execution, and evaluation skills for that measurable initiative |
-| `skills-resources/marketing/loops/[slug]/strategy/*.md` | Strategy skills (`campaign-plan`, `lp-brief`, etc.) | Execution and evaluation skills in the same loop |
-| `skills-resources/marketing/loops/[slug]/execution/*.md` | Marketing/content execution skills | Evaluation skills and future strategy cycles |
-| `skills-resources/marketing/loops/[slug]/evals/*.md` + `results.tsv` | Evaluation skills | Future strategy/execution cycles; `learnings.md` promotion |
+| `skills-resources/{marketing|product|research}/loops/[slug]/program.md` + `context.md` | `eval-loop` | Strategy, execution, and evaluation skills for that measurable initiative |
+| `skills-resources/{marketing|product|research}/loops/[slug]/strategy/*.md` | Strategy skills (`campaign-plan`, `lp-brief`, etc.) | Execution and evaluation skills in the same loop |
+| `skills-resources/{marketing|product|research}/loops/[slug]/execution/*.md` | Execution skills | Evaluation skills and future strategy cycles |
+| `skills-resources/{marketing|product|research}/loops/[slug]/evals/*.md` + `results.tsv` | Evaluation skills | Future strategy/execution cycles; `learnings.md` promotion |
 | `system-architecture.md` | `system-architecture` | `task-breakdown` |
 | `skills-resources/meta/tasks.md` | `task-breakdown` | Task execution |
 | `skills-resources/meta/records/cleanup-*.md` | `code-cleanup` | — (terminal) |
@@ -491,7 +491,7 @@ npx skills add hungv47/marketing-skills --skill copywriting
 npx skills add hungv47/meta-skills --agent claude-code
 ```
 
-Per-stack release notes (updated 2026-05-13 — BREAKING: artifact tree migrates from `.agents/` to `skills-resources/` with domain-scoped subfolders; loops now live under `skills-resources/{marketing,product,research}/loops/[slug]/`):
+Per-stack release notes (updated 2026-05-14 — fresh-eyes patch: domain-loop contracts, manifest safety, short-form path drift):
 
 - [research-skills/CHANGELOG.md](https://github.com/hungv47/research-skills/blob/main/CHANGELOG.md)
 - [marketing-skills/CHANGELOG.md](https://github.com/hungv47/marketing-skills/blob/main/CHANGELOG.md)
