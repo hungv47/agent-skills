@@ -4,7 +4,9 @@
  * extracts promptSignals from YAML frontmatter, and writes
  * hooks/skill-registry.json.
  *
- * Usage: node hooks/build-registry.mjs
+ * Usage:
+ *   node hooks/build-registry.mjs
+ *   node hooks/build-registry.mjs --check
  *
  * Run this after editing any skill's promptSignals block.
  */
@@ -118,7 +120,7 @@ function extractFrontmatter(content) {
   return match ? match[1] : null;
 }
 
-function main() {
+function buildRegistry() {
   const skills = {};
   let count = 0;
 
@@ -165,9 +167,25 @@ function main() {
     }
   }
 
-  const registry = { version: 1, skills };
+  return { registry: { version: 1, skills }, count };
+}
+
+function main() {
+  const { registry, count } = buildRegistry();
   const outPath = join(__dirname, "skill-registry.json");
-  writeFileSync(outPath, JSON.stringify(registry, null, 2) + "\n");
+  const next = JSON.stringify(registry, null, 2) + "\n";
+
+  if (process.argv.includes("--check")) {
+    const current = readFileSync(outPath, "utf-8");
+    if (current !== next) {
+      console.error("[build-registry] skill-registry.json is stale. Run `node hooks/build-registry.mjs`.");
+      process.exit(1);
+    }
+    console.log(`[build-registry] Registry is current (${count} skills).`);
+    return;
+  }
+
+  writeFileSync(outPath, next);
   console.log(`[build-registry] Wrote ${count} skills to ${outPath}`);
 }
 

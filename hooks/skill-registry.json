@@ -1110,13 +1110,13 @@
     },
     "cleanup-artifacts": {
       "phrases": [
-        "clean up skills-resources",
+        "clean up .agents/skill-artifacts",
         "clean up the artifacts",
         "groom the artifact tree",
         "archive stale artifacts",
-        "prune skills-resources",
+        "prune .agents/skill-artifacts",
         "tidy skill outputs",
-        "skills-resources is a junk drawer",
+        ".agents/skill-artifacts is a junk drawer",
         "artifacts piling up"
       ],
       "allOf": [
@@ -1126,7 +1126,7 @@
         ],
         [
           "prune",
-          "skills-resources"
+          ".agents/skill-artifacts"
         ],
         [
           "archive",
@@ -1138,7 +1138,7 @@
         "groom artifacts",
         "stale artifacts",
         "archive artifacts",
-        "skills-resources cleanup"
+        ".agents/skill-artifacts cleanup"
       ],
       "noneOf": [
         "code review",
