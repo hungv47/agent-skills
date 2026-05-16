@@ -2,9 +2,13 @@
 
 ![Agent Skills](./assets/banners/forsvn-skills.png)
 
+> **Agent Skills 2.0** — fresh-start release on the `refactor/v2.0` branch across the umbrella + all 4 stacks (marketplace 2.0.0; meta/marketing/product/research stacks all 2.0.0). The `main` branch on each repo holds the legacy v1.x line for users who do not opt into the 2.0 trunk.
+>
+> **Install 2.0:** `npx skills add hungv47/<stack-name>@refactor/v2.0`
+
 A composable skill stack for [AI agents](https://agentskills.io/home) that chains together — from problem diagnosis to shipped code.
 
-Skills pass context through conversation and artifacts in `.agents/skill-artifacts/`, with measurable initiatives isolated in `skills-resources/loops/[slug]/`. Downstream skills read conversation context or artifacts automatically, so output compounds as you move through the stack.
+Skills pass context through conversation and artifacts in `.agents/skill-artifacts/`, with measurable initiatives isolated in `skills-resources/loops/[slug]/`. Cross-session knowledge accumulates at `skills-resources/experience/`. Downstream skills read conversation context or artifacts automatically, so output compounds as you move through the stack.
 
 ## Install
 
@@ -493,12 +497,21 @@ npx skills add hungv47/marketing-skills --skill copywriting
 npx skills add hungv47/meta-skills --agent claude-code
 ```
 
-Per-stack release notes (updated 2026-05-16 — Phase 1A+B+C: 7 new shared refs + experience/ migration to skills-resources/ + sync wiring):
+Per-stack release notes:
 
-- [research-skills/CHANGELOG.md](https://github.com/hungv47/research-skills/blob/main/CHANGELOG.md)
-- [marketing-skills/CHANGELOG.md](https://github.com/hungv47/marketing-skills/blob/main/CHANGELOG.md)
-- [product-skills/CHANGELOG.md](https://github.com/hungv47/product-skills/blob/main/CHANGELOG.md)
-- [meta-skills/CHANGELOG.md](https://github.com/hungv47/meta-skills/blob/main/CHANGELOG.md)
+**Agent Skills 2.0 (current `refactor/v2.0` branch):**
+
+- [research-skills/CHANGELOG.md](https://github.com/hungv47/research-skills/blob/refactor/v2.0/CHANGELOG.md)
+- [marketing-skills/CHANGELOG.md](https://github.com/hungv47/marketing-skills/blob/refactor/v2.0/CHANGELOG.md)
+- [product-skills/CHANGELOG.md](https://github.com/hungv47/product-skills/blob/refactor/v2.0/CHANGELOG.md)
+- [meta-skills/CHANGELOG.md](https://github.com/hungv47/meta-skills/blob/refactor/v2.0/CHANGELOG.md)
+
+**Legacy v1.x (`main` branch):**
+
+- [research-skills/CHANGELOG.md @ main](https://github.com/hungv47/research-skills/blob/main/CHANGELOG.md)
+- [marketing-skills/CHANGELOG.md @ main](https://github.com/hungv47/marketing-skills/blob/main/CHANGELOG.md)
+- [product-skills/CHANGELOG.md @ main](https://github.com/hungv47/product-skills/blob/main/CHANGELOG.md)
+- [meta-skills/CHANGELOG.md @ main](https://github.com/hungv47/meta-skills/blob/main/CHANGELOG.md)
 
 ## Changelog
 
