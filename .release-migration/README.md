@@ -12,7 +12,22 @@ After applying the steps below, this directory can be deleted.
 - **v1.5.2** (latest, stable) — represents `main` HEAD (`a4bef2c`). New release. Body in `v1.5.2-release-notes.md`.
 - Everything else (the 11 old releases below) — **deleted**.
 
-## Steps (GitHub UI, mobile-friendly)
+## Fastest path: run the GitHub Action
+
+A workflow at `.github/workflows/release-migration.yml` does steps 1–3 below in one click.
+
+1. Open https://github.com/hungv47/agent-skills/actions
+2. Pick **Release migration (v1 / v2 repositioning)**
+3. Tap **Run workflow**
+4. First run: leave **confirm** as `dry-run` to preview the actions in the logs
+5. Second run: set **confirm** to `DELETE` (uppercase) to actually mutate
+6. After it finishes green, do step 4 below to clean up scratch files
+
+The workflow uses the repo's `GITHUB_TOKEN` (no extra secrets needed) and reads the bodies from the `.release-migration/*.md` files we already pushed.
+
+---
+
+## Manual fallback (if you don't want to use the Action)
 
 Open https://github.com/hungv47/agent-skills/releases
 
@@ -50,11 +65,11 @@ Releases → **Draft a new release**.
 
 Releases → `v2.0.0` → Edit → replace body with `v2.0.0-release-notes.md`. Keep pre-release flag checked. The only changes are wording tweaks to match the new v1.5.2 framing; safe to skip if you're short on time.
 
-### 4. Delete this `.release-migration/` directory
+### 4. Delete this `.release-migration/` directory + the workflow
 
 ```bash
-git rm -r .release-migration
-git commit -m "cleanup: remove release-migration scratch dir"
+git rm -r .release-migration .github/workflows/release-migration.yml
+git commit -m "cleanup: remove release-migration scratch + workflow"
 git push
 ```
 

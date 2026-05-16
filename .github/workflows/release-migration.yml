@@ -1,0 +1,147 @@
+name: Release migration (v1 / v2 repositioning)
+
+# One-time workflow to:
+#   1. delete 11 stale releases + tags
+#   2. create v1.5.2 at main HEAD using body from .release-migration/v1.5.2-release-notes.md
+#   3. (optional) refresh v2.0.0 pre-release body from .release-migration/v2.0.0-release-notes.md
+#
+# Trigger from the GitHub UI (mobile-friendly):
+#   Actions → "Release migration (v1 / v2 repositioning)" → Run workflow
+#
+# Safety: requires typing "DELETE" into the confirm input. Anything else = dry-run.
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type DELETE (uppercase) to actually run. Anything else = dry-run.'
+        required: true
+        default: 'dry-run'
+      target_sha:
+        description: 'Commit SHA for the new v1.5.2 release (default: main HEAD).'
+        required: false
+        default: ''
+      refresh_v2_body:
+        description: 'Also overwrite v2.0.0 body from .release-migration/v2.0.0-release-notes.md?'
+        type: boolean
+        required: false
+        default: true
+
+permissions:
+  contents: write
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Resolve mode + target SHA
+        id: cfg
+        run: |
+          if [ "${{ inputs.confirm }}" = "DELETE" ]; then
+            echo "mode=apply" >> "$GITHUB_OUTPUT"
+            echo "::notice::APPLY mode — will mutate releases and tags."
+          else
+            echo "mode=dry" >> "$GITHUB_OUTPUT"
+            echo "::notice::DRY-RUN mode — no changes will be made. Pass confirm=DELETE to apply."
+          fi
+
+          if [ -n "${{ inputs.target_sha }}" ]; then
+            sha="${{ inputs.target_sha }}"
+          else
+            sha="$(git rev-parse HEAD)"
+          fi
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+          echo "Target SHA for v1.5.2: $sha"
+
+      - name: Verify release-note bodies exist
+        run: |
+          test -f .release-migration/v1.5.2-release-notes.md || { echo "::error::missing v1.5.2 notes"; exit 1; }
+          test -f .release-migration/v2.0.0-release-notes.md || { echo "::error::missing v2.0.0 notes"; exit 1; }
+
+      - name: Delete stale releases + tags
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MODE: ${{ steps.cfg.outputs.mode }}
+        run: |
+          set -u
+          STALE=(v3.0.0 2.1.0 2.0.1 2.0.0 1.5.3 1.5.2 1.5.1 1.5.0 1.4.0 1.3.0 1.0.0)
+          for tag in "${STALE[@]}"; do
+            echo "::group::$tag"
+            if gh release view "$tag" >/dev/null 2>&1; then
+              if [ "$MODE" = "apply" ]; then
+                gh release delete "$tag" --yes --cleanup-tag
+                echo "deleted release+tag $tag"
+              else
+                echo "[dry-run] would: gh release delete $tag --yes --cleanup-tag"
+              fi
+            else
+              echo "no release found for $tag (skipping)"
+              # tag may still exist without a release
+              if git ls-remote --tags origin "refs/tags/$tag" | grep -q .; then
+                if [ "$MODE" = "apply" ]; then
+                  git push origin ":refs/tags/$tag"
+                  echo "deleted orphan tag $tag"
+                else
+                  echo "[dry-run] would: git push origin :refs/tags/$tag"
+                fi
+              fi
+            fi
+            echo "::endgroup::"
+          done
+
+      - name: Create v1.5.2 release at target SHA
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MODE: ${{ steps.cfg.outputs.mode }}
+          SHA: ${{ steps.cfg.outputs.sha }}
+        run: |
+          set -u
+          if gh release view v1.5.2 >/dev/null 2>&1; then
+            echo "::warning::v1.5.2 already exists. Skipping create. Delete it first if you want a clean cut."
+            exit 0
+          fi
+          if [ "$MODE" = "apply" ]; then
+            gh release create v1.5.2 \
+              --target "$SHA" \
+              --title "Agent Skills v1.5.2 — repositioned v1 line head" \
+              --notes-file .release-migration/v1.5.2-release-notes.md \
+              --latest
+            echo "created v1.5.2 at $SHA"
+          else
+            echo "[dry-run] would: gh release create v1.5.2 --target $SHA --title '...' --notes-file .release-migration/v1.5.2-release-notes.md --latest"
+          fi
+
+      - name: Refresh v2.0.0 pre-release body
+        if: ${{ inputs.refresh_v2_body }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MODE: ${{ steps.cfg.outputs.mode }}
+        run: |
+          set -u
+          if ! gh release view v2.0.0 >/dev/null 2>&1; then
+            echo "::warning::v2.0.0 not found; skipping body refresh."
+            exit 0
+          fi
+          if [ "$MODE" = "apply" ]; then
+            gh release edit v2.0.0 \
+              --notes-file .release-migration/v2.0.0-release-notes.md \
+              --prerelease
+            echo "refreshed v2.0.0 body"
+          else
+            echo "[dry-run] would: gh release edit v2.0.0 --notes-file .release-migration/v2.0.0-release-notes.md --prerelease"
+          fi
+
+      - name: Summary
+        env:
+          MODE: ${{ steps.cfg.outputs.mode }}
+        run: |
+          if [ "$MODE" = "apply" ]; then
+            echo "## Done" >> "$GITHUB_STEP_SUMMARY"
+            echo "Releases mutated. Next step: delete \`.release-migration/\` and (optionally) this workflow file." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "## Dry-run complete" >> "$GITHUB_STEP_SUMMARY"
+            echo "No changes made. To apply, re-run with **confirm = DELETE**." >> "$GITHUB_STEP_SUMMARY"
+          fi
