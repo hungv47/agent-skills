@@ -2,7 +2,7 @@
 
 ![Agent Skills](./assets/banners/forsvn-skills.png)
 
-> **Agent Skills 2.0** — fresh-start release on the `refactor/v2.0` branch across the umbrella + all 4 stacks (marketplace 2.0.0; meta/marketing/product/research stacks all 2.0.0). The `main` branch on each repo holds the legacy v1.x line for users who do not opt into the 2.0 trunk.
+> **Agent Skills 2.0** — fresh-start release on the `refactor/v2.0` branch across the umbrella + all 4 stacks (marketplace 2.0.0; meta/marketing/product/research stacks all 2.0.0). The `main` branch on each repo holds the legacy line (marketplace v5.x; meta v6.x; marketing v7.x; product v6.x; research v6.x) for users who do not opt into the 2.0 trunk.
 >
 > **Install 2.0:** `npx skills add hungv47/<stack-name>@refactor/v2.0`
 
@@ -14,13 +14,13 @@ Skills pass context through conversation and artifacts in `.agents/skill-artifac
 
 Installs via the [`skills` CLI](https://skills.sh). Requires Node.js 18+. Works with Claude Code, Cursor, Codex, Windsurf, Gemini CLI, and VS Code (auto-detects your editor).
 
-### Install a full stack
+### Install a full stack (Agent Skills 2.0)
 
 ```bash
-npx skills add hungv47/research-skills
-npx skills add hungv47/marketing-skills
-npx skills add hungv47/product-skills
-npx skills add hungv47/meta-skills
+npx skills add hungv47/research-skills@refactor/v2.0
+npx skills add hungv47/marketing-skills@refactor/v2.0
+npx skills add hungv47/product-skills@refactor/v2.0
+npx skills add hungv47/meta-skills@refactor/v2.0
 ```
 
 ### Install a single skill
@@ -28,10 +28,10 @@ npx skills add hungv47/meta-skills
 Cherry-pick any skill with `--skill` (the examples below are illustrative — any skill in a stack works):
 
 ```bash
-npx skills add hungv47/marketing-skills --skill copywriting
-npx skills add hungv47/research-skills --skill icp-research
-npx skills add hungv47/product-skills --skill system-architecture
-npx skills add hungv47/meta-skills --skill fresh-eyes
+npx skills add hungv47/marketing-skills@refactor/v2.0 --skill copywriting
+npx skills add hungv47/research-skills@refactor/v2.0 --skill icp-research
+npx skills add hungv47/product-skills@refactor/v2.0 --skill system-architecture
+npx skills add hungv47/meta-skills@refactor/v2.0 --skill fresh-eyes
 ```
 
 Single-skill installs are self-contained. Shared scripts and references that a skill needs are packaged into that skill under `scripts/` and `references/_shared/`, so `npx skills add --skill <name>` does not depend on sibling folders being installed.
@@ -39,13 +39,13 @@ Single-skill installs are self-contained. Shared scripts and references that a s
 Cherry-pick multiple skills in a single call:
 
 ```bash
-npx skills add hungv47/marketing-skills --skill copywriting humanize
+npx skills add hungv47/marketing-skills@refactor/v2.0 --skill copywriting humanize
 ```
 
 List what's available in a stack without installing:
 
 ```bash
-npx skills add hungv47/marketing-skills --list
+npx skills add hungv47/marketing-skills@refactor/v2.0 --list
 ```
 
 ### Target a specific editor
@@ -53,8 +53,8 @@ npx skills add hungv47/marketing-skills --list
 Use `--agent` to install into one or more editors. Defaults to auto-detect in the current directory.
 
 ```bash
-npx skills add hungv47/meta-skills --agent claude-code
-npx skills add hungv47/meta-skills --agent claude-code cursor
+npx skills add hungv47/meta-skills@refactor/v2.0 --agent claude-code
+npx skills add hungv47/meta-skills@refactor/v2.0 --agent claude-code cursor
 ```
 
 ### Install globally
@@ -62,7 +62,18 @@ npx skills add hungv47/meta-skills --agent claude-code cursor
 Make a skill available in every project on your machine:
 
 ```bash
-npx skills add hungv47/meta-skills -g
+npx skills add hungv47/meta-skills@refactor/v2.0 -g
+```
+
+### Install legacy v1-era stacks (main branch)
+
+Existing users staying on the legacy line — omit the `@refactor/v2.0` ref:
+
+```bash
+npx skills add hungv47/meta-skills       # legacy v6.2.x
+npx skills add hungv47/marketing-skills  # legacy v7.x
+npx skills add hungv47/product-skills    # legacy v6.x
+npx skills add hungv47/research-skills   # legacy v6.x
 ```
 
 ### Other operations
@@ -484,17 +495,17 @@ Get the latest version of skills you already have installed:
 npx skills update
 ```
 
-Add a new skill stack or cherry-pick a skill you don't have yet:
+Add a new skill stack or cherry-pick a skill you don't have yet (Agent Skills 2.0):
 
 ```bash
 # Full stack
-npx skills add hungv47/research-skills
+npx skills add hungv47/research-skills@refactor/v2.0
 
 # Single skill
-npx skills add hungv47/marketing-skills --skill copywriting
+npx skills add hungv47/marketing-skills@refactor/v2.0 --skill copywriting
 
 # Specific editor
-npx skills add hungv47/meta-skills --agent claude-code
+npx skills add hungv47/meta-skills@refactor/v2.0 --agent claude-code
 ```
 
 Per-stack release notes:
@@ -506,7 +517,7 @@ Per-stack release notes:
 - [product-skills/CHANGELOG.md](https://github.com/hungv47/product-skills/blob/refactor/v2.0/CHANGELOG.md)
 - [meta-skills/CHANGELOG.md](https://github.com/hungv47/meta-skills/blob/refactor/v2.0/CHANGELOG.md)
 
-**Legacy v1.x (`main` branch):**
+**Legacy line (`main` branch):**
 
 - [research-skills/CHANGELOG.md @ main](https://github.com/hungv47/research-skills/blob/main/CHANGELOG.md)
 - [marketing-skills/CHANGELOG.md @ main](https://github.com/hungv47/marketing-skills/blob/main/CHANGELOG.md)
