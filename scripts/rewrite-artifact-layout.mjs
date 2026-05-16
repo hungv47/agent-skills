@@ -4,7 +4,7 @@
  *
  * Current layout:
  * - .agents/manifest.json and .agents/artifact-index.md are infrastructure.
- * - .agents/experience/ is the cross-skill Q&A substrate.
+ * - skills-resources/experience/ is the cross-skill Q&A substrate.
  * - .agents/skill-artifacts/ holds one-shot skill outputs.
  * - skills-resources/loops/ holds measurable initiative workspaces.
  */
@@ -51,7 +51,7 @@ function rewrite(content) {
     .replace(/skills-resources\/\{marketing\|product\|research\}\/loops/g, "skills-resources/loops")
     .replace(/skills-resources\/\{marketing,product,research\}\/loops/g, "skills-resources/loops")
     .replace(/skills-resources\/\{marketing\|product\|research\}\/loops\/\[slug\]/g, "skills-resources/loops/[slug]")
-    .replace(/skills-resources\/experience/g, ".agents/experience")
+    .replace(/skills-resources\/experience/g, "skills-resources/experience")
     .replace(/skills-resources\/manifest\.json/g, ".agents/manifest.json")
     .replace(/skills-resources\/artifact-index\.md/g, ".agents/artifact-index.md")
     .replace(/skills-resources\/\.archive/g, ".agents/skill-artifacts/.archive")

@@ -140,7 +140,7 @@ You don't have to remember names. Type a plain-English request and your agent re
 
 Most skills bundle 3–7 context questions in a single message before dispatching their sub-agents. Answer all the questions in one reply — the skill is gathering enough context to run multiple agents in parallel.
 
-Answers persist to `.agents/experience/{domain}.md` (product, audience, brand, business, goals, technical). The next skill in the same project reads from this file and skips re-asking. First skill in a project costs 1–2 minutes of setup; everything downstream skips straight to work.
+Answers persist to `skills-resources/experience/{domain}.md` (product, audience, brand, business, goals, technical). The next skill in the same project reads from this file and skips re-asking. First skill in a project costs 1–2 minutes of setup; everything downstream skips straight to work.
 
 ### Where outputs land
 
@@ -150,7 +150,7 @@ Most skills write to `.agents/skill-artifacts/`. Three folders are top-level bec
 - `brand/` — brand identity of record (`BRAND.md`, `DESIGN.md`, `ASSETS.md`)
 - `architecture/` — system blueprint of record (`system-architecture.md`, schemas, ADRs)
 
-Everything else lives under `.agents/skill-artifacts/` with domain subfolders. Measurable work goes into a loop: `skills-resources/loops/[slug]/` co-locates strategy, execution, evals, `results.tsv`, and promoted learnings for one initiative. One-shot audits, briefs, specs, decisions, and reports live under `.agents/skill-artifacts/mkt/`, `.agents/skill-artifacts/product/`, `.agents/skill-artifacts/research/`, or `.agents/skill-artifacts/meta/`. Durable Q&A context lives separately in `.agents/experience/`.
+Everything else lives under `.agents/skill-artifacts/` with domain subfolders. Measurable work goes into a loop: `skills-resources/loops/[slug]/` co-locates strategy, execution, evals, `results.tsv`, and promoted learnings for one initiative. One-shot audits, briefs, specs, decisions, and reports live under `.agents/skill-artifacts/mkt/`, `.agents/skill-artifacts/product/`, `.agents/skill-artifacts/research/`, or `.agents/skill-artifacts/meta/`. Durable Q&A context lives separately in `skills-resources/experience/`.
 
 ## Full Pipeline
 
@@ -493,7 +493,7 @@ npx skills add hungv47/marketing-skills --skill copywriting
 npx skills add hungv47/meta-skills --agent claude-code
 ```
 
-Per-stack release notes (updated 2026-05-16 — Refactor eval-loop: body-diet 270→211 lines, fix stale find-path):
+Per-stack release notes (updated 2026-05-16 — Phase 1A+B+C: 7 new shared refs + experience/ migration to skills-resources/ + sync wiring):
 
 - [research-skills/CHANGELOG.md](https://github.com/hungv47/research-skills/blob/main/CHANGELOG.md)
 - [marketing-skills/CHANGELOG.md](https://github.com/hungv47/marketing-skills/blob/main/CHANGELOG.md)
