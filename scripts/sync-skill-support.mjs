@@ -33,6 +33,13 @@ const SUPPORT_REFS = {
   "quality-feedback-protocol.md": "meta-skills/references/quality-feedback-protocol.md",
   "quality-dashboard-spec.md": "meta-skills/references/quality-dashboard-spec.md",
   "shared-critic-rubrics.md": "meta-skills/references/shared-critic-rubrics.md",
+  "mode-resolver.md": "meta-skills/references/mode-resolver.md",
+  "anti-sycophancy.md": "meta-skills/references/anti-sycophancy.md",
+  "artifact-contract-template.md": "meta-skills/references/artifact-contract-template.md",
+  "thin-critic-rubric.md": "meta-skills/references/thin-critic-rubric.md",
+  "playbook-ref-template.md": "meta-skills/references/playbook-ref-template.md",
+  "product-marketing-context-schema.md": "meta-skills/references/product-marketing-context-schema.md",
+  "before-starting-check.md": "meta-skills/references/before-starting-check.md",
   "hypothesis-framework.md": "research-skills/shared/hypothesis-framework.md",
   "copywriting-research-workflow.md": "marketing-skills/skills/copywriting/references/research-workflow.md",
   "clipping-and-live.md": "marketing-skills/skills/campaign-plan/references/distribution-models/clipping-and-live.md",
@@ -159,6 +166,13 @@ function syncSkill(dir) {
   if (/quality-feedback-protocol/.test(corpus)) ensureReference(dir, "quality-feedback-protocol.md");
   if (/quality-dashboard-spec/.test(corpus)) ensureReference(dir, "quality-dashboard-spec.md");
   if (/shared-critic-rubrics/.test(corpus)) ensureReference(dir, "shared-critic-rubrics.md");
+  if (/mode-resolver/.test(corpus)) ensureReference(dir, "mode-resolver.md");
+  if (/anti-sycophancy/.test(corpus)) ensureReference(dir, "anti-sycophancy.md");
+  if (/artifact-contract-template/.test(corpus)) ensureReference(dir, "artifact-contract-template.md");
+  if (/thin-critic-rubric/.test(corpus)) ensureReference(dir, "thin-critic-rubric.md");
+  if (/playbook-ref-template/.test(corpus)) ensureReference(dir, "playbook-ref-template.md");
+  if (/product-marketing-context-schema/.test(corpus)) ensureReference(dir, "product-marketing-context-schema.md");
+  if (/before-starting-check/.test(corpus)) ensureReference(dir, "before-starting-check.md");
   if (/hypothesis-framework/.test(corpus)) ensureReference(dir, "hypothesis-framework.md");
   if (/copywriting\/references\/research-workflow|copywriting-research-workflow/.test(corpus)) {
     ensureReference(dir, "copywriting-research-workflow.md");
