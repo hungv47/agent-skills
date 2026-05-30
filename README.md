@@ -1,1 +1,1 @@
-This repo is out of date. Visit [FORSVN skills](https://github.com/forsvn-com/Skills) instead 
+This repo is out of date. Visit [FORSVN skills](https://github.com/hungv47/meta-skills/) instead 
